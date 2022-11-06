@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Ahmedrashed1619/Zari-Falcon/static/css/main.7248a059.css",
-    "main.js": "/Ahmedrashed1619/Zari-Falcon/static/js/main.4b05cec4.js",
+    "main.js": "/Ahmedrashed1619/Zari-Falcon/static/js/main.52783e7f.js",
     "static/js/787.982a4d8f.chunk.js": "/Ahmedrashed1619/Zari-Falcon/static/js/787.982a4d8f.chunk.js",
     "static/media/signup.png": "/Ahmedrashed1619/Zari-Falcon/static/media/signup.d92c5cef1f60c890f374.png",
     "static/media/fa-solid-900.ttf": "/Ahmedrashed1619/Zari-Falcon/static/media/fa-solid-900.b48ad290d0335879a92b.ttf",
@@ -18,11 +18,11 @@
     "static/media/fa-v4compatibility.woff2": "/Ahmedrashed1619/Zari-Falcon/static/media/fa-v4compatibility.745989aab0d69cab7e70.woff2",
     "index.html": "/Ahmedrashed1619/Zari-Falcon/index.html",
     "main.7248a059.css.map": "/Ahmedrashed1619/Zari-Falcon/static/css/main.7248a059.css.map",
-    "main.4b05cec4.js.map": "/Ahmedrashed1619/Zari-Falcon/static/js/main.4b05cec4.js.map",
+    "main.52783e7f.js.map": "/Ahmedrashed1619/Zari-Falcon/static/js/main.52783e7f.js.map",
     "787.982a4d8f.chunk.js.map": "/Ahmedrashed1619/Zari-Falcon/static/js/787.982a4d8f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7248a059.css",
-    "static/js/main.4b05cec4.js"
+    "static/js/main.52783e7f.js"
   ]
 }
