@@ -8,7 +8,7 @@ import $ from 'jquery';
 import WOW from 'wowjs';
 
 
-export default function Navbar({activeLink}) {
+export default function Navbar({activeLink, userData}) {
 
 
     useEffect(() => {
@@ -62,7 +62,7 @@ export default function Navbar({activeLink}) {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg fixed-top bg-white py-2" dir={isEng ? 'ltr' : 'rtl'}>
+        {userData ? '' : <nav className="navbar navbar-expand-lg fixed-top bg-white py-2 nav-total" dir={isEng ? 'ltr' : 'rtl'}>
                 <div className="container-fluid container-xl special-w">
                     <span className="navbar-brand"><img src={imgLogo} alt="zari logo" /></span>
                     <button className={`navbar-toggler wow fadeIn ${isActive ? 'convert' : ''}`} data-wow-duration="0.75s" onClick={handelClick} type="button" data-bs-toggle="collapse"
@@ -113,7 +113,8 @@ export default function Navbar({activeLink}) {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav>}
+            
         </>
     )
 }

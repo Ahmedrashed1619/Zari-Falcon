@@ -10,7 +10,7 @@ import WOW from 'wowjs';
 
 
 
-export default function Footer({activeLink}) {
+export default function Footer({activeLink, userData}) {
 
 
     useEffect(() => {
@@ -52,16 +52,19 @@ export default function Footer({activeLink}) {
 
     return (
         <>
-            <footer id="footer" className="footer py-5 bg-black position-relative" dir={isEng ? 'ltr' : 'rtl'}>
-                <span id="btnTopFooter" className={`position-absolute top-0 end-0 translate-middle text-black`}><i
+            {userData ? '' : <footer id="footer" className="footer py-5 main-bg position-relative" dir={isEng ? 'ltr' : 'rtl'}>
+                <span id="btnTopFooter" className={`position-absolute top-0 end-0 translate-middle main-color`}><i
                         className="fa-solid fa-chevron-up fs-3 p-3 bg-span rounded-circle"></i></span>
                 <div className="container">
                     <div className="row gy-5">
                         <div className="col-lg-4 col-md-6">
                             <div className="logo-footer">
-                                <img src={imgFooter} className="w-50" alt="zari logo"/>
-                                <p>{isEng ? `Zari is a Saudi-Egyptian company among a group of companies operating in more than one field
-                                    in Saudi Arabia and the Middle East.` : 'حلول زاري لتقنية المعلومات شركة سعودية تعمل علي تطوير الأعمال وأن نكون شركاء نجاح مع قطاعات الأعمال المختلفة لتطوير أعمالهم من خلال تقديم حلول تقنية ةتسويقية. '}</p>
+                                <div className="cont-imgFooter">
+                                    <img src={imgFooter} className="w-75" alt="zari logo"/>
+                                </div>
+                                {/* <p>{isEng ? `Zari is a Saudi-Egyptian company among a group of companies operating in more than one field
+                                    in Saudi Arabia and the Middle East.` : 'حلول زاري لتقنية المعلومات شركة سعودية تعمل علي تطوير الأعمال وأن نكون شركاء نجاح مع قطاعات الأعمال المختلفة لتطوير أعمالهم من خلال تقديم حلول تقنية ةتسويقية. '}
+                                </p> */}
                                 <h5 className="mb-4">{isEng ? 'Follow us' : 'تابعنــــا'}</h5>
                                 <div className="icons-footer d-flex align-items-center mb-3">
                                     <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/ZARISolutionksa"><i
@@ -81,13 +84,13 @@ export default function Footer({activeLink}) {
                             <div className="navigate">
                                 <h5 className="mb-5">{isEng ? 'Navigate' : 'التنقــــل'}</h5>
                                 <div className="navbar-nav links-navigate d-flex justify-content-center flex-column">
-                                    <li className="nav-item mb-1">
+                                    <li className="nav-item mb-2">
                                         <Link to='home' onClick={activeLink} className="nav-link mt-0 home" aria-current="page">{isEng ? 'Home' : 'الرئيسيــة'}</Link>
                                     </li>
-                                    <li className="nav-item mb-1">
+                                    <li className="nav-item mb-2">
                                         <Link to='home' onClick={activeLink} className="nav-link mt-0 features">{isEng ? 'Features' : 'المميـزات'}</Link>
                                     </li>
-                                    <li className="nav-item mb-1">
+                                    <li className="nav-item mb-2">
                                         <Link to='home' onClick={activeLink} className="nav-link mt-0 app">{isEng ? 'Our App' : 'التطبيــق'}</Link>
                                     </li>
                                     <li className="nav-item">
@@ -123,7 +126,7 @@ export default function Footer({activeLink}) {
                         </div>
                     </div>
                 </div>
-            </footer>
+            </footer>}
         </>
     )
 }

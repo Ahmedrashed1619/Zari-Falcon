@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Checkout from './componants/Checkout/Checkout';
 import Footer from './componants/Footer/Footer';
 import Home from './componants/Home/Home';
@@ -8,17 +8,26 @@ import Navbar from './componants/Navbar/Navbar';
 import Notfound from './componants/Notfound/Notfound';
 import Signin from './componants/Signin/Signin';
 import Signup from './componants/Signup/Signup';
+import Dashboard from './componants/Dashboard/Dashboard';
+import Statistics from './componants/Statistics/Statistics';
+import Sales from './componants/Sales/Sales';
+import Settings from './componants/Settings/Settings';
+import Location from './componants/Location/Location';
+import Clients from './componants/Clients/Clients';
+import Map from './componants/Map/Map';
+import Report from './componants/Report/Report';
+import Create from './componants/Create/Create';
 import $ from 'jquery';
-// import { useState } from 'react';
-// import axios from 'axios';
+import { useState } from 'react';
+import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 
 
 
 function App() {
 
-  // let baseURL = 'http://66.29.139.205/zarisales/public/api/dashboard/';
-  // let baseURL = 'https://zarisolution.com/falcon/api/';
+  let baseURL = 'https://zarimain.online/falcon/public/api/dashboard/';
 
 
   const activeLink = (e) => {
@@ -118,56 +127,99 @@ function App() {
   }, [])
 
 
-  
-
 
       // Home data 
-      // let [fetchHome, setFetchHome] = useState([]);
-      // async function getDataHome() {
-      //   await axios.get(`${baseURL}home`)
-      //     .then(res => {
-      //       if (res.status === 200 && res.request.readyState === 4) {
-      //         setFetchHome(res.data);
-      //       }
-      //     })
-      //     .catch(err => {
-      //       console.log(err);
-      //     })
-      // }
-      // useEffect(() => {
-  
-      //   getDataHome();
-  
-      // }, [])
+      let [fetchHome, setFetchHome] = useState([]);
+      async function getDataHome() {
+        await axios.get(`${baseURL}home`)
+          .then(res => {
+            if (res.status === 200 && res.request.readyState === 4) {
+              setFetchHome(res.data);
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      }
+      useEffect(() => {
+          getDataHome();
+      }, [])
 
 
+      // user data from localstorage
+      let [userData, setUserData] = useState(null);
+
+      const saveUserData = () => {
+        let encodedToken = localStorage.getItem('userToken');
+        let decodedToken = jwtDecode(encodedToken);
+        setUserData(decodedToken);
+      }
+
+      // for reload action
+      useEffect(() => {
+        if(localStorage.getItem('userToken')) {
+          saveUserData();
+        }
+
+      }, [])
+      
+
+      // for protected dashboard route
+      function ProtectedRoute (props) {
+        if(localStorage.getItem('userToken') === null) {
+          return <Navigate to='/home'/>
+        }
+        else {
+          return props.children;
+        }
+      }
 
 
+      // for log out action
+      let navigate = useNavigate();
+
+      const logOut = () => {
+        setUserData(null);
+        localStorage.removeItem('userToken');
+        navigate('/signin');
+      }
 
 
 
 
   return (
     <>
-      <Navbar activeLink={activeLink} />
+      <Navbar activeLink={activeLink} userData={userData}/>
 
       <Routes>
-          {/* <Route path='/' element={Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
+          <Route path='/' element={Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
           <Route path='home' element={Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
-            </div>} /> */}
-          <Route path='/' element={<Home />}/>
-          <Route path='home' element={<Home />}/>
-          <Route path='signup' element={<Signup activeLink={activeLink}/>}/>
-          <Route path='signin' element={<Signin />}/>
+            </div>} />
+          {/* <Route path='/' element={<Home />}/>
+          <Route path='home' element={<Home />}/> */}
+          <Route path='signup' element={<Signup baseURL={baseURL} saveUserData={saveUserData}/>}/>
+          <Route path='signin' element={<Signin baseURL={baseURL} saveUserData={saveUserData}/>}/>
           <Route path='checkout' element={<Checkout />}/>
+          <Route path='dashboard' element={<ProtectedRoute> <Dashboard logOut={logOut}/> </ProtectedRoute>}>
+              <Route path='' element={<Statistics />}/>
+              <Route path='Statistics' element={<Statistics />}/>
+              <Route path='sales' element={<Sales />}/>
+              <Route path='settings' element={<Settings />}/>
+              <Route path='location' element={<Location />}/>
+              <Route path='clients' element={<Clients />}/>
+              <Route path='map' element={<Map />}/>
+              <Route path='report' element={<Report />}/>
+              <Route path='create' element={<Create />}/>
+              <Route path='*' element={<Notfound />}/>
+          </Route>
           <Route path='*' element={<Notfound />}/>
       </Routes>
 
-      <Footer activeLink={activeLinkFooter}/>
+      <Footer activeLink={activeLinkFooter} userData={userData}/>
     </>
   );
 }
