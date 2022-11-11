@@ -21,6 +21,7 @@ import $ from 'jquery';
 import { useState } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import Contact from './componants/Contact/Contact';
 
 
 
@@ -204,9 +205,10 @@ function App() {
           <Route path='signup' element={<Signup baseURL={baseURL} saveUserData={saveUserData}/>}/>
           <Route path='signin' element={<Signin baseURL={baseURL} saveUserData={saveUserData}/>}/>
           <Route path='checkout' element={<Checkout />}/>
+          <Route path='contact' element={<Contact baseURL={baseURL}/>}/>
           <Route path='dashboard' element={<ProtectedRoute> <Dashboard logOut={logOut}/> </ProtectedRoute>}>
               <Route path='' element={<Statistics />}/>
-              <Route path='Statistics' element={<Statistics />}/>
+              <Route path='statistics' element={<Statistics />}/>
               <Route path='sales' element={<Sales />}/>
               <Route path='settings' element={<Settings />}/>
               <Route path='location' element={<Location />}/>

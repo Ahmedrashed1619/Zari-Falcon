@@ -5,6 +5,9 @@ import { langContext } from '../context/store';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import AOS from 'aos';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 
 
@@ -49,6 +52,34 @@ export default function Home({fetchHome}) {
         {fade: "fade-down-left", delay: 'ease-out'}
     ]
     
+
+    const plans = {
+        // items: 6,
+        responsiveClass: true,
+        // margin: '10px',
+        // merge: true,
+        nav: false,
+        dots: false,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        mouseDrag: true,
+        touchDrag: true,
+        stagePadding: 50,
+        margin: 30,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            992: {
+                items: 2,
+            },
+            1250: {
+                items: 3,
+            }
+        },
+    }
 
 
     let { isEng } = useContext(langContext);
@@ -142,14 +173,14 @@ export default function Home({fetchHome}) {
                             <div className="caption-app" data-aos="flip-left" data-aos-duration="1500" data-aos-easing="ease-in-sine">
                                 <h2 className='fw-bold mb-4 h1' data-aos="zoom-in" data-aos-duration="2000" data-aos-easing="ease-in">{isEng ? fetchHome.app.Title : fetchHome.app.TitleAr}</h2>
                                 <p className='mb-4 text-muted' data-aos="zoom-out" data-aos-duration="2000" data-aos-easing="ease-out">{isEng ? fetchHome.app.Text : fetchHome.app.TextAr}</p>
-                                <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/eg/app/zari-on-time/id1625508325"
+                                <button
                                     className="btn w-75 main-btn-p d-flex justify-content-center align-items-center mb-4" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="ease-in">
                                     <i className={`fa-brands fa-apple ${isEng ? 'me-3' : 'ms-3'} fa-2x`}></i>
                                     <div className={`parag ${isEng ? 'text-start' : 'text-end'}`}>
                                         <p className="mb-0 h5 available">{isEng ? fetchHome.app.BtnEn : fetchHome.app.BtnAr}</p>
                                     </div>
-                                </a>
-                                <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.zari.zariontime"
+                                </button>
+                                <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.zari.sales.outdoor"
                                     className="btn w-75 second-btn-p d-flex justify-content-center align-items-center" data-aos="fade-down" data-aos-duration="2000" data-aos-easing="ease-out">
                                     <i className={`fa-brands fa-google-play ${isEng ? 'me-3' : 'ms-3'} fa-2x`}></i>
                                     <div className={`parag ${isEng ? 'text-start' : 'text-end'}`}>
@@ -172,27 +203,33 @@ export default function Home({fetchHome}) {
                 <div className="container">
                     <h2 className="fw-bold fs-1 mb-5 mt-4 w-75 mx-auto text-center" data-aos="fade-down" data-aos-duration="1500" data-aos-easing="ease-in">{isEng ? fetchHome.plans.Title : fetchHome.plans.TitleAr}</h2>
                     <div className="row d-flex justify-content-center align-items-center g-5">
+
+                    <OwlCarousel className="slider-items owl-carousel wow fadeInRight" data-wow-duration="1.5s" {...plans}>
                         {fetchHome.plans.Plans.map((plan , i) => (
-                            <div key={i} className="col-lg-4">
-                                <Link className="offer" to='../Checkout' data-aos="flip-right" data-aos-duration="1500" data-aos-easing="ease-in-sine">
-                                    <h3 className="name" data-aos="zoom-in" data-aos-duration="1500" data-aos-easing="ease-in">{isEng ? plan.NameEn : plan.NameAr}</h3>
-                                    <div className={`cont-price ${isEng ? 'text-start' : 'text-end'}`}>
-                                        <h6 data-aos="zoom-out" data-aos-duration="2000" data-aos-easing="ease-in" className="salary"><span className="fs-2 main-color">20 $</span> /Month or 190 $ /Year</h6>
-                                        <h4><span className="main-color">{plan.MinUsers}</span> Min Users</h4>
-                                        <h4><span className="main-color">{plan.MaxUsers}</span> Max Users</h4>
-                                        <h4><span className="main-color">{plan.HistoryLog}</span> History Log</h4>
-                                        <h4><span className="main-color">{plan.ClientMaxNumber}</span> Client Max Number</h4>
-                                        <h4>{isEng ? plan.DescEn : plan.DescAr}</h4>
-                                        {/* <h4 className="through">Unique customer Enroll</h4>
-                                        <h4 className="through">Data Export</h4>
-                                        <h4 className="through">Push Notifications</h4> */}
-                                    </div>
-                                </Link>
-                            </div>
+                            <Link key={i} className="offer" to='../checkout' data-aos="flip-right" data-aos-duration="1500" data-aos-easing="ease-in-sine">
+                                <h3 className="name" data-aos="zoom-in" data-aos-duration="1500" data-aos-easing="ease-in">{isEng ? plan.NameEn : plan.NameAr}</h3>
+                                <div className={`cont-price ${isEng ? 'text-start' : 'text-end'}`}>
+                                    <h6 data-aos="zoom-out" data-aos-duration="2000" data-aos-easing="ease-in" className="salary"><span className="fs-2 main-color">{plan.Price} $</span> /Month or 190 $ /Year</h6>
+                                    <h4>{isEng ? plan.DescEn : plan.DescAr}</h4>
+                                    <h4><span className="main-color">{plan.AdminNum}</span> Admins</h4>
+                                    <h4><span className="main-color">{plan.SalesNum}</span> Sales</h4>
+                                    <h4><span className="main-color">{plan.HistoryLog}</span> Days</h4>
+                                    <h4><span className="main-color">{plan.ClientNum}</span> Clients</h4>
+                                    <h4><span className="main-color">{plan.DailyReport}</span> Daily Report</h4>
+                                    <h4><span className="main-color">{plan.FindLocation}</span> Location</h4>
+                                    <h4><span className="main-color">{plan.MakeRoute}</span> Make Route</h4>
+                                    <h4><span className="main-color">{plan.CheckReport}</span> Check Report</h4>
+                                    <h4><span className="main-color">{plan.RouteReport}</span> Route Report</h4>
+                                    {/* <h4 className="through">Unique customer Enroll</h4>
+                                    <h4 className="through">Data Export</h4>
+                                    <h4 className="through">Push Notifications</h4> */}
+                                </div>
+                            </Link>
                         ))}
+                    </OwlCarousel>
                     </div>
                     <div className="buttons text-center mx-auto pt-3 mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out">
-                        <button className="btn black-btn w-75 text-capitalize">{isEng ? 'For yearly Contract Contact Us' : 'لإبرام عقد سنوي تواصل معنـــا'}</button>
+                        <Link to='../contact' className="btn black-btn w-75 text-capitalize">{isEng ? 'For yearly Contract Contact Us' : 'لإبرام عقد سنوي تواصل معنـــا'}</Link>
                     </div>
                 </div>
             </section>

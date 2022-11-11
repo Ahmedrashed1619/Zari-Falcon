@@ -75,8 +75,6 @@ export default function Footer({activeLink, userData}) {
                                             className="fa-brands fa-instagram"></i></a>
                                     <a target="_blank" rel="noopener noreferrer" href="https://wa.me/+966566770235"><i
                                             className="fa-brands fa-whatsapp"></i></a>
-                                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/zari-solution-ksa-12717623b/"><i
-                                            className="fa-brands fa-linkedin-in"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +118,7 @@ export default function Footer({activeLink, userData}) {
                                 </div>
                                 <div className="d-flex justify-content-start align-items-center">
                                     <span className={`${isEng ? 'me-3' : 'ms-3'}`}><i className="fa-solid fa-envelope"></i></span>
-                                    <a className='mt-0' rel="noopener noreferrer" target="_blank" href="mailto: info@zarisolution.com">info@zarisolution.com</a>
+                                    <a className='mt-0' rel="noopener noreferrer" target="_blank" href="mailto: info@zarifalcon.com">info@zarifalcon.com</a>
                                 </div>
                             </div>
                         </div>
