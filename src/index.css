@@ -1387,7 +1387,6 @@ form label{
 
 .dashboard .main .topbar .search-topbar {
   position: relative;
-  width: 900px;
   margin: 0 10px;
   transition: all 0.5s;
 }
@@ -1418,8 +1417,6 @@ form label{
 
 .dashboard .main .topbar .user-img {
   position: relative;
-  width: 60px;
-  height: 60px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;

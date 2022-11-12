@@ -67,103 +67,116 @@ export default function Dashboard({logOut}) {
             name : 'Make Route',
             icon : <TbRoute />
         },
-    ]
+    ];
 
 
-    const changeIsOpen = () => {
-        let width = $('body').width();
-
-        if(isOpen === true) {
-            $('.sidebar').css('width', '300px');
-            $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
-            $('.dashboard .main').css({'width' : 'calc(100% - 300px)' , 'left' : '300px'});
-
-            if (width < 1200 && width > 950) {
-                $('.dashboard .main .topbar .search-topbar').css('width' , '650px');
-            }
-
-            if(width < 991) {
-                $('.sidebar').css({'width' : '240px' , 'left' : '-240px'});
-                $('.sidebar .menu-links ul>div').css('marginBottom' , '20px');
-                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'flex');
-                // $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
-                $('.dashboard .main').css({'width' : '100%' , 'left' : '0'});
-            }
-
-            if(width > 991) {
-                $('.sidebar').css({'width' : '300px' , 'left' : '0px'});
-                $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
-                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'none');
-                // $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
-                $('.dashboard .main').css({'width' : 'calc(100% - 300px)' , 'left' : '300px'});
-            }
-
-            if (width < 950 && width > 768) {
-                $('.dashboard .main .topbar .search-topbar').css('width' , '550px');
-            }
-
-            if (width < 768 && width > 570) {
-                $('.dashboard .main .topbar .search-topbar').css('width' , '500px');
-            }
-
-            if (width < 570) {
-                $('.dashboard .main .topbar .search-topbar').css('width' , '300px');
-                $('.dashboard .main .topbar .user-img').css({'width' : '45px' , 'height' : '45px'});
-            }
-            
-        }
-
-        else {
-            $('.sidebar').css('width', '80px');
-            $('.sidebar .menu-links .cont-imgFooter').css({'width' : '60px' , 'height' : '60px'});
-            $('.dashboard .main').css({'width' : 'calc(100% - 80px)' , 'left' : '80px'});
-
-            if(width < 991) {
-                $('.sidebar').css({'width' : '240px' , 'left' : '0px'});
-                $('.sidebar .menu-links ul>div').css('marginBottom' , '20px');
-                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'flex');
-                $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
-                $('.dashboard .main').css({'width' : 'calc(100% - 240px)' , 'left' : '240px'})
-            }
-
-            if(width > 991) {
-                $('.sidebar').css({'width' : '80px' , 'left' : '0px'});
-                $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
-                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'none');
-                $('.sidebar .menu-links .cont-imgFooter').css({'width' : '60px' , 'height' : '60px'});
-                $('.dashboard .main').css({'width' : 'calc(100% - 80px)' , 'left' : '80px'})
-            }
-
-            if (width < 950 && width > 700) {
-                $('.dashboard .main .topbar .search-topbar').css('width' , '400px');
-            }
-
-
-            if (width < 700 && width > 570) {
-                $('.dashboard .main .topbar .user-img').css({'width' : '50px' , 'height' : '50px'});
-                $('.dashboard .main .topbar .search-topbar').css('width' , '300px');
-            }
-
-            if (width < 570) {
-                $('.dashboard .main').css({'width' : '100%' , 'left' : '0'})
-            }
+    const closeNavLink = () => {
+        if(isOpen === false && $('body').width() < 570) {
+            $('.sidebar').animate({'left' : '-240px'} , 500);
+            setTimeout(() => {
+                toggleOpen();
+            }, 500);
         }
     }
 
 
     function widthBody() {
-        changeIsOpen();
+        let width = $('body').width();
+
+        if(isOpen === true) {
+
+            if(width > 991) {
+                $('.sidebar').css({'width': '300px' , 'left' : '0px'});
+                $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
+                $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
+                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'none');
+                $('.dashboard .main').css({'width' : 'calc(100% - 300px)' , 'left' : '300px'});
+                $('.dashboard .main .topbar .user-img').css({'width' : '60px' , 'height' : '60px'});
+            }
+    
+            if(width > 1200) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '900px');
+            }
+    
+            if(width < 1200 && width > 950) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '650px');
+            }
+    
+            if(width < 991) {
+                $('.sidebar').css({'width' : '240px' , 'left' : '-240px'});
+                $('.sidebar .menu-links ul>div').css('marginBottom' , '20px');
+                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'flex');
+                $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
+                $('.dashboard .main').css({'width' : '100%' , 'left' : '0'});
+                $('.dashboard .main .topbar .user-img').css({'width' : '60px' , 'height' : '60px'});
+            }
+    
+            if (width < 950 && width > 768) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '550px');
+            }
+    
+            if (width < 768 && width > 570) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '500px');
+            }
+    
+            if (width < 570) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '300px');
+                $('.dashboard .main .topbar .user-img').css({'width' : '45px' , 'height' : '45px'});
+            }
+        }
+
+        else {
+
+            if(width > 991) {
+                $('.sidebar').css({'width': '80px' , 'left' : '0px'});
+                $('.sidebar .menu-links .cont-imgFooter').css({'width' : '60px' , 'height' : '60px'});
+                $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
+                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'none');
+                $('.dashboard .main').css({'width' : 'calc(100% - 80px)' , 'left' : '80px'});
+                $('.dashboard .main .topbar .user-img').css({'width' : '60px' , 'height' : '60px'});
+            }
+    
+            if(width > 1200) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '900px');
+            }
+    
+            if(width < 1200 && width > 950) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '650px');
+            }
+    
+            if(width < 991) {
+                $('.sidebar').css({'width' : '240px' , 'left' : '0px'});
+                $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
+                $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'flex');
+                $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
+                $('.dashboard .main').css({'width' : 'calc(100% - 240px)' , 'left' : '240px'});
+                $('.dashboard .main .topbar .user-img').css({'width' : '60px' , 'height' : '60px'});
+            }
+    
+            if (width < 950 && width > 700) {
+                $('.dashboard .main .topbar .search-topbar').css('width' , '400px');
+            }
+    
+            if (width < 700 && width > 570) {
+                $('.dashboard .main .topbar .user-img').css({'width' : '50px' , 'height' : '50px'});
+                $('.dashboard .main .topbar .search-topbar').css('width' , '300px');
+            }
+    
+            if (width < 570) {
+                $('.dashboard .main').css({'width' : '100%' , 'left' : '0'});
+                $('.dashboard .main .topbar .search-topbar').css('width' , '300px');
+                $('.dashboard .main .topbar .user-img').css({'width' : '45px' , 'height' : '45px'});
+            }
+        }
     }
 
 
-    $(window).on('resize', function() {
+    $(window).on('resize', () => {
         widthBody();
-        changeIsOpen();
     });
 
 
     useEffect(() => {
-        changeIsOpen();
         widthBody();
     }, [isOpen])
     
@@ -188,7 +201,7 @@ export default function Dashboard({logOut}) {
                             </div>
                         {
                             menuItems.map((item, i) => (
-                                    <li key={i} >
+                                    <li key={i} onClick={closeNavLink}>
                                         <NavLink to={`/dashboard${item.path}`} className='link'>
                                             <span className="icon">{item.icon}</span>
                                             <span className="title">{item.name}</span>
@@ -214,7 +227,7 @@ export default function Dashboard({logOut}) {
                     <div className="topbar">
                         <div className="toggle-topbar" onClick={() => {
                             toggleOpen();
-                            changeIsOpen();
+                            widthBody();
                         }}>
                             <FaBars />
                         </div>
