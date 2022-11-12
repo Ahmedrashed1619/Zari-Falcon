@@ -52,6 +52,17 @@ export default function Home({fetchHome}) {
         {fade: "fade-down-left", delay: 'ease-out'}
     ]
     
+    const intClasses = {
+        0 : 'one',
+        1 : 'two',
+        2 : 'three',
+        3 : 'four',
+        4 : 'five',
+        5 : 'six',
+        6 : 'seven',
+        7 : 'eight',
+        8 : 'nine',
+    }
 
     const plans = {
         // items: 6,
@@ -531,7 +542,26 @@ export default function Home({fetchHome}) {
                     <h2 className="fw-bold fs-1 mb-5 mt-4 w-75 mx-auto text-center" data-aos="fade-down" data-aos-duration="1500" data-aos-easing="ease-in">{isEng ? fetchHome.plans.Title : fetchHome.plans.TitleAr}</h2>
 
                     <OwlCarousel className="slider-items owl-carousel wow fadeInRight" data-wow-duration="1.5s" {...plans}>
-                            {fetchHome.plans.Plans[0] ?  <Link className="offer one" to='../checkout' data-aos="flip-right" data-aos-duration="1500" data-aos-easing="ease-in-sine">
+                        {fetchHome.plans.Plans.map((item , i) => (
+                            <Link key={i} className={`offer ${intClasses[i]}`} to='../checkout' data-aos="flip-right" data-aos-duration="1500" data-aos-easing="ease-in-sine">
+                                <h3 className="name" data-aos="zoom-in" data-aos-duration="1500" data-aos-easing="ease-in"></h3>
+                                <div className='cont-price'>
+                                    <h6 data-aos="zoom-out" data-aos-duration="2000" data-aos-easing="ease-in" className="salary"><span className="fs-2 main-color"></span> $ /Month or 190 $ /Year</h6>
+                                    <h4 className='desc'></h4>
+                                    <h4 className='adminNum'></h4>
+                                    <h4 className='salesNum'></h4>
+                                    <h4 className='days'></h4>
+                                    <h4 className='clientNum'></h4>
+                                    <h4 className='dailyRebort'></h4>
+                                    <h4 className='findLoc'></h4>
+                                    <h4 className='makeRoute'></h4>
+                                    <h4 className='checkRoute'></h4>
+                                    <h4 className='routeReport'></h4>
+                                </div>
+                            </Link>
+                        ))}
+
+                            {/* {fetchHome.plans.Plans[0] ?  <Link className="offer one" to='../checkout' data-aos="flip-right" data-aos-duration="1500" data-aos-easing="ease-in-sine">
                                 <h3 className="name" data-aos="zoom-in" data-aos-duration="1500" data-aos-easing="ease-in"></h3>
                                 <div className='cont-price'>
                                     <h6 data-aos="zoom-out" data-aos-duration="2000" data-aos-easing="ease-in" className="salary"><span className="fs-2 main-color"></span> $ /Month or 190 $ /Year</h6>
@@ -674,7 +704,7 @@ export default function Home({fetchHome}) {
                                     <h4 className='checkRoute'></h4>
                                     <h4 className='routeReport'></h4>
                                 </div>
-                            </Link> : ''}
+                            </Link> : ''} */}
                     </OwlCarousel>
 
                     <div className="buttons text-center mx-auto pt-3 mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out">

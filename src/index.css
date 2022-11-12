@@ -734,11 +734,23 @@ video {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 380px) and (max-width: 500px) {
+
   .cont-price h4{
     padding: 0 1.25rem;
     font-size: 1.25rem;
     padding-bottom: 0.75rem;
+  }
+  
+  .cont-price .salary{
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  
+  .cont-price h4{
+    font-size: 1rem;
   }
 }
 
