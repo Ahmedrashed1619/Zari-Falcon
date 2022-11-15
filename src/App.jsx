@@ -235,7 +235,7 @@ function App() {
       <Navbar activeLink={activeLink} userData={userData}/>
 
       <Routes>
-          <Route path='/' element={userData? <ProtectedRoute> <Dashboard logOut={logOut}/> </ProtectedRoute> : Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
+          <Route path='/' element={userData? <Statistics /> : Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
