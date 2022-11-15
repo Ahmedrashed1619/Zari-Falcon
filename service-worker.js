@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Zari-Falcon/precache-manifest.c74c9feb8e487a0d589d8a9f2ac30d4b.js"
+  "/Zari-Falcon/precache-manifest.0011ec80542f3a2233c080d23ea001ea.js"
 );
 
 workbox.clientsClaim();

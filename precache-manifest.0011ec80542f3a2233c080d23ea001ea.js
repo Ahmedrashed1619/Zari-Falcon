@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f372530bba6430fb3159",
+    "revision": "2fbd9448c830a34b8453",
     "url": "/Zari-Falcon/static/css/main.789e5c29.chunk.css"
   },
   {
-    "revision": "f372530bba6430fb3159",
-    "url": "/Zari-Falcon/static/js/main.f372530b.chunk.js"
+    "revision": "2fbd9448c830a34b8453",
+    "url": "/Zari-Falcon/static/js/main.2fbd9448.chunk.js"
   },
   {
     "revision": "0f60e413a093a30025f2",
@@ -48,24 +48,16 @@ self.__precacheManifest = [
     "url": "/Zari-Falcon/static/media/rashed4.2c6f979e.jpg"
   },
   {
-    "revision": "f417567703b4fcfbf750952bd2db8a44",
-    "url": "/Zari-Falcon/static/media/fa-regular-400.f4175677.ttf"
+    "revision": "f4bdd85a576812f553ec3cfea8b1a2b5",
+    "url": "/Zari-Falcon/static/media/fa-brands-400.f4bdd85a.woff2"
   },
   {
     "revision": "9d2bbde416583cfa5cb30c995b41f732",
     "url": "/Zari-Falcon/static/media/fa-brands-400.9d2bbde4.ttf"
   },
   {
-    "revision": "f4bdd85a576812f553ec3cfea8b1a2b5",
-    "url": "/Zari-Falcon/static/media/fa-brands-400.f4bdd85a.woff2"
-  },
-  {
-    "revision": "1f9db9971c2d69b78e7425a012a5e486",
-    "url": "/Zari-Falcon/static/media/fa-v4compatibility.1f9db997.woff2"
-  },
-  {
-    "revision": "d4a14b7a210bc8b5c2fe661a18e7e8db",
-    "url": "/Zari-Falcon/static/media/fa-v4compatibility.d4a14b7a.ttf"
+    "revision": "f417567703b4fcfbf750952bd2db8a44",
+    "url": "/Zari-Falcon/static/media/fa-regular-400.f4175677.ttf"
   },
   {
     "revision": "83e2813a8fe0229d916c5b63fa9eab5e",
@@ -76,15 +68,23 @@ self.__precacheManifest = [
     "url": "/Zari-Falcon/static/media/fa-solid-900.3e50e269.woff2"
   },
   {
+    "revision": "1f9db9971c2d69b78e7425a012a5e486",
+    "url": "/Zari-Falcon/static/media/fa-v4compatibility.1f9db997.woff2"
+  },
+  {
     "revision": "dd5e5b90ca8ee986b13b04310f9aef9d",
     "url": "/Zari-Falcon/static/media/fa-solid-900.dd5e5b90.ttf"
+  },
+  {
+    "revision": "d4a14b7a210bc8b5c2fe661a18e7e8db",
+    "url": "/Zari-Falcon/static/media/fa-v4compatibility.d4a14b7a.ttf"
   },
   {
     "revision": "b55f63930ec4bcdbc5e3696525a29427",
     "url": "/Zari-Falcon/static/media/Rectangle 143.b55f6393.png"
   },
   {
-    "revision": "90a5cd680c31b525a7b8f0f6e378e8ba",
+    "revision": "f0788eff8f4110b28b4a2ad8a3b36827",
     "url": "/Zari-Falcon/index.html"
   }
 ];
