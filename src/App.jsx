@@ -11,6 +11,7 @@ import Signup from './componants/Signup/Signup';
 import Dashboard from './componants/Dashboard/Dashboard';
 import Statistics from './componants/Statistics/Statistics';
 import Sales from './componants/Sales/Sales';
+import AddSales from './componants/AddSales/AddSales'
 import Settings from './componants/Settings/Settings';
 import Location from './componants/Location/Location';
 import Clients from './componants/Clients/Clients';
@@ -131,7 +132,7 @@ function App() {
 
       // Home data 
       let [fetchHome, setFetchHome] = useState([]);
-      async function getDataHome() {
+      const getDataHome = async () => {
         await axios.get(`${baseURL}home`)
           .then(res => {
             if (res.status === 200 && res.request.readyState === 4) {
@@ -187,6 +188,47 @@ function App() {
 
 
 
+      const [totalUsers, setTotalUsers] = useState([
+        {
+            id : '1',
+            name : 'Ahmed Rashed',
+            company : 'Zarisolution.eg',
+            email : 'ahmed@gmail.com',
+            phone : '01092999658',
+            role : 'sales',
+            status : 'Active'
+        },
+        {
+            id : '2',
+            name : 'Anas',
+            company : 'Zarisolution.eg',
+            email : 'anas@gmail.com',
+            phone : '01123456789',
+            role : 'sales',
+            status : 'Pending'
+        },
+        {
+            id : '3',
+            name : 'Nader',
+            company : 'Zarisolution.eg',
+            email : 'nader@gmail.com',
+            phone : '01234567890',
+            role : 'sales',
+            status : 'inActive'
+        },
+        {
+            id : '4',
+            name : 'Mosad Hagag',
+            company : 'Zarisolution.eg',
+            email : 'mosad@gmail.com',
+            phone : '010234567895',
+            role : 'sales',
+            status : 'Blocked'
+        }
+    ])
+
+
+
 
   return (
     <>
@@ -209,7 +251,8 @@ function App() {
           <Route path='dashboard' element={<ProtectedRoute> <Dashboard logOut={logOut}/> </ProtectedRoute>}>
               <Route path='' element={<Statistics />}/>
               <Route path='statistics' element={<Statistics />}/>
-              <Route path='sales' element={<Sales />}/>
+              <Route path='sales' element={<Sales totalUsers={totalUsers} />}/>
+              <Route path='addSales' element={<AddSales totalUsers={totalUsers} setTotalUsers={setTotalUsers} />}/>
               <Route path='settings' element={<Settings />}/>
               <Route path='location' element={<Location />}/>
               <Route path='clients' element={<Clients />}/>

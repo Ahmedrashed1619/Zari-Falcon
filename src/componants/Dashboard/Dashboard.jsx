@@ -9,7 +9,7 @@ import { FiUsers, FiSettings } from 'react-icons/fi';
 import { BiBarChartSquare } from 'react-icons/bi';
 import { TbRoute, TbLogout } from 'react-icons/tb';
 // import userImg from '../images/dashboard/user.png';
-import imgFooter from '../images/2 (3).png';
+import imgFooter from '../images/zari-logo-white.png';
 import userImg2 from '../images/dashboard/rashed4.jpg';
 import $ from 'jquery';
 
@@ -85,7 +85,7 @@ export default function Dashboard({logOut}) {
 
         if(isOpen === true) {
 
-            if(width > 991) {
+            if(width > 1000) {
                 $('.sidebar').css({'width': '300px' , 'left' : '0px'});
                 $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
                 $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
@@ -97,18 +97,27 @@ export default function Dashboard({logOut}) {
             if(width > 1200) {
                 $('.dashboard .main .topbar .search-topbar').css('width' , '900px');
             }
+
+            if(width > 1100) {
+                $('.total-table').css('overflow-x' , 'auto');
+            }
+
+            if(width < 1100 && width > 1000) {
+                $('.total-table').css('overflow-x' , 'scroll');
+            }
     
             if(width < 1200 && width > 950) {
                 $('.dashboard .main .topbar .search-topbar').css('width' , '650px');
             }
     
-            if(width < 991) {
+            if(width < 1000) {
                 $('.sidebar').css({'width' : '240px' , 'left' : '-240px'});
                 $('.sidebar .menu-links ul>div').css('marginBottom' , '20px');
                 $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'flex');
                 $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
                 $('.dashboard .main').css({'width' : '100%' , 'left' : '0'});
                 $('.dashboard .main .topbar .user-img').css({'width' : '60px' , 'height' : '60px'});
+                $('.total-table').css('overflow-x' , 'auto');
             }
     
             if (width < 950 && width > 768) {
@@ -127,7 +136,7 @@ export default function Dashboard({logOut}) {
 
         else {
 
-            if(width > 991) {
+            if(width > 1000) {
                 $('.sidebar').css({'width': '80px' , 'left' : '0px'});
                 $('.sidebar .menu-links .cont-imgFooter').css({'width' : '60px' , 'height' : '60px'});
                 $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
@@ -139,12 +148,16 @@ export default function Dashboard({logOut}) {
             if(width > 1200) {
                 $('.dashboard .main .topbar .search-topbar').css('width' , '900px');
             }
+
+            if(width < 1100 && width > 1000) {
+                $('.total-table').css('overflow-x' , 'auto');
+            }
     
             if(width < 1200 && width > 950) {
                 $('.dashboard .main .topbar .search-topbar').css('width' , '650px');
             }
     
-            if(width < 991) {
+            if(width < 1000) {
                 $('.sidebar').css({'width' : '240px' , 'left' : '0px'});
                 $('.sidebar .menu-links ul>div').css('marginBottom' , '25px');
                 $('.sidebar .menu-links ul>div .closeSidebar').css('display' , 'flex');
@@ -180,6 +193,16 @@ export default function Dashboard({logOut}) {
         widthBody();
     }, [isOpen])
     
+
+    $(window).on('scroll' , () => {
+        if($(window).scrollTop() > 50) {
+            $('.topbar').css({'backgroundColor' : '#000' , 'position' : 'fixed'});
+        }
+        else {
+            $('.topbar').css({'backgroundColor' : 'transparent' , 'position' : 'static'});
+        }
+        
+    })
 
 
 
@@ -243,7 +266,9 @@ export default function Dashboard({logOut}) {
                     </div>
 
                     {/* outlet */}
-                    <Outlet></Outlet>                    
+                    <div className="container-fluid">
+                        <Outlet></Outlet>
+                    </div>
                 </div>
         </section>
     )

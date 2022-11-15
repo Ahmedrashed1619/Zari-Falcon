@@ -6,6 +6,7 @@
   --secondColor: #c5c5c5;
   --mainSidebar: #8a9fbe;
   --white: #fff;
+  --black: #000;
   --transparent: transparent;
   --input: #eee;
   --firstBoxShadow: 0px 4px 6px rgba(147, 147, 147, 0.26);
@@ -757,7 +758,8 @@ video {
 /* footer */
 
 .cont-imgFooter {
-  background: var(--mainSidebar);
+  /* background: var(--mainSidebar); */
+  background: var(--transparent);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -1374,15 +1376,21 @@ form label{
   left: 300px; */
   min-height: 100vh;
   transition: all 0.5s;
-  padding: 0 10px;
+  /* padding: 0 10px; */
 }
 
 .dashboard .main .topbar {
+  /* position:static; */
+  z-index: 99;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--firstBoxShadow);
+  padding: 0 10px;
+  border-radius: 12px;
+  transition: all 0.75s;
 }
 
 .dashboard .main .topbar .toggle-topbar {
@@ -1447,10 +1455,114 @@ form label{
 
 /* responsive sidebar & navbar outlet */
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 600px) {
 
   .sidebar {
     z-index: 999;
   }
 
 }
+
+.dashpage {
+  transition: all 1.5s;
+}
+
+
+/* sales pages */
+
+.sales-page .linkTo,
+.addsales-page .note-page {
+  background-color: var(--mainColor);
+  border: 1px solid var(--mainColor);
+  padding: 0.8rem 1.25rem;
+  border-radius: 1rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.sales-page .linkTo a,
+.addsales-page .note-page button {
+    font-size: 18px;
+    color: var(--white);
+    display: flex;
+    line-height: 26px;
+    transition: all 0.5s;
+  }
+
+  .addsales-page .note-page button {
+    color: var(--white);
+    background-color: var(--transparent);
+    line-height: 16px;
+    border: none;
+  }
+
+.sales-page .linkTo a svg {
+  background-color: var(--transparent);
+  font-size: 18px;
+  margin-right: 8px;
+  margin-top: 2px;
+}
+
+.sales-page .linkTo:hover,
+.addsales-page .note-page:hover {
+  background-color: var(--transparent);
+}
+
+.sales-page .linkTo:hover a,
+.addsales-page .note-page:hover button {
+  color: var(--mainColor);
+}
+
+.sales-page .show-entires p {
+  font-weight: 600;
+  margin-bottom: 0px !important;
+  color: var(--black);
+}
+
+.sales-page table th,
+.sales-page table tr td {
+  padding: 0.75rem;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.sales-page table tr td {
+  color: var(--black);
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+.sales-page table svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* addsales page */
+
+.addsales-page .submitAdd-buttons button {
+  width: 15%;
+  font-weight: 600;
+}
+
+
+@media screen and (max-width: 1000px){
+
+    .addsales-page form , .addsales-page .note-page {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }  
+
+    .addsales-page .submitAdd-buttons button{
+      width: 25%;
+    }
+}
+
+@media screen and (max-width: 501px) {
+
+  .addsales-page .submitAdd-buttons button{
+    width: 30%;
+  }
+}
+
