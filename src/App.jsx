@@ -235,7 +235,7 @@ function App() {
       <Navbar activeLink={activeLink} userData={userData}/>
 
       <Routes>
-          <Route path='/' element={userData? <Navigate to='dashboard/statistics' />  : Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
+          <Route path='/' element={userData? <Navigate to='dashboard' />  : Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
