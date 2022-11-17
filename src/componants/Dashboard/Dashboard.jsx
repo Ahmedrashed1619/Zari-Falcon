@@ -30,41 +30,49 @@ export default function Dashboard({logOut}) {
         {
             path : '/statistics',
             name : 'Statistics',
+            class: 'statistics',
             icon : <FaChartPie />
         },
         {
             path : '/sales',
             name : 'Sales',
+            class: 'sales',
             icon : <FiUsers />
         },
         {
             path : '/settings',
             name : 'Settings',
+            class: 'settings',
             icon : <FiSettings />
         },
         {
             path : '/location',
             name : 'Location',
+            class: 'location',
             icon : <FaMapMarkerAlt />
         },
         {
             path : '/clients',
             name : 'Clients',
+            class: 'clients',
             icon : <FaUsers />
         },
         {
             path : '/map',
             name : 'Map Review',
+            class: 'map',
             icon : <FaRegMap />
         },
         {
             path : '/report',
             name : 'Routing Report',
+            class: 'report',
             icon : <BiBarChartSquare />
         },
         {
             path : '/create',
             name : 'Make Route',
+            class: 'create',
             icon : <TbRoute />
         },
     ];
@@ -102,9 +110,9 @@ export default function Dashboard({logOut}) {
                 $('.total-table').css('overflow-x' , 'auto');
             }
 
-            if(width < 1100 && width > 1000) {
-                $('.total-table').css('overflow-x' , 'scroll');
-            }
+            // if(width < 1100 && width > 1000) {
+            //     $('.total-table').css('overflow-x' , 'scroll');
+            // }
     
             if(width < 1200 && width > 950) {
                 $('.dashboard .main .topbar .search-topbar').css('width' , '650px');
@@ -118,6 +126,7 @@ export default function Dashboard({logOut}) {
                 $('.dashboard .main').css({'width' : '100%' , 'left' : '0'});
                 $('.dashboard .main .topbar .user-img').css({'width' : '60px' , 'height' : '60px'});
                 $('.total-table').css('overflow-x' , 'auto');
+                $('.total-table-clients').css('overflow-x' , 'auto');
             }
     
             if (width < 950 && width > 768) {
@@ -164,6 +173,7 @@ export default function Dashboard({logOut}) {
                 $('.sidebar .menu-links .cont-imgFooter').css({'width' : '130px' , 'height' : '110px'});
                 $('.dashboard .main').css({'width' : 'calc(100% - 240px)' , 'left' : '240px'});
                 $('.dashboard .main .topbar .user-img').css({'width' : '60px' , 'height' : '60px'});
+                $('.total-table-clients').css('overflow-x' , 'auto');
             }
     
             if (width < 950 && width > 700) {
@@ -173,12 +183,14 @@ export default function Dashboard({logOut}) {
             if (width < 700 && width > 570) {
                 $('.dashboard .main .topbar .user-img').css({'width' : '50px' , 'height' : '50px'});
                 $('.dashboard .main .topbar .search-topbar').css('width' , '300px');
+                $('.total-table-clients').css('overflow-x' , 'scroll');
             }
     
             if (width < 570) {
                 $('.dashboard .main').css({'width' : '100%' , 'left' : '0'});
                 $('.dashboard .main .topbar .search-topbar').css('width' , '300px');
                 $('.dashboard .main .topbar .user-img').css({'width' : '45px' , 'height' : '45px'});
+                $('.total-table-clients').css('overflow-x' , 'auto');
             }
         }
     }
@@ -225,7 +237,7 @@ export default function Dashboard({logOut}) {
                         {
                             menuItems.map((item, i) => (
                                     <li key={i} onClick={closeNavLink}>
-                                        <NavLink to={`/dashboard${item.path}`} className='link'>
+                                        <NavLink to={`/dashboard${item.path}`} className={`link ${item.class}`}>
                                             <span className="icon">{item.icon}</span>
                                             <span className="title">{item.name}</span>
                                         </NavLink>

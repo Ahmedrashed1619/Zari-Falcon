@@ -19,6 +19,10 @@ body {
   background-color: var(--white);  
 }
 
+.bg-input {
+  background-color: var(--input);
+}
+
 #ready {
   text-align: center;
   z-index: 99999;
@@ -1559,10 +1563,47 @@ form label{
     }
 }
 
-@media screen and (max-width: 501px) {
+@media screen and (max-width: 500px) {
 
   .addsales-page .submitAdd-buttons button{
     width: 30%;
   }
 }
 
+.location-page .btn-location button {
+  font-weight: 500 !important;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .location-page .btn-location button {
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+
+  .location-page .btn-location button {
+      font-size: 13px;
+  }
+}
+
+
+.img-report {
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-report img {
+  width: 30%;
+}
+
+.link-entries .input-search svg {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  background-color: var(--transparent);
+}

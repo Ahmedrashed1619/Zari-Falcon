@@ -23,6 +23,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import Contact from './componants/Contact/Contact';
+import AddClients from './componants/AddClients/AddClients';
+import AddCreate from './componants/AddCreate/AddCreate';
 
 
 
@@ -225,7 +227,105 @@ function App() {
             role : 'sales',
             status : 'Blocked'
         }
-    ])
+      ])
+
+
+      const [totalClients, setTotalClients] = useState([
+        {
+            id : '1',
+            name : 'Ahmed Rashed',
+            phone : '01092999658',
+            location : 'Hay El-sefarat, Nasr City',
+        },
+        {
+            id : '2',
+            name : 'Anas',
+            phone : '01123456789',
+            location : 'Hay El-sefarat, Nasr City',
+        },
+        {
+            id : '3',
+            name : 'Nader',
+            phone : '01234567890',
+            location : 'Hay El-sefarat, Nasr City',
+        },
+        {
+            id : '4',
+            name : 'Mosad Hagag',
+            phone : '010234567895',
+            location : 'Hay El-sefarat, Nasr City',
+        }
+      ])
+
+
+      const [totalReport, setTotalReport] = useState([
+        {
+            id : '1',
+            name : 'Ahmed Rashed',
+            status : 'Visited',
+            location : 'Hay El-sefarat, Nasr City',
+            amount : '123',
+            note : 'jjjjjjj',
+        },
+        {
+            id : '2',
+            name : 'Mosad Hagag',
+            status : 'Not Visited',
+            location : 'Hay El-sefarat, Nasr City',
+            amount : '456',
+            note : 'ffffff',
+        },
+        {
+            id : '1',
+            name : 'Nader Salah',
+            status : 'Visited',
+            location : 'Hay El-sefarat, Nasr City',
+            amount : '789',
+            note : 'eeeeeee',
+        },
+        {
+            id : '1',
+            name : 'Ahmed Rashed',
+            status : 'Not Visited',
+            location : 'Hay El-sefarat, Nasr City',
+            amount : '147',
+            note : 'kkkkkk',
+        }
+      ])
+
+
+      const [totalCreate, setTotalCreate] = useState([
+        {
+            id : '1',
+            clientname : 'Ahmed Rashed',
+            sallername : 'Mosad Hagag',
+            date : '1/9/1997',
+        },
+        {
+            id : '2',
+            clientname : 'Mosad Hagag',
+            sallername : 'Ahmed Rashed',
+            date : '1/9/2000',
+        },
+        {
+            id : '3',
+            clientname : 'Kholi',
+            sallername : 'Nader',
+            date : '21/7/1993',
+        },
+        {
+            id : '4',
+            clientname : 'Samr',
+            sallername : 'Anas',
+            date : '17/3/2022',
+        },
+        {
+            id : '5',
+            clientname : 'Ahmed Rashed',
+            sallername : 'Visited',
+            date : '1/9/1997',
+        },
+      ])
 
 
 
@@ -253,10 +353,12 @@ function App() {
               <Route path='addSales' element={<AddSales totalUsers={totalUsers} setTotalUsers={setTotalUsers} />}/>
               <Route path='settings' element={<Settings />}/>
               <Route path='location' element={<Location />}/>
-              <Route path='clients' element={<Clients />}/>
+              <Route path='clients' element={<Clients totalClients={totalClients}/>}/>
+              <Route path='addClients' element={<AddClients totalClients={totalClients} setTotalClients={setTotalClients}/>}/>
               <Route path='map' element={<Map />}/>
-              <Route path='report' element={<Report />}/>
-              <Route path='create' element={<Create />}/>
+              <Route path='report' element={<Report totalReport={totalReport}/>}/>
+              <Route path='create' element={<Create totalCreate={totalCreate} />}/>
+              <Route path='addCreate' element={<AddCreate totalCreate={totalCreate} setTotalCreate={setTotalCreate}/>}/>
               <Route path='*' element={<Notfound />}/>
           </Route>
           <Route path='*' element={<Notfound />}/>

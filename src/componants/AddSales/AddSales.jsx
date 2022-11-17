@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 import {v4 as uuid} from 'uuid';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AddSales({totalUsers , setTotalUsers}) {
 
+
+    useEffect(() => {
+        $('.sidebar .menu-links a').removeClass('active');
+        $('.sidebar .menu-links a.sales').addClass('active');
+    }, [])
+    
 
     let navigate = useNavigate()
 
@@ -75,7 +81,7 @@ export default function AddSales({totalUsers , setTotalUsers}) {
             setTotalUsers(totalArr);
 
             setTimeout(() => {
-                navigate('../Sales');
+                navigate('../sales');
             }, 1500);
 
     }
