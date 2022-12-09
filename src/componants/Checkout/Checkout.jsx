@@ -29,8 +29,8 @@ export default function Checkout() {
 
 
     useEffect(() => {
-        $('nav .signin-btn').removeClass('d-none');
-        $('nav .signup-btn').addClass('d-none');
+        $('nav .signup-btn').removeClass('d-none');
+        $('nav .signin-btn').addClass('d-none');
     }, [])
 
 

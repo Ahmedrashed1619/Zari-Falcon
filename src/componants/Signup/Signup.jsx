@@ -4,7 +4,7 @@ import signUp from '../images/sign/signup.png';
 import $ from 'jquery';
 import WOW from 'wowjs';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -31,6 +31,8 @@ export default function Signup({baseURL, saveUserData}) {
     const [message, setMessage] = useState('');
 
     const [loadind, setLoadind] = useState(false);
+
+    const [apiCode , setApiCode] = useState(null);
 
     function getUserData(e) {
         let myUser = {...user};
@@ -60,9 +62,10 @@ export default function Signup({baseURL, saveUserData}) {
                 setLoadind(false);
             }
 
-            if(data.ApiMsgEn === 'Login Successfully' || data.ApiMsgAr === 'تم الدخول بنجاح ') {
+            if(data.Success === true) {
                 localStorage.setItem('userToken' , data.AccessToken);
                 saveUserData();
+                setApiCode(data.Success);
                 setTimeout(() => {
                     navigate('../dashboard');
                 }, 1500);
@@ -136,7 +139,6 @@ export default function Signup({baseURL, saveUserData}) {
             $('.repassword .input-group input').attr('type', 'text');
         }
     }
-
 
     function changeDir() {
         let width = $('body').width();
@@ -260,12 +262,19 @@ export default function Signup({baseURL, saveUserData}) {
                                         {/* <div id="alertPass" className="alert alert-danger p-1 text-center mx-auto mt-1 mb-0">enter your first name & last name Each of them isn't more than 12 characters</div> */}
                                     </div>
                                     
-                                    {message.length > 0 ? <p id="alertSave" className={`alert ${message === 'Login Successfully' || message === 'تم الدخول بنجاح ' ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{message}</p> : ''}
+                                    {message.length > 0 ? <p id="alertSave" className={`alert ${apiCode === true ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{message}</p> : ''}
 
-                                    <div className="buttons text-center mx-auto mt-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                                    <div className="buttons text-center mx-auto mt-4 mb-2 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
                                         {/* <p id="alertSignup" className="fs-6 mb-2 w-75 text-center mx-auto"></p> */}
                                         <button type='submit' className="btn black-btn py-3 text-capitalize">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : isEng ? 'Sign up' : 'إشتـــراك'}</button>
                                     </div>
+
+                                    <h6 className='fw-bold mb-0 d-flex justify-content-center align-items-center'>Already have an account? 
+                                        <Link to='../signin' className='fw-bold main-color mb-0 ms-1 text-decoration-underline' 
+                                            style={{cursor : 'pointer'}}> Sign in
+                                        </Link>
+                                    </h6>
+
                                 </form>
                             </div>
                         </div>

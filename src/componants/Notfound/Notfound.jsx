@@ -13,6 +13,7 @@ export default function Notfound() {
         $('.navbar .collapse .features').removeClass('active');
         $('.navbar .collapse .app').removeClass('active');
         $('.navbar .collapse .plans').removeClass('active');
+        $('.sidebar .menu-links a').removeClass('active');
     }, []);
 
 

@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { langContext } from '../context/store';
 import imgFooter from '../images/zari-logo-white.png';
-import { useEffect } from 'react';
 import $ from 'jquery';
 import WOW from 'wowjs';
 
@@ -59,7 +58,7 @@ export default function Footer({activeLink, userData}) {
                     <div className="row gy-5">
                         <div className="col-lg-4 col-md-6">
                             <div className="logo-footer">
-                                <div className="cont-imgFooter">
+                                <div className="cont-imgFooter foot">
                                     <img src={imgFooter} className="w-75" alt="zari logo"/>
                                 </div>
                                 {/* <p>{isEng ? `Zari is a Saudi-Egyptian company among a group of companies operating in more than one field
@@ -67,11 +66,11 @@ export default function Footer({activeLink, userData}) {
                                 </p> */}
                                 <h5 className="mb-4">{isEng ? 'Follow us' : 'تابعنــــا'}</h5>
                                 <div className="icons-footer d-flex align-items-center mb-3">
-                                    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/ZARISolutionksa"><i
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/zarifalcon?_rdc=1&_rdr"><i
                                             className="fa-brands fa-facebook-f"></i></a>
-                                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/SolutionZari"><i
-                                            className="fa-brands fa-twitter"></i></a>
-                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/zarisolutionksa/"><i
+                                    {/* <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/SolutionZari"><i
+                                            className="fa-brands fa-twitter"></i></a> */}
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/zari.falcon/"><i
                                             className="fa-brands fa-instagram"></i></a>
                                     <a target="_blank" rel="noopener noreferrer" href="https://wa.me/+966566770235"><i
                                             className="fa-brands fa-whatsapp"></i></a>
@@ -102,7 +101,15 @@ export default function Footer({activeLink, userData}) {
                                 <h5 className="mb-5 contact">{isEng ? 'Contact us' : 'تواصــل معنـــا'}</h5>
                                 <div className="d-flex justify-content-start align-items-center mb-4">
                                     <span className={`${isEng ? 'me-3' : 'ms-3'}`}><i className="fa-solid fa-location-dot"></i></span>
-                                    <a href="https://www.google.com/maps/place/24%C2%B049'57.9%22N+46%C2%B040'52.1%22E/@24.8327465,46.6789598,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xbb9f0e7b1014cb34!8m2!3d24.8327465!4d46.6811485?hl=en" target="_blank" rel="noopener noreferrer"><p className="lh-sm ksa mt-0">{isEng ? '8491 Othman Bin Affaan Road Al Narjas - Riyadh - KSA.' : '8491 طريق انس بن مالك تقاطع طريق عثمان بن عفان النرجس - الرياض - المملكة العربية السعودية.'}</p></a>
+                                    <a href="https://www.google.com/maps/place/24%C2%B049'57.9%22N+46%C2%B040'52.1%22E/@24.832747,46.6789603,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xbb9f0e7b1014cb34!8m2!3d24.832747!4d46.681149" target="_blank" rel="noopener noreferrer"><p className="lh-sm ksa mt-0">{isEng ? '8491 Othman Bin Affaan Road Al Narjas - Riyadh - KSA.' : 'مكتب الرياض: 8491 طريق انس بن مالك تقاطع طريق عثمان بن عفان النرجس - الرياض - المملكة العربية السعودية.'}</p></a>
+                                </div>
+                                <div className="d-flex justify-content-start align-items-center mb-4">
+                                    <span className={`${isEng ? 'me-3' : 'ms-3'}`}><i className="fa-solid fa-location-dot"></i></span>
+                                    <a href="https://www.google.com/maps/place/24%C2%B028'07.8%22N+39%C2%B039'51.7%22E/@24.4688216,39.6621642,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xab51d8840ba29ace!8m2!3d24.4688216!4d39.6643529" target="_blank" rel="noopener noreferrer"><p className="lh-sm ksa mt-0">{isEng ? 'AL-Madina Office: 7865 King Abdullah Bin - Abdulaziz Road - Jasham - AL-Madina - KSA' : 'مكتب المدينة المنورة: 7865 الملك عبدالله بن عبدالعزيز - جاسم - المدينة المنورة - المملكة العربية السعودية.'}</p></a>
+                                </div>
+                                <div className="d-flex justify-content-start align-items-center mb-4">
+                                    <span className={`${isEng ? 'me-3' : 'ms-3'}`}><i className="fa-solid fa-location-dot"></i></span>
+                                    <a href="https://www.google.com/maps/place/30%C2%B002'14.9%22N+31%C2%B020'40.5%22E/@30.037473,31.3424012,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x7e35f93c923ddaaa!8m2!3d30.037473!4d31.3445899" target="_blank" rel="noopener noreferrer"><p className="lh-sm ksa mt-0">{isEng ? 'Cairo Office: 9 Street Saeed Zakaria - Nasr City - Cairo - Egypt' : 'مكتب القاهرة:9 شارع سعيد زكريا - مدينة نصر - القاهرة - جمهورية مصر العربية.'}</p></a>
                                 </div>
                                 <div className="phone d-flex justify-content-start align-items-center mb-4">
                                     <span className={`${isEng ? 'me-3' : 'ms-3'}`}><i className="fa-solid fa-phone"></i></span>
@@ -122,6 +129,26 @@ export default function Footer({activeLink, userData}) {
                                 </div>
                             </div>
                         </div>
+
+                        {/* <div class="col-lg-4">
+                            <div class="navigate">
+                                <h5 class="mb-5 contact">Contact us</h5>
+                                <div class="phone d-flex justify-content-start align-items-center mb-4 text-white">
+                                    <span class="me-3"><i class="fa-solid fa-phone"></i></span>
+                                    <a target="_blank" href="tel:+966 92 002 4403" class="me-2 first"> +966 92 002 4403</a> / <a
+                                        target="_blank" href="tel:+966566770235" class="ms-2 second"> +966 56 677 0235</a>
+                                </div>
+                                <div class="phone d-flex justify-content-start align-items-center mb-4 text-white">
+                                    <span class="me-3"><i class="fa-solid fa-phone"></i></span>
+                                    <a target="_blank" href="tel:01151300867" class="me-2"> 01151300867</a>
+                                </div>
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <span class="me-3"><i class="fa-solid fa-envelope"></i></span>
+                                    <a target="_blank" href="https://info@zarisolution.com/"> info@zarisolution.com</a>
+                                </div>
+                            </div>
+                        </div> */}
+
                     </div>
                 </div>
             </footer>}

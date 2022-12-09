@@ -4,7 +4,7 @@ import $ from 'jquery';
 import signIn from '../images/sign/signin.png';
 import WOW from 'wowjs';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -23,6 +23,8 @@ export default function Signin({baseURL, saveUserData}) {
     const [message, setMessage] = useState('');
 
     const [loadind, setLoadind] = useState(false);
+
+    const [apiCode , setApiCode] = useState(null);
 
     function getUserData(e) {
         let myUser = {...user};
@@ -51,9 +53,10 @@ export default function Signin({baseURL, saveUserData}) {
             setLoadind(false);
         }
 
-        if(data.ApiMsgEn === 'Login Successfully' || data.ApiMsgAr === 'تم الدخول بنجاح ') {
+        if(data.Success === true) {
             localStorage.setItem('userToken', data.AccessToken);
             saveUserData();
+            setApiCode(data.Success);
             setTimeout(() => {
                 navigate('../dashboard');
             }, 1500);
@@ -193,12 +196,18 @@ export default function Signin({baseURL, saveUserData}) {
                                         {/* <div id="alertPass" className="alert alert-danger p-1 text-center mx-auto mt-1 mb-0">enter your first name & last name Each of them isn't more than 12 characters</div> */}
                                     </div>
 
-                                    {message.length > 0 ? <p id="alertSave" className={`alert ${message === 'Login Successfully' || message === 'تم الدخول بنجاح ' ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{message}</p> : ''}
+                                    {message.length > 0 ? <p id="alertSave" className={`alert ${apiCode === true ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{message}</p> : ''}
 
-                                    <div className="buttons text-center mx-auto mt-4">
+                                    <div className="buttons text-center mx-auto mt-4 mb-2">
                                         {/* <p id="alertSignin" className="fs-6 mb-2 w-75 text-center mx-auto"></p> loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> :  */}
                                         <button type='submit' className="btn black-btn py-3 text-capitalize wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : isEng ? 'Sign in' : 'تسجيل الدخول'}</button>
                                     </div>
+
+                                    <h6 className='fw-bold mb-0 d-flex justify-content-center align-items-center'>Don’t have an account? 
+                                        <Link to='../signup' className='fw-bold main-color mb-0 ms-1 text-decoration-underline' 
+                                            style={{cursor : 'pointer'}}> Sign up
+                                        </Link>
+                                    </h6>
                                 </form>
                             </div>
                         </div>

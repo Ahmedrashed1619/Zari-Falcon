@@ -2,15 +2,17 @@ import React, { useContext, useEffect } from 'react';
 import { langContext } from '../context/store';
 import { Outlet } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
-import { BsSearch } from 'react-icons/bs';
-import { FaChartPie, FaUsers, FaRegMap, FaMapMarkerAlt } from 'react-icons/fa';
+// import { FaBars } from 'react-icons/fa';
+// import { BsSearch } from 'react-icons/bs';
+import { FaChartPie, FaUsers, FaMapMarkerAlt } from 'react-icons/fa';
 import { FiUsers, FiSettings } from 'react-icons/fi';
 import { BiBarChartSquare } from 'react-icons/bi';
 import { TbRoute, TbLogout } from 'react-icons/tb';
+import { AiOutlineUser } from 'react-icons/ai';
 // import userImg from '../images/dashboard/user.png';
+// FaRegMap
 import imgFooter from '../images/zari-logo-white.png';
-import userImg2 from '../images/dashboard/rashed4.jpg';
+// import userImg2 from '../images/home/Rectangle 143.png';
 import $ from 'jquery';
 
 
@@ -40,6 +42,12 @@ export default function Dashboard({logOut}) {
             icon : <FiUsers />
         },
         {
+            path : '/view',
+            name : 'View Report',
+            class: 'view',
+            icon : <BiBarChartSquare />
+        },
+        {
             path : '/settings',
             name : 'Settings',
             class: 'settings',
@@ -57,12 +65,12 @@ export default function Dashboard({logOut}) {
             class: 'clients',
             icon : <FaUsers />
         },
-        {
-            path : '/map',
-            name : 'Map Review',
-            class: 'map',
-            icon : <FaRegMap />
-        },
+        // {
+        //     path : '/map',
+        //     name : 'Map Review',
+        //     class: 'map',
+        //     icon : <FaRegMap />
+        // },
         {
             path : '/report',
             name : 'Routing Report',
@@ -75,6 +83,12 @@ export default function Dashboard({logOut}) {
             class: 'create',
             icon : <TbRoute />
         },
+        // {
+        //     path : '/profile',
+        //     name : 'Profile',
+        //     class: 'profile',
+        //     icon : <AiOutlineUser />
+        // },
     ];
 
 
@@ -206,21 +220,20 @@ export default function Dashboard({logOut}) {
     }, [isOpen])
     
 
-    $(window).on('scroll' , () => {
-        if($(window).scrollTop() > 50) {
-            $('.topbar').css({'backgroundColor' : '#000' , 'position' : 'fixed'});
-        }
-        else {
-            $('.topbar').css({'backgroundColor' : 'transparent' , 'position' : 'static'});
-        }
+    // $(window).on('scroll' , () => {
+    //     if($(window).scrollTop() > 50) {
+    //         $('.topbar').css({'backgroundColor' : '#000' , 'position' : 'fixed'});
+    //     }
+    //     else {
+    //         $('.topbar').css({'backgroundColor' : 'transparent' , 'position' : 'static'});
+    //     }
         
-    })
+    // })
 
 
 
     return (
         <section className='dashboard'>
-                {/* <Sidebar logOut={logOut}/> */}
 
                 <div className="sidebar">
                     <div className='menu-links'>
@@ -259,7 +272,7 @@ export default function Dashboard({logOut}) {
                 <div className="main d-flex flex-column">
 
                     {/* top bar */}
-                    <div className="topbar">
+                    {/* <div className="topbar">
                         <div className="toggle-topbar" onClick={() => {
                             toggleOpen();
                             widthBody();
@@ -275,10 +288,10 @@ export default function Dashboard({logOut}) {
                         <div className="user-img">
                             <img src={userImg2} alt="user" />
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* outlet */}
-                    <div className="container-fluid">
+                    <div >
                         <Outlet></Outlet>
                     </div>
                 </div>

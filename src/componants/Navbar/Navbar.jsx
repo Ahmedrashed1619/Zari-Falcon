@@ -64,7 +64,7 @@ export default function Navbar({activeLink, userData}) {
         <>
         {userData ? '' : <nav className="navbar navbar-expand-lg fixed-top bg-white py-2 nav-total" dir={isEng ? 'ltr' : 'rtl'}>
                 <div className="container-fluid container-xl special-w">
-                    <span className="navbar-brand"><img src={imgLogo} alt="zari logo" /></span>
+                    <Link to='home' className="navbar-brand"><img src={imgLogo} alt="zari logo" /></Link>
                     <button className={`navbar-toggler wow fadeIn ${isActive ? 'convert' : ''}`} data-wow-duration="0.75s" onClick={handelClick} type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">
