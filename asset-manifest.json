@@ -1,12 +1,12 @@
 {
   "main.css": "/Zari-Falcon/static/css/main.74ff4e81.chunk.css",
-  "main.js": "/Zari-Falcon/static/js/main.9fd3461d.chunk.js",
-  "main.js.map": "/Zari-Falcon/static/js/main.9fd3461d.chunk.js.map",
+  "main.js": "/Zari-Falcon/static/js/main.732468b4.chunk.js",
+  "main.js.map": "/Zari-Falcon/static/js/main.732468b4.chunk.js.map",
   "static/js/1.dda1cd74.chunk.js": "/Zari-Falcon/static/js/1.dda1cd74.chunk.js",
   "static/js/1.dda1cd74.chunk.js.map": "/Zari-Falcon/static/js/1.dda1cd74.chunk.js.map",
   "static/css/2.ac79e08c.chunk.css": "/Zari-Falcon/static/css/2.ac79e08c.chunk.css",
-  "static/js/2.58ffbbf4.chunk.js": "/Zari-Falcon/static/js/2.58ffbbf4.chunk.js",
-  "static/js/2.58ffbbf4.chunk.js.map": "/Zari-Falcon/static/js/2.58ffbbf4.chunk.js.map",
+  "static/js/2.80ca7aa1.chunk.js": "/Zari-Falcon/static/js/2.80ca7aa1.chunk.js",
+  "static/js/2.80ca7aa1.chunk.js.map": "/Zari-Falcon/static/js/2.80ca7aa1.chunk.js.map",
   "runtime~main.js": "/Zari-Falcon/static/js/runtime~main.2116307f.js",
   "runtime~main.js.map": "/Zari-Falcon/static/js/runtime~main.2116307f.js.map",
   "static/media/index.css": "/Zari-Falcon/static/media/Rectangle 143.b55f6393.png",
@@ -17,9 +17,9 @@
   "static/media/signin.png": "/Zari-Falcon/static/media/signin.a7766b1c.png",
   "static/media/signup.png": "/Zari-Falcon/static/media/signup.ebc1d025.png",
   "static/media/all.css": "/Zari-Falcon/static/media/fa-v4compatibility.36818ecc.ttf",
-  "static/css/2.ac79e08c.chunk.css.map": "/Zari-Falcon/static/css/2.ac79e08c.chunk.css.map",
   "static/css/main.74ff4e81.chunk.css.map": "/Zari-Falcon/static/css/main.74ff4e81.chunk.css.map",
+  "static/css/2.ac79e08c.chunk.css.map": "/Zari-Falcon/static/css/2.ac79e08c.chunk.css.map",
   "index.html": "/Zari-Falcon/index.html",
-  "precache-manifest.3cd39cbd7834ccec781177126e0a1a02.js": "/Zari-Falcon/precache-manifest.3cd39cbd7834ccec781177126e0a1a02.js",
+  "precache-manifest.de463527aa5bf3486c30499b38db89b3.js": "/Zari-Falcon/precache-manifest.de463527aa5bf3486c30499b38db89b3.js",
   "service-worker.js": "/Zari-Falcon/service-worker.js"
 }
