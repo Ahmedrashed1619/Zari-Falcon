@@ -83,12 +83,12 @@ export default function Dashboard({logOut}) {
             class: 'create',
             icon : <TbRoute />
         },
-        // {
-        //     path : '/profile',
-        //     name : 'Profile',
-        //     class: 'profile',
-        //     icon : <AiOutlineUser />
-        // },
+        {
+            path : '/profile',
+            name : 'Profile',
+            class: 'profile',
+            icon : <AiOutlineUser />
+        },
     ];
 
 

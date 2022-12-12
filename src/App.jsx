@@ -37,7 +37,7 @@ function App() {
 
 
 
-  const token = localStorage.getItem('userToken');
+  const [token, setToken] = useState(localStorage.getItem('userToken'))
 
   
   const activeLink = (e) => {
@@ -328,6 +328,40 @@ function App() {
     useEffect(() => {
         getavatars();
     }, [])
+
+
+
+        // get update data
+        const [fetchUpdateData, setFetchUpdateData] = useState([]);
+        const apiProfile = `${baseURL}company/profile/show`;
+
+        async function getUpdateData() {
+          await axios.post(apiProfile, {}, {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token,
+              // 'Access-Control-Allow-Origin': '*',
+              // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+            }})
+          .then(res => {
+            if (res.status === 200 && res.request.readyState === 4) {
+              setFetchUpdateData(res.data.User);
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        }
+        useEffect(() => {
+          if(token) {
+            getUpdateData();
+          }
+        }, [token])
+
+
+
+
   
 
   // user data from localstorage
@@ -409,7 +443,9 @@ function App() {
 
           <Route path='location' element={<Location fetchSales={fetchSales} token={token} baseURL={baseURL}/>} />
 
-          <Route path='profile' element={<Profile token={token} baseURL={baseURL}/>} />
+          <Route path='profile' element={token ? <Profile token={token} getUpdateData={getUpdateData} baseURL={baseURL} fetchUpdateData={fetchUpdateData}/> : <div id="ready">
+              <i className="fa fa-spinner fa-5x fa-spin"></i>
+            </div>} />
 
           <Route path='clients' element={token ? <Clients fetchClients={fetchClients} baseURL={baseURL}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>

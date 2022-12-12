@@ -9,7 +9,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useState } from 'react';
-import Package from '../Package/Package';
+// import Package from '../Package/Package';
+import { BsFillCheckCircleFill } from 'react-icons/bs'
 
 
 
@@ -32,16 +33,6 @@ export default function Home({fetchHome}) {
         AOS.refresh();
     }, [])
     
-    // const feature = [
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'},
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'},
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'},
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'},
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'},
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'},
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'},
-    //     { img: imgApp , parag: 'Book your queue and appointment from anywhere.'}
-    // ]
 
     const animAos = [
         {fade: "fade-up-right", delay: 'ease-in'},
@@ -54,17 +45,6 @@ export default function Home({fetchHome}) {
         {fade: "fade-down-left", delay: 'ease-out'}
     ]
     
-    // const intClasses = {
-    //     0 : 'one',
-    //     1 : 'two',
-    //     2 : 'three',
-    //     3 : 'four',
-    //     4 : 'five',
-    //     5 : 'six',
-    //     6 : 'seven',
-    //     7 : 'eight',
-    //     8 : 'nine',
-    // }
 
     const [arr, setArr] = useState([])
 
@@ -72,31 +52,32 @@ export default function Home({fetchHome}) {
         setArr(fetchHome.plans.Plans)
     }, [arr])
     
-    const plans = {
-        items: arr.length,
-        responsiveClass: true,
-        nav: false,
-        dots: false,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        mouseDrag: true,
-        touchDrag: true,
-        stagePadding: 50,
-        margin: 30,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            992: {
-                items: 2,
-            },
-            1250: {
-                items: 3,
-            }
-        },
-    }
+    
+    // const plans = {
+    //     items: arr.length,
+    //     responsiveClass: true,
+    //     nav: false,
+    //     dots: false,
+    //     loop: true,
+    //     autoplay: true,
+    //     autoplayTimeout: 5000,
+    //     autoplayHoverPause: true,
+    //     mouseDrag: true,
+    //     touchDrag: true,
+    //     stagePadding: 50,
+    //     margin: 30,
+    //     responsive: {
+    //         0: {
+    //             items: 1,
+    //         },
+    //         992: {
+    //             items: 2,
+    //         },
+    //         1250: {
+    //             items: 3,
+    //         }
+    //     },
+    // }
 
 
     let { isEng } = useContext(langContext);
@@ -120,334 +101,6 @@ export default function Home({fetchHome}) {
         $('.navbar .collapse .plans').removeClass('active');
         $('html , body').animate({ scrollTop: $('#app').offset().top - 40 }, 300);
     }
-
-
-    // const changeDir = () => {
-
-    //     if(isEng === true) {
-
-    //         if(fetchHome.plans.Plans[0]) {
-    //             $('#plans .offer.one h3').text(fetchHome.plans.Plans[0].NameEn);
-    //             $('#plans .offer.one .cont-price').addClass('text-en');
-    //             $('#plans .offer.one .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.one .cont-price h6 span').text(fetchHome.plans.Plans[0].Price);
-    //             $('#plans .offer.one .cont-price h4.desc').text(fetchHome.plans.Plans[0].DescEn);
-    //             $('#plans .offer.one .cont-price h4.adminNum').text(fetchHome.plans.Plans[0].AdminNum + ' Admin');
-    //             $('#plans .offer.one .cont-price h4.salesNum').text(fetchHome.plans.Plans[0].SalesNum + ' Sales');
-    //             $('#plans .offer.one .cont-price h4.days').text(fetchHome.plans.Plans[0].HistoryLog);
-    //             $('#plans .offer.one .cont-price h4.clientNum').text(fetchHome.plans.Plans[0].ClientNum + ' Clients');
-    //             $('#plans .offer.one .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[0].DailyReport + ' Daily Report');
-    //             $('#plans .offer.one .cont-price h4.findLoc').text(fetchHome.plans.Plans[0].FindLocation + ' Find Location');
-    //             $('#plans .offer.one .cont-price h4.makeRoute').text(fetchHome.plans.Plans[0].MakeRoute + ' Make Route');
-    //             $('#plans .offer.one .cont-price h4.checkRoute').text(fetchHome.plans.Plans[0].CheckReport + ' Check Report');
-    //             $('#plans .offer.one .cont-price h4.routeReport').text(fetchHome.plans.Plans[0].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[1]) {
-    //             $('#plans .offer.two h3').text(fetchHome.plans.Plans[1].NameEn);
-    //             $('#plans .offer.two .cont-price').addClass('text-en');
-    //             $('#plans .offer.two .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.two .cont-price h6 span').text(fetchHome.plans.Plans[1].Price);
-    //             $('#plans .offer.two .cont-price h4.desc').text(fetchHome.plans.Plans[1].DescEn);
-    //             $('#plans .offer.two .cont-price h4.adminNum').text(fetchHome.plans.Plans[1].AdminNum + ' Admin');
-    //             $('#plans .offer.two .cont-price h4.salesNum').text(fetchHome.plans.Plans[1].SalesNum + ' Sales');
-    //             $('#plans .offer.two .cont-price h4.days').text(fetchHome.plans.Plans[1].HistoryLog);
-    //             $('#plans .offer.two .cont-price h4.clientNum').text(fetchHome.plans.Plans[1].ClientNum + ' Clients');
-    //             $('#plans .offer.two .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[1].DailyReport + ' Daily Report');
-    //             $('#plans .offer.two .cont-price h4.findLoc').text(fetchHome.plans.Plans[1].FindLocation + ' Find Location');
-    //             $('#plans .offer.two .cont-price h4.makeRoute').text(fetchHome.plans.Plans[1].MakeRoute + ' Make Route');
-    //             $('#plans .offer.two .cont-price h4.checkRoute').text(fetchHome.plans.Plans[1].CheckReport + ' Check Report');
-    //             $('#plans .offer.two .cont-price h4.routeReport').text(fetchHome.plans.Plans[1].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[2]) {
-
-    //             $('#plans .offer.three h3').text(fetchHome.plans.Plans[2].NameEn);
-    //             $('#plans .offer.three .cont-price').addClass('text-en');
-    //             $('#plans .offer.three .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.three .cont-price h6 span').text(fetchHome.plans.Plans[2].Price);
-    //             $('#plans .offer.three .cont-price h4.desc').text(fetchHome.plans.Plans[2].DescEn);
-    //             $('#plans .offer.three .cont-price h4.adminNum').text(fetchHome.plans.Plans[2].AdminNum + ' Admin');
-    //             $('#plans .offer.three .cont-price h4.salesNum').text(fetchHome.plans.Plans[2].SalesNum + ' Sales');
-    //             $('#plans .offer.three .cont-price h4.days').text(fetchHome.plans.Plans[2].HistoryLog);
-    //             $('#plans .offer.three .cont-price h4.clientNum').text(fetchHome.plans.Plans[2].ClientNum + ' Clients');
-    //             $('#plans .offer.three .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[2].DailyReport + ' Daily Report');
-    //             $('#plans .offer.three .cont-price h4.findLoc').text(fetchHome.plans.Plans[2].FindLocation + ' Find Location');
-    //             $('#plans .offer.three .cont-price h4.makeRoute').text(fetchHome.plans.Plans[2].MakeRoute + ' Make Route');
-    //             $('#plans .offer.three .cont-price h4.checkRoute').text(fetchHome.plans.Plans[2].CheckReport + ' Check Report');
-    //             $('#plans .offer.three .cont-price h4.routeReport').text(fetchHome.plans.Plans[2].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[3]) {
-    //             $('#plans .offer.four h3').text(fetchHome.plans.Plans[3].NameEn);
-    //             $('#plans .offer.four .cont-price').addClass('text-en');
-    //             $('#plans .offer.four .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.four .cont-price h6 span').text(fetchHome.plans.Plans[3].Price);
-    //             $('#plans .offer.four .cont-price h4.desc').text(fetchHome.plans.Plans[3].DescEn);
-    //             $('#plans .offer.four .cont-price h4.adminNum').text(fetchHome.plans.Plans[3].AdminNum + ' Admin');
-    //             $('#plans .offer.four .cont-price h4.salesNum').text(fetchHome.plans.Plans[3].SalesNum + ' Sales');
-    //             $('#plans .offer.four .cont-price h4.days').text(fetchHome.plans.Plans[3].HistoryLog);
-    //             $('#plans .offer.four .cont-price h4.clientNum').text(fetchHome.plans.Plans[3].ClientNum + ' Clients');
-    //             $('#plans .offer.four .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[3].DailyReport + ' Daily Report');
-    //             $('#plans .offer.four .cont-price h4.findLoc').text(fetchHome.plans.Plans[3].FindLocation + ' Find Location');
-    //             $('#plans .offer.four .cont-price h4.makeRoute').text(fetchHome.plans.Plans[3].MakeRoute + ' Make Route');
-    //             $('#plans .offer.four .cont-price h4.checkRoute').text(fetchHome.plans.Plans[3].CheckReport + ' Check Report');
-    //             $('#plans .offer.four .cont-price h4.routeReport').text(fetchHome.plans.Plans[3].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[4]) {
-    //             $('#plans .offer.five h3').text(fetchHome.plans.Plans[4].NameEn);
-    //             $('#plans .offer.five .cont-price').addClass('text-en');
-    //             $('#plans .offer.five .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.five .cont-price h6 span').text(fetchHome.plans.Plans[4].Price);
-    //             $('#plans .offer.five .cont-price h4.desc').text(fetchHome.plans.Plans[4].DescEn);
-    //             $('#plans .offer.five .cont-price h4.adminNum').text(fetchHome.plans.Plans[4].AdminNum + ' Admin');
-    //             $('#plans .offer.five .cont-price h4.salesNum').text(fetchHome.plans.Plans[4].SalesNum + ' Sales');
-    //             $('#plans .offer.five .cont-price h4.days').text(fetchHome.plans.Plans[4].HistoryLog);
-    //             $('#plans .offer.five .cont-price h4.clientNum').text(fetchHome.plans.Plans[4].ClientNum + ' Clients');
-    //             $('#plans .offer.five .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[4].DailyReport + ' Daily Report');
-    //             $('#plans .offer.five .cont-price h4.findLoc').text(fetchHome.plans.Plans[4].FindLocation + ' Find Location');
-    //             $('#plans .offer.five .cont-price h4.makeRoute').text(fetchHome.plans.Plans[4].MakeRoute + ' Make Route');
-    //             $('#plans .offer.five .cont-price h4.checkRoute').text(fetchHome.plans.Plans[4].CheckReport + ' Check Report');
-    //             $('#plans .offer.five .cont-price h4.routeReport').text(fetchHome.plans.Plans[4].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[5]) {
-    //             $('#plans .offer.six h3').text(fetchHome.plans.Plans[5].NameEn);
-    //             $('#plans .offer.six .cont-price').addClass('text-en');
-    //             $('#plans .offer.six .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.six .cont-price h6 span').text(fetchHome.plans.Plans[5].Price);
-    //             $('#plans .offer.six .cont-price h4.desc').text(fetchHome.plans.Plans[5].DescEn);
-    //             $('#plans .offer.six .cont-price h4.adminNum').text(fetchHome.plans.Plans[5].AdminNum + ' Admin');
-    //             $('#plans .offer.six .cont-price h4.salesNum').text(fetchHome.plans.Plans[5].SalesNum + ' Sales');
-    //             $('#plans .offer.six .cont-price h4.days').text(fetchHome.plans.Plans[5].HistoryLog);
-    //             $('#plans .offer.six .cont-price h4.clientNum').text(fetchHome.plans.Plans[5].ClientNum + ' Clients');
-    //             $('#plans .offer.six .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[5].DailyReport + ' Daily Report');
-    //             $('#plans .offer.six .cont-price h4.findLoc').text(fetchHome.plans.Plans[5].FindLocation + ' Find Location');
-    //             $('#plans .offer.six .cont-price h4.makeRoute').text(fetchHome.plans.Plans[5].MakeRoute + ' Make Route');
-    //             $('#plans .offer.six .cont-price h4.checkRoute').text(fetchHome.plans.Plans[5].CheckReport + ' Check Report');
-    //             $('#plans .offer.six .cont-price h4.routeReport').text(fetchHome.plans.Plans[5].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[6]) {
-    //             $('#plans .offer.seven h3').text(fetchHome.plans.Plans[6].NameEn);
-    //             $('#plans .offer.seven .cont-price').addClass('text-en');
-    //             $('#plans .offer.seven .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.seven .cont-price h6 span').text(fetchHome.plans.Plans[6].Price);
-    //             $('#plans .offer.seven .cont-price h4.desc').text(fetchHome.plans.Plans[6].DescEn);
-    //             $('#plans .offer.seven .cont-price h4.adminNum').text(fetchHome.plans.Plans[6].AdminNum + ' Admin');
-    //             $('#plans .offer.seven .cont-price h4.salesNum').text(fetchHome.plans.Plans[6].SalesNum + ' Sales');
-    //             $('#plans .offer.seven .cont-price h4.days').text(fetchHome.plans.Plans[6].HistoryLog);
-    //             $('#plans .offer.seven .cont-price h4.clientNum').text(fetchHome.plans.Plans[6].ClientNum + ' Clients');
-    //             $('#plans .offer.seven .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[6].DailyReport + ' Daily Report');
-    //             $('#plans .offer.seven .cont-price h4.findLoc').text(fetchHome.plans.Plans[6].FindLocation + ' Find Location');
-    //             $('#plans .offer.seven .cont-price h4.makeRoute').text(fetchHome.plans.Plans[6].MakeRoute + ' Make Route');
-    //             $('#plans .offer.seven .cont-price h4.checkRoute').text(fetchHome.plans.Plans[6].CheckReport + ' Check Report');
-    //             $('#plans .offer.seven .cont-price h4.routeReport').text(fetchHome.plans.Plans[6].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[7]) {
-    //             $('#plans .offer.eight h3').text(fetchHome.plans.Plans[7].NameEn);
-    //             $('#plans .offer.eight .cont-price').addClass('text-en');
-    //             $('#plans .offer.eight .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.eight .cont-price h6 span').text(fetchHome.plans.Plans[7].Price);
-    //             $('#plans .offer.eight .cont-price h4.desc').text(fetchHome.plans.Plans[7].DescEn);
-    //             $('#plans .offer.eight .cont-price h4.adminNum').text(fetchHome.plans.Plans[7].AdminNum + ' Admin');
-    //             $('#plans .offer.eight .cont-price h4.salesNum').text(fetchHome.plans.Plans[7].SalesNum + ' Sales');
-    //             $('#plans .offer.eight .cont-price h4.days').text(fetchHome.plans.Plans[7].HistoryLog);
-    //             $('#plans .offer.eight .cont-price h4.clientNum').text(fetchHome.plans.Plans[7].ClientNum + ' Clients');
-    //             $('#plans .offer.eight .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[7].DailyReport + ' Daily Report');
-    //             $('#plans .offer.eight .cont-price h4.findLoc').text(fetchHome.plans.Plans[7].FindLocation + ' Find Location');
-    //             $('#plans .offer.eight .cont-price h4.makeRoute').text(fetchHome.plans.Plans[7].MakeRoute + ' Make Route');
-    //             $('#plans .offer.eight .cont-price h4.checkRoute').text(fetchHome.plans.Plans[7].CheckReport + ' Check Report');
-    //             $('#plans .offer.eight .cont-price h4.routeReport').text(fetchHome.plans.Plans[7].RouteReport + ' Route Report');
-    //         }
-
-    //         if(fetchHome.plans.Plans[8]) {
-    //             $('#plans .offer.nine h3').text(fetchHome.plans.Plans[8].NameEn);
-    //             $('#plans .offer.nine .cont-price').addClass('text-en');
-    //             $('#plans .offer.nine .cont-price').removeClass('text-ar');
-    //             $('#plans .offer.nine .cont-price h6 span').text(fetchHome.plans.Plans[8].Price);
-    //             $('#plans .offer.nine .cont-price h4.desc').text(fetchHome.plans.Plans[8].DescEn);
-    //             $('#plans .offer.nine .cont-price h4.adminNum').text(fetchHome.plans.Plans[8].AdminNum + ' Admin');
-    //             $('#plans .offer.nine .cont-price h4.salesNum').text(fetchHome.plans.Plans[8].SalesNum + ' Sales');
-    //             $('#plans .offer.nine .cont-price h4.days').text(fetchHome.plans.Plans[8].HistoryLog);
-    //             $('#plans .offer.nine .cont-price h4.clientNum').text(fetchHome.plans.Plans[8].ClientNum + ' Clients');
-    //             $('#plans .offer.nine .cont-price h4.dailyRebort').text(fetchHome.plans.Plans[8].DailyReport + ' Daily Report');
-    //             $('#plans .offer.nine .cont-price h4.findLoc').text(fetchHome.plans.Plans[8].FindLocation + ' Find Location');
-    //             $('#plans .offer.nine .cont-price h4.makeRoute').text(fetchHome.plans.Plans[8].MakeRoute + ' Make Route');
-    //             $('#plans .offer.nine .cont-price h4.checkRoute').text(fetchHome.plans.Plans[8].CheckReport + ' Check Report');
-    //             $('#plans .offer.nine .cont-price h4.routeReport').text(fetchHome.plans.Plans[8].RouteReport + ' Route Report');
-    //         }
-
-    //     }
-
-    //     else 
-    //     {
-
-    //         if(fetchHome.plans.Plans[0]) {
-    //             $('#plans .offer.one h3').text(fetchHome.plans.Plans[0].NameAr);
-    //             $('#plans .offer.one .cont-price').removeClass('text-en');
-    //             $('#plans .offer.one .cont-price').addClass('text-ar');
-    //             $('#plans .offer.one .cont-price h6 span').text(fetchHome.plans.Plans[0].Price);
-    //             $('#plans .offer.one .cont-price h4.desc').text(fetchHome.plans.Plans[0].DescAr);
-    //             $('#plans .offer.one .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[0].AdminNum);
-    //             $('#plans .offer.one .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[0].SalesNum);
-    //             $('#plans .offer.one .cont-price h4.days').text(fetchHome.plans.Plans[0].HistoryLog);
-    //             $('#plans .offer.one .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[0].ClientNum);
-    //             $('#plans .offer.one .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[0].DailyReport);
-    //             $('#plans .offer.one .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[0].FindLocation);
-    //             $('#plans .offer.one .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[0].MakeRoute);
-    //             $('#plans .offer.one .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[0].CheckReport);
-    //             $('#plans .offer.one .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[0].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[1]) {
-    //             $('#plans .offer.two h3').text(fetchHome.plans.Plans[1].NameAr);
-    //             $('#plans .offer.two .cont-price').removeClass('text-en');
-    //             $('#plans .offer.two .cont-price').addClass('text-ar');
-    //             $('#plans .offer.two .cont-price h6 span').text(fetchHome.plans.Plans[1].Price);
-    //             $('#plans .offer.two .cont-price h4.desc').text(fetchHome.plans.Plans[1].DescAr);
-    //             $('#plans .offer.two .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[1].AdminNum);
-    //             $('#plans .offer.two .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[1].SalesNum);
-    //             $('#plans .offer.two .cont-price h4.days').text(fetchHome.plans.Plans[1].HistoryLog);
-    //             $('#plans .offer.two .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[1].ClientNum);
-    //             $('#plans .offer.two .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[1].DailyReport);
-    //             $('#plans .offer.two .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[1].FindLocation);
-    //             $('#plans .offer.two .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[1].MakeRoute);
-    //             $('#plans .offer.two .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[1].CheckReport);
-    //             $('#plans .offer.two .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[1].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[2]) {
-    //             $('#plans .offer.three h3').text(fetchHome.plans.Plans[2].NameAr);
-    //             $('#plans .offer.three .cont-price').removeClass('text-en');
-    //             $('#plans .offer.three .cont-price').addClass('text-ar');
-    //             $('#plans .offer.three .cont-price h6 span').text(fetchHome.plans.Plans[2].Price);
-    //             $('#plans .offer.three .cont-price h4.desc').text(fetchHome.plans.Plans[2].DescAr);
-    //             $('#plans .offer.three .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[2].AdminNum);
-    //             $('#plans .offer.three .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[2].SalesNum);
-    //             $('#plans .offer.three .cont-price h4.days').text(fetchHome.plans.Plans[2].HistoryLog);
-    //             $('#plans .offer.three .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[2].ClientNum);
-    //             $('#plans .offer.three .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[2].DailyReport);
-    //             $('#plans .offer.three .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[2].FindLocation);
-    //             $('#plans .offer.three .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[2].MakeRoute);
-    //             $('#plans .offer.three .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[2].CheckReport);
-    //             $('#plans .offer.three .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[2].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[3]) {
-    //             $('#plans .offer.four h3').text(fetchHome.plans.Plans[3].NameAr);
-    //             $('#plans .offer.four .cont-price').removeClass('text-en');
-    //             $('#plans .offer.four .cont-price').addClass('text-ar');
-    //             $('#plans .offer.four .cont-price h6 span').text(fetchHome.plans.Plans[3].Price);
-    //             $('#plans .offer.four .cont-price h4.desc').text(fetchHome.plans.Plans[3].DescAr);
-    //             $('#plans .offer.four .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[3].AdminNum);
-    //             $('#plans .offer.four .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[3].SalesNum);
-    //             $('#plans .offer.four .cont-price h4.days').text(fetchHome.plans.Plans[3].HistoryLog);
-    //             $('#plans .offer.four .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[3].ClientNum);
-    //             $('#plans .offer.four .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[3].DailyReport);
-    //             $('#plans .offer.four .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[3].FindLocation);
-    //             $('#plans .offer.four .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[3].MakeRoute);
-    //             $('#plans .offer.four .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[3].CheckReport);
-    //             $('#plans .offer.four .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[3].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[4]) {
-    //             $('#plans .offer.five h3').text(fetchHome.plans.Plans[4].NameAr);
-    //             $('#plans .offer.five .cont-price').removeClass('text-en');
-    //             $('#plans .offer.five .cont-price').addClass('text-ar');
-    //             $('#plans .offer.five .cont-price h6 span').text(fetchHome.plans.Plans[4].Price);
-    //             $('#plans .offer.five .cont-price h4.desc').text(fetchHome.plans.Plans[4].DescAr);
-    //             $('#plans .offer.five .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[4].AdminNum);
-    //             $('#plans .offer.five .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[4].SalesNum);
-    //             $('#plans .offer.five .cont-price h4.days').text(fetchHome.plans.Plans[4].HistoryLog);
-    //             $('#plans .offer.five .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[4].ClientNum);
-    //             $('#plans .offer.five .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[4].DailyReport);
-    //             $('#plans .offer.five .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[4].FindLocation);
-    //             $('#plans .offer.five .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[4].MakeRoute);
-    //             $('#plans .offer.five .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[4].CheckReport);
-    //             $('#plans .offer.five .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[4].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[5]) {
-    //             $('#plans .offer.six h3').text(fetchHome.plans.Plans[5].NameAr);
-    //             $('#plans .offer.six .cont-price').removeClass('text-en');
-    //             $('#plans .offer.six .cont-price').addClass('text-ar');
-    //             $('#plans .offer.six .cont-price h6 span').text(fetchHome.plans.Plans[5].Price);
-    //             $('#plans .offer.six .cont-price h4.desc').text(fetchHome.plans.Plans[5].DescAr);
-    //             $('#plans .offer.six .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[5].AdminNum);
-    //             $('#plans .offer.six .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[5].SalesNum);
-    //             $('#plans .offer.six .cont-price h4.days').text(fetchHome.plans.Plans[5].HistoryLog);
-    //             $('#plans .offer.six .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[5].ClientNum);
-    //             $('#plans .offer.six .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[5].DailyReport);
-    //             $('#plans .offer.six .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[5].FindLocation);
-    //             $('#plans .offer.six .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[5].MakeRoute);
-    //             $('#plans .offer.six .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[5].CheckReport);
-    //             $('#plans .offer.six .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[5].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[6]) {
-    //             $('#plans .offer.seven h3').text(fetchHome.plans.Plans[6].NameAr);
-    //             $('#plans .offer.seven .cont-price').removeClass('text-en');
-    //             $('#plans .offer.seven .cont-price').addClass('text-ar');
-    //             $('#plans .offer.seven .cont-price h6 span').text(fetchHome.plans.Plans[6].Price);
-    //             $('#plans .offer.seven .cont-price h4.desc').text(fetchHome.plans.Plans[6].DescAr);
-    //             $('#plans .offer.seven .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[6].AdminNum);
-    //             $('#plans .offer.seven .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[6].SalesNum);
-    //             $('#plans .offer.seven .cont-price h4.days').text(fetchHome.plans.Plans[6].HistoryLog);
-    //             $('#plans .offer.seven .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[6].ClientNum);
-    //             $('#plans .offer.seven .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[6].DailyReport);
-    //             $('#plans .offer.seven .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[6].FindLocation);
-    //             $('#plans .offer.seven .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[6].MakeRoute);
-    //             $('#plans .offer.seven .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[6].CheckReport);
-    //             $('#plans .offer.seven .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[6].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[7]) {
-    //             $('#plans .offer.eight h3').text(fetchHome.plans.Plans[7].NameAr);
-    //             $('#plans .offer.eight .cont-price').removeClass('text-en');
-    //             $('#plans .offer.eight .cont-price').addClass('text-ar');
-    //             $('#plans .offer.eight .cont-price h6 span').text(fetchHome.plans.Plans[7].Price);
-    //             $('#plans .offer.eight .cont-price h4.desc').text(fetchHome.plans.Plans[7].DescAr);
-    //             $('#plans .offer.eight .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[7].AdminNum);
-    //             $('#plans .offer.eight .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[7].SalesNum);
-    //             $('#plans .offer.eight .cont-price h4.days').text(fetchHome.plans.Plans[7].HistoryLog);
-    //             $('#plans .offer.eight .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[7].ClientNum);
-    //             $('#plans .offer.eight .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[7].DailyReport);
-    //             $('#plans .offer.eight .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[7].FindLocation);
-    //             $('#plans .offer.eight .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[7].MakeRoute);
-    //             $('#plans .offer.eight .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[7].CheckReport);
-    //             $('#plans .offer.eight .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[7].RouteReport);
-    //         }
-
-    //         if(fetchHome.plans.Plans[8]) {
-    //             $('#plans .offer.nine h3').text(fetchHome.plans.Plans[8].NameAr);
-    //             $('#plans .offer.nine .cont-price').removeClass('text-en');
-    //             $('#plans .offer.nine .cont-price').addClass('text-ar');
-    //             $('#plans .offer.nine .cont-price h6 span').text(fetchHome.plans.Plans[8].Price);
-    //             $('#plans .offer.nine .cont-price h4.desc').text(fetchHome.plans.Plans[8].DescAr);
-    //             $('#plans .offer.nine .cont-price h4.adminNum').text('Admin ' + fetchHome.plans.Plans[8].AdminNum);
-    //             $('#plans .offer.nine .cont-price h4.salesNum').text('Sales ' + fetchHome.plans.Plans[8].SalesNum);
-    //             $('#plans .offer.nine .cont-price h4.days').text(fetchHome.plans.Plans[8].HistoryLog);
-    //             $('#plans .offer.nine .cont-price h4.clientNum').text('Clients ' + fetchHome.plans.Plans[8].ClientNum);
-    //             $('#plans .offer.nine .cont-price h4.dailyRebort').text('Daily Report ' + fetchHome.plans.Plans[8].DailyReport);
-    //             $('#plans .offer.nine .cont-price h4.findLoc').text('Find Location ' + fetchHome.plans.Plans[8].FindLocation);
-    //             $('#plans .offer.nine .cont-price h4.makeRoute').text('Make Route ' + fetchHome.plans.Plans[8].MakeRoute);
-    //             $('#plans .offer.nine .cont-price h4.checkRoute').text('Check Report ' + fetchHome.plans.Plans[8].CheckReport);
-    //             $('#plans .offer.nine .cont-price h4.routeReport').text('Route Report ' + fetchHome.plans.Plans[8].RouteReport);
-    //         }
-    //     }
-    // }
-
-
-    // useEffect(() => {
-    //     changeDir();
-    
-    //     return () => {
-    //         changeDir();
-    //     }
-    // }, [isEng]);
 
     
 
@@ -547,11 +200,11 @@ export default function Home({fetchHome}) {
             </section>
 
             {/* plans section */}
-            <section id='plans' className='py-5'>
+            <section id='plans' className='py-5' dir={isEng ? 'ltr' : 'rtl'}>
                 <div className="container">
                     <h2 className="fw-bold fs-1 mb-5 mt-4 w-75 mx-auto text-center" data-aos="fade-down" data-aos-duration="1500" data-aos-easing="ease-in">{isEng ? fetchHome.plans.Title : fetchHome.plans.TitleAr}</h2>
 
-                    <OwlCarousel className="slider-items owl-carousel wow fadeInRight" data-wow-duration="1.5s" {...plans}>
+                    {/* <OwlCarousel className="slider-items owl-carousel wow fadeInRight" data-wow-duration="1.5s" {...plans}>
                         {fetchHome.plans.Plans.map((item , i) => (
                             <Package 
                                 key={i} 
@@ -572,11 +225,165 @@ export default function Home({fetchHome}) {
                                 SalesNum={item.SalesNum}
                             />
                         ))}
-                    </OwlCarousel>
+                    </OwlCarousel> */}
 
-                    <div className="buttons text-center mx-auto pt-3 mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out">
+
+                    {/* <table class="table table-borderless table-striped table-hover text-center table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col-4" class="head-th">Features</th>
+                                <th scope="col-2" class="head-th">Starter</th>
+                                <th scope="col-4" class="most-pop-th-td head-th">Growth</th>
+                                <th scope="col-2" class="head-th">Ultimate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color: grey">Branch</td>
+                                <td>1</td>
+                                <td class="most-pop-th-td">2</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td style="color: grey">Card Design</td>
+                                <td>1</td>
+                                <td class="most-pop-th-td">3</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td style="color: grey">Location</td>
+                                <td>3</td>
+                                <td class="most-pop-th-td">5</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td style="color: grey">Individual Messages</td>
+                                <td><i class="fa-solid fs-4 fa-check"></i></td>
+                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-check"></i></td>
+                                <td><i class="fa-solid fs-4 fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td style="color: grey">Group Messages</td>
+                                <td><i class="fa-solid fs-4 fa-xmark"></i></td>
+                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-check"></i></td>
+                                <td><i class="fa-solid fs-4 fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td style="color: grey">User</td>
+                                <td>2</td>
+                                <td class="most-pop-th-td">5</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td style="color: grey">Import&Export Data</td>
+                                <td><i class="fa-solid fs-4 fa-xmark"></i></td>
+                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-check"></i></td>
+                                <td><i class="fa-solid fs-4 fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td style="color: grey">Design Edit</td>
+                                <td><i class="fa-solid fs-4 fa-xmark"></i></td>
+                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-xmark"></i></td>
+                                <td><i class="fa-solid fs-4 fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><a href="./check.html" class="btn main-btn w-75 fw-bold">Order</a></td>
+                                <td class="most-pop-th-td"><a href="./check.html" class="btn main-btn w-100 fw-bold">Order</a></td>
+                                <td><a href="./check.html" class="btn main-btn w-75 fw-bold">Order</a></td>
+                            </tr>
+                        </tbody>
+                    </table> */}
+
+                    {/* <div className="buttons text-center mx-auto pt-3 mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out">
                         <Link to='../contact' className="btn black-btn w-75 text-capitalize">{isEng ? 'For yearly Contract Contact Us' : 'لإبرام عقد سنوي تواصل معنـــا'}</Link>
-                    </div>
+                    </div> */}
+
+
+                    <table className="table table-home borderless table-striped table-hover table-responsive text-center">
+                        
+                        <thead>
+                            <tr>
+                                <th scope='col-4' className={isEng ? 'side-en' : 'side-ar'} style={{backgroundColor: 'var(--mainColor)'}}>{isEng ? fetchHome.plans2.Plans[0].TitleEn : fetchHome.plans2.Plans[0].TitleAr}</th>
+                                {isEng ? 
+                                    fetchHome.plans2.Plans[0].DataEn.map((item , i) => (
+                                        <th key={i} scope='col-2'>{item}</th>
+                                    )) : 
+                                    fetchHome.plans2.Plans[0].DataAr.map((item , i) => (
+                                        <th key={i} scope='col-2'>{item}</th>
+                                    ))
+                                }
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[1].TitleEn : fetchHome.plans2.Plans[1].TitleAr}</td>                                
+                                {fetchHome.plans2.Plans[1].DataEn.map((item , i) => (
+                                    <td key={i}>{item} Admins</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[2].TitleEn : fetchHome.plans2.Plans[2].TitleAr}</td>
+                                {fetchHome.plans2.Plans[2].DataEn.map((item , i) => (
+                                    <td key={i}>{item}</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[3].TitleEn : fetchHome.plans2.Plans[3].TitleAr}</td>
+                                {fetchHome.plans2.Plans[3].DataEn.map((item , i) => (
+                                    <td key={i}>{item} {isEng ? 'Months' : item > 10 ? 'شهر' : 'شهور'}</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[4].TitleEn : fetchHome.plans2.Plans[4].TitleAr}</td>
+                                {fetchHome.plans2.Plans[4].DataEn.map((item , i) => (
+                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[5].TitleEn : fetchHome.plans2.Plans[5].TitleAr}</td>
+                                {fetchHome.plans2.Plans[5].DataEn.map((item , i) => (
+                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[6].TitleEn : fetchHome.plans2.Plans[6].TitleAr}</td>
+                                {fetchHome.plans2.Plans[6].DataEn.map((item , i) => (
+                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[7].TitleEn : fetchHome.plans2.Plans[7].TitleAr}</td>
+                                {fetchHome.plans2.Plans[7].DataEn.map((item , i) => (
+                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[8].TitleEn : fetchHome.plans2.Plans[8].TitleAr}</td>
+                                {fetchHome.plans2.Plans[8].DataEn.map((item , i) => (
+                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                ))}
+                            </tr>
+                            <tr>
+                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[9].TitleEn : fetchHome.plans2.Plans[9].TitleAr}</td>
+                                {fetchHome.plans2.Plans[9].DataEn.map((item , i) => (
+                                    <td key={i}>{item} $ <span className='text-muted' style={{fontWeight: 600}}>{isEng ? 'per month' : 'في الشهر'}</span></td>
+                                ))}
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td className='last'></td>
+                                <td className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
+                                <td className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
+                                <td className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
+                                <td className='last'><Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link></td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
                 </div>
             </section>
         </>

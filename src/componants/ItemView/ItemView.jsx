@@ -7,8 +7,8 @@ export default function ItemView({showUpdate , setItemDetails , getItemDetails ,
     <>
         {Visits.map((item , i) => (
             <tr key={i}>
-                <td style={{cursor : 'pointer'}} onClick={(() => {
-                    showUpdate();
+                <td style={{cursor : 'pointer'}}  data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(() => {
+                    // showUpdate();
                     setItemDetails( item.VisitImage , item.VisitAmmount , item.Note , getItemDetails)
                 })}>{item.Client}</td>
                 <td>{item.Phone}</td>
@@ -19,3 +19,8 @@ export default function ItemView({showUpdate , setItemDetails , getItemDetails ,
     </>
   )
 }
+
+            {/* Button trigger modal */}
+            // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            //     Launch demo modal
+            // </button>

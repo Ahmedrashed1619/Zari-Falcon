@@ -203,9 +203,9 @@ export default function Signin({baseURL, saveUserData}) {
                                         <button type='submit' className="btn black-btn py-3 text-capitalize wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : isEng ? 'Sign in' : 'تسجيل الدخول'}</button>
                                     </div>
 
-                                    <h6 className='fw-bold mb-0 d-flex justify-content-center align-items-center'>Don’t have an account? 
-                                        <Link to='../signup' className='fw-bold main-color mb-0 ms-1 text-decoration-underline' 
-                                            style={{cursor : 'pointer'}}> Sign up
+                                    <h6 className='fw-bold mb-0 d-flex justify-content-center align-items-center'>{isEng ? 'Don’t have an account? ' : 'ليس لديك حســاب؟ '}
+                                        <Link to='../signup' className={`fw-bold main-color mb-0 ${isEng ? 'ms-1' : 'me-1'} text-decoration-underline`}
+                                            style={{cursor : 'pointer'}}>{isEng ? 'Sign up' : 'سجـل'}
                                         </Link>
                                     </h6>
                                 </form>

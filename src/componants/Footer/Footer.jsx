@@ -2,6 +2,7 @@ import React, { useContext , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { langContext } from '../context/store';
 import imgFooter from '../images/zari-logo-white.png';
+import logofooter from '../images/logofooter.png';
 import $ from 'jquery';
 import WOW from 'wowjs';
 
@@ -59,7 +60,7 @@ export default function Footer({activeLink, userData}) {
                         <div className="col-lg-4 col-md-6">
                             <div className="logo-footer">
                                 <div className="cont-imgFooter foot">
-                                    <img src={imgFooter} className="w-75" alt="zari logo"/>
+                                    <img src={logofooter} className="w-75" alt="zari logo"/>
                                 </div>
                                 {/* <p>{isEng ? `Zari is a Saudi-Egyptian company among a group of companies operating in more than one field
                                     in Saudi Arabia and the Middle East.` : 'حلول زاري لتقنية المعلومات شركة سعودية تعمل علي تطوير الأعمال وأن نكون شركاء نجاح مع قطاعات الأعمال المختلفة لتطوير أعمالهم من خلال تقديم حلول تقنية ةتسويقية. '}
@@ -125,7 +126,7 @@ export default function Footer({activeLink, userData}) {
                                 </div>
                                 <div className="d-flex justify-content-start align-items-center">
                                     <span className={`${isEng ? 'me-3' : 'ms-3'}`}><i className="fa-solid fa-envelope"></i></span>
-                                    <a className='mt-0' rel="noopener noreferrer" target="_blank" href="mailto: info@zarifalcon.com">info@zarifalcon.com</a>
+                                    <a className='mt-0' rel="noopener noreferrer" target="_blank" href="mailto: info@zarisolution.com">info@zarisolution.com</a>
                                 </div>
                             </div>
                         </div>

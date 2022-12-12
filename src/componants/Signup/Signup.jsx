@@ -269,9 +269,9 @@ export default function Signup({baseURL, saveUserData}) {
                                         <button type='submit' className="btn black-btn py-3 text-capitalize">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : isEng ? 'Sign up' : 'إشتـــراك'}</button>
                                     </div>
 
-                                    <h6 className='fw-bold mb-0 d-flex justify-content-center align-items-center'>Already have an account? 
-                                        <Link to='../signin' className='fw-bold main-color mb-0 ms-1 text-decoration-underline' 
-                                            style={{cursor : 'pointer'}}> Sign in
+                                    <h6 className='fw-bold mb-0 d-flex justify-content-center align-items-center'>{isEng ? 'Already have an account? ' : 'لديك بالفعل حســاب؟ '}
+                                        <Link to='../signin' className={`fw-bold main-color mb-0 ${isEng ? 'ms-1' : 'me-1'} text-decoration-underline`}
+                                            style={{cursor : 'pointer'}}>{isEng ? 'Sign in' : 'تسجيل الدخول'}
                                         </Link>
                                     </h6>
 

@@ -195,192 +195,192 @@ export default function View({fetchSales , token , baseURL}) {
 
     const getIDSales = (id) => {
         setIdSales(id)
-      }
-    
-      const getFromDate = (index) => {
-        setFromDate(index)
-      }
+    }
 
-      const getToDate = (index) => {
-        setToDate(index)
-      }
+    const getFromDate = (index) => {
+    setFromDate(index)
+    }
 
-      let apiURL = `${baseURL}report/visit`;
+    const getToDate = (index) => {
+    setToDate(index)
+    }
 
-    
-    
-      async function getReport(e) {
-        e.preventDefault();
-        setLoadind(true);
-        await axios.post(apiURL, {
-            IDSales: idSales,
-            DateFrom: fromDate,
-            DateTo: toDate,
-        }, {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token,
-            // 'Access-Control-Allow-Origin': '*',
-            // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-        }
+    let apiURL = `${baseURL}report/visit`;
+
+
+
+    async function getReport(e) {
+    e.preventDefault();
+    setLoadind(true);
+    await axios.post(apiURL, {
+        IDSales: idSales,
+        DateFrom: fromDate,
+        DateTo: toDate,
+    }, {
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        // 'Access-Control-Allow-Origin': '*',
+        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+    }
+    })
+    .then(res => {
+        setStatus(res.data.Status);
+        setFetchData(res.data.Shifts);
+        setLoadind(false);
+        setShow(false);
         })
-        .then(res => {
-            setStatus(res.data.Status);
-            setFetchData(res.data.Shifts);
-            setLoadind(false);
-            setShow(false);
-         })
-         .catch((error) => {
-           console.log(error)
-         });
-      }
+        .catch((error) => {
+        console.log(error)
+        });
+    }
 
-      
+    
 
 
-  return (
-    <>
-        <div className="topbar">
-            <div className="toggle-topbar" onClick={() => {
-                toggleOpen();
-                widthBody();
-            }}>
-                <FaBars />
-            </div>
-            <div className="search-topbar">
-                <div className="group">
-                    <input type="text" onChange={(e) => {
-                        setSearch(e.target.value)
-                      }}
-                      placeholder='Search by Name..' style={{fontSize: '14px'}}/>
-                    <BsSearch />
+    return (
+        <>
+            <div className="topbar">
+                <div className="toggle-topbar" onClick={() => {
+                    toggleOpen();
+                    widthBody();
+                }}>
+                    <FaBars />
+                </div>
+                <div className="search-topbar">
+                    <div className="group">
+                        <input type="text" onChange={(e) => {
+                            setSearch(e.target.value)
+                        }}
+                        placeholder='Search by Name..' style={{fontSize: '14px'}}/>
+                        <BsSearch />
+                    </div>
+                </div>
+                <div className="user-img">
+                    <img src={userImg2} alt="user" />
                 </div>
             </div>
-            <div className="user-img">
-                <img src={userImg2} alt="user" />
-            </div>
-        </div>
 
 
-        <section className='dashpage sales-page py-5 position-relative'>
+            <section className='dashpage sales-page py-5 position-relative'>
 
-            <div className="link-entries mb-5">
-                <form onSubmit={getReport}>
-                    <div className="row d-flex justify-content-center align-items-center gy-4">
+                <div className="link-entries mb-5">
+                    <form onSubmit={getReport}>
+                        <div className="row d-flex justify-content-center align-items-center gy-4">
 
-                        <div className="col-12">
-                            <div className="row d-flex justify-content-center align-items-center gy-4">
-                                <div className="col-md-4 col-11">
-                                    <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
-                                    <select  name="salesLocation" onChange={(e) => {getIDSales(e.target.value)}} required className='bg-input py-2 form-select' id="sales-name">
-                                        <option>Choose Name..</option>
-                                        {fetchSales.map((item , i) => (
-                                            <option key={i} value={item.IDSales}>{item.Name}</option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                <div className="col-md-4 col-11">
-                                    <label htmlFor="fromdate" className='mb-2 h6 fw-bold'>From Date</label>
-                                    <div className="input-date">
-                                        <input type="date" onChange={(e) => {getFromDate(e.target.value)}} className='bg-input form-control py-2 mx-auto' required name="fromdate" id="fromdate" />
+                            <div className="col-12">
+                                <div className="row d-flex justify-content-center align-items-center gy-4">
+                                    <div className="col-md-4 col-11">
+                                        <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
+                                        <select  name="salesLocation" onChange={(e) => {getIDSales(e.target.value)}} required className='bg-input py-2 form-select' id="sales-name">
+                                            <option>Choose Name..</option>
+                                            {fetchSales.map((item , i) => (
+                                                <option key={i} value={item.IDSales}>{item.Name}</option>
+                                            ))}
+                                        </select>
                                     </div>
-                                </div>
 
-                                <div className="col-md-4 col-11">
-                                    <label htmlFor="enddate" className='mb-2 h6 fw-bold'>To Date</label>
-                                    <div className="input-date">
-                                        <input type="date" onChange={(e) => {getToDate(e.target.value)}} className='bg-input form-control py-2 mx-auto' required name="enddate" id="enddate" />
+                                    <div className="col-md-4 col-11">
+                                        <label htmlFor="fromdate" className='mb-2 h6 fw-bold'>From Date</label>
+                                        <div className="input-date">
+                                            <input type="date" onChange={(e) => {getFromDate(e.target.value)}} className='bg-input form-control py-2 mx-auto' required name="fromdate" id="fromdate" />
+                                        </div>
                                     </div>
+
+                                    <div className="col-md-4 col-11">
+                                        <label htmlFor="enddate" className='mb-2 h6 fw-bold'>To Date</label>
+                                        <div className="input-date">
+                                            <input type="date" onChange={(e) => {getToDate(e.target.value)}} className='bg-input form-control py-2 mx-auto' required name="enddate" id="enddate" />
+                                        </div>
+                                    </div>
+
                                 </div>
-
                             </div>
-                        </div>
 
-                        <div className="col-6 col-md-4 col-lg-3">
-                            <div className="btn-location">
-                                <button type='submit' className='btn black-btn px-3 d-flex justify-content-center align-items-center w-100' style={{marginTop : '20px' , paddingTop : '9px' , paddingBottom : '9px'}} >
-                                    {loadind ? <i className="fa fa-spinner fa-spin text-white fs-3 px-4"></i> : 'Find Route'}
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
-            { show ? 
-                    <div className="img-report">
-                        <img src={imgreport} alt="img-report" />
-                    </div>
-                    :
-                    status === true && fetchData.length > 0 ? 
-                    <>
-                        {fetchData.map((item , i) => (
-                            <React.Fragment key={i} >
-                                <div className="d-flex justify-content-between align-items-center mb-4">
-                                    <h6 className='mb-0 text-muted fw-bold'>Start Date: <a className='main-color' href={`http://maps.google.com/?q=${item.UserShiftStartLatitude},${item.UserShiftStartLongitude}`} target="_blank" rel="noopener noreferrer">{item.StartDate}</a></h6>
-                                    <h6 className='mb-0 text-muted fw-bold'>End Date: <a className='main-color' href={`http://maps.google.com/?q=${item.UserShiftEndLatitude},${item.UserShiftEndLongitude}`} target="_blank" rel="noopener noreferrer">{item.EndDate}</a></h6>
-                                </div>            
-                                <div className="total-table mb-5">
-                                    <table className="table text-center table-hover">
-                                        <thead className="bg-input">
-                                            <tr>
-                                            <th scope="col">Client Name</th>
-                                            <th scope="col">Mobile Number</th>
-                                            <th scope="col">Check-In</th>
-                                            <th scope="col">Check-Out</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <ItemView
-                                                    // key={i}
-                                                    showUpdate={showUpdate}
-                                                    setItemDetails={setItemDetails}
-                                                    getItemDetails={getItemDetails}
-                                                    Visits={item.Visits}
-                                                />
-                                        </tbody>
-                                    </table>
+                            <div className="col-6 col-md-4 col-lg-3">
+                                <div className="btn-location">
+                                    <button type='submit' className='btn black-btn px-3 d-flex justify-content-center align-items-center w-100' style={{marginTop : '20px' , paddingTop : '9px' , paddingBottom : '9px'}} >
+                                        {loadind ? <i className="fa fa-spinner fa-spin text-white fs-3 px-4"></i> : 'Find Route'}
+                                    </button>
                                 </div>
-                            </React.Fragment>
-                        ))}
-                    </> : 
-                    
-                    status === true && fetchData.length < 1 ? 
-                    <h2 className='fw-bold mb-0 text-center'>NOT DATA....</h2> : 
-                    <h2 className='fw-bold mb-0 text-center'>Vendor Not Found..</h2>
-            }
+                            </div>
 
-        </section>
+                        </div>
+                    </form>
+                </div>
+
+                { show ? 
+                <div className="img-report">
+                    <img src={imgreport} alt="img-report" />
+                </div>
+                :
+                status === true && fetchData.length > 0 ? 
+                <>
+                    {fetchData.map((item , i) => (
+                        <React.Fragment key={i} >
+                            <div className="d-flex justify-content-between align-items-center mb-4">
+                                <h6 className='mb-0 text-muted fw-bold'>Start Date: <a className='main-color' href={`http://maps.google.com/?q=${item.UserShiftStartLatitude},${item.UserShiftStartLongitude}`} target="_blank" rel="noopener noreferrer">{item.StartDate}</a></h6>
+                                <h6 className='mb-0 text-muted fw-bold'>End Date: <a className='main-color' href={`http://maps.google.com/?q=${item.UserShiftEndLatitude},${item.UserShiftEndLongitude}`} target="_blank" rel="noopener noreferrer">{item.EndDate}</a></h6>
+                            </div>            
+                            <div className="total-table mb-5">
+                                <table className="table text-center table-hover">
+                                    <thead className="bg-input">
+                                        <tr>
+                                        <th scope="col">Client Name</th>
+                                        <th scope="col">Mobile Number</th>
+                                        <th scope="col">Check-In</th>
+                                        <th scope="col">Check-Out</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <ItemView
+                                                // key={i}
+                                                showUpdate={showUpdate}
+                                                setItemDetails={setItemDetails}
+                                                getItemDetails={getItemDetails}
+                                                Visits={item.Visits}
+                                            />
+                                    </tbody>
+                                </table>
+                            </div>
+                        </React.Fragment>
+                    ))}
+                </> : 
+                
+                status === true && fetchData.length < 1 ? 
+                <h2 className='fw-bold mb-0 text-center'>NOT DATA....</h2> : 
+                <h2 className='fw-bold mb-0 text-center'>Vendor Not Found..</h2>
+                }
+
+            </section>
 
 
 
+            {/* Modal */}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content p-4 position-relative">
 
-        <div className="update-section d-none justify-content-center align-items-center" style={{backgroundColor: '#00000099'}}>
-            <div className="row size-row">
-                <div className="col-12">
-                    <div className="cont-update position-relative bg-white p-4 rounded-4">
-                        <AiOutlineClose onClick={hiddenUpdate} style={{padding: '2px', borderRadius: '50%', border: '1px solid #000', color : '#000', position : 'absolute', top : '3%', right : '5%', fontSize : '24px', cursor : 'pointer'}}/>
-                        <h3 className='mb-3 text-center fw-bold'>Client Details</h3>
-                        <label className='text-muted mb-2' htmlFor="invoice">Invoice</label>
-                        {invoice ? <>
-                                        <img src={invoice} className='mb-4 w-100 rounded-4' style={{height: '250px'}} alt="invoice" />
-                                        <a href={invoice} download className='btn black-btn d-flex justify-content-center align-items-center mx-auto py-2'><HiOutlineDownload className='fs-5 me-2'/>Download Invoice</a>
-                                    </> : ''
-                        }
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h3 className='mb-3 text-center fw-bold'>Client Details</h3>
+                            {invoice ?  <>
+                                            <label className='text-muted mb-2' htmlFor="invoice">Invoice</label>
+                                            <img src={invoice} className='mb-4 w-100 rounded-4' style={{height: '250px'}} alt="invoice" />
+                                            <a href={invoice} download className='btn black-btn d-flex justify-content-center align-items-center mx-auto py-2'><HiOutlineDownload className='fs-5 me-2'/>Download Invoice</a>
+                                        </> : ''
+                            }
 
-                        <label htmlFor="amount" className='my-2'>Amount</label>
-                        <input type="text" value={amount} name="amount" id="amount" className='mb-3 form-control bg-transparent mx-auto py-2 fs-5' readOnly/>
+                            <label htmlFor="amount" className='my-2'>Amount</label>
+                            <input type="text" value={amount} name="amount" id="amount" className='mb-3 form-control bg-transparent mx-auto py-2 fs-5' readOnly/>
 
-                        <label htmlFor="note" className='mb-2'>Note</label>
-                        <textarea name="note" id="note" className='form-control bg-transparent mx-auto' value={note} readOnly></textarea>
+                            <label htmlFor="note" className='mb-2'>Note</label>
+                            <textarea name="note" id="note" className='form-control bg-transparent mx-auto' value={note} readOnly></textarea>
+
                     </div>
                 </div>
             </div>
-        </div>
 
-    </>
-  )
+        </>
+    )
 }

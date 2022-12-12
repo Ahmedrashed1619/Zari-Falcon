@@ -10,7 +10,7 @@ export default function ItemClient({ClientName , ClientAddress , ClientMobile , 
             <tr>
                 <td onClick={() => {
                     // showUpdate();
-                    setItemDetails( ClientInvoice , ClientAmount , ClientNote , getItemDetails);
+                    // setItemDetails( ClientInvoice , ClientAmount , ClientNote , getItemDetails);
                 }}>{ClientName}</td>
                 <td>{ClientMobile}</td>
                 {/* <td>Vendor Name</td> */}
