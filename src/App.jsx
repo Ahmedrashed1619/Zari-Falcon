@@ -36,8 +36,7 @@ function App() {
   let baseURL = 'https://backend.zarifalcon.com/api/dashboard/';
 
 
-
-  const [token, setToken] = useState(localStorage.getItem('userToken'))
+  let token = localStorage.getItem('userToken') ;
 
   
   const activeLink = (e) => {

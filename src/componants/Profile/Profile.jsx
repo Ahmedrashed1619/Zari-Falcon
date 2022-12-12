@@ -284,7 +284,7 @@ export default function Profile({token , getUpdateData , baseURL , fetchUpdateDa
             <div className="dashpage addsales-page py-5">
                 <div className="mb-5">
                     <div className="note-page">
-                        <button>Add New User</button>
+                        <button>Personal Information</button>
                     </div>
                 </div>
 

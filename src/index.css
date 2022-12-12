@@ -1857,7 +1857,7 @@ textarea {
 }
 
 ::-webkit-scrollbar {
-  width: 0.85rem;
+  width: 0.8rem;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1867,6 +1867,7 @@ textarea {
 
 ::-webkit-scrollbar-track {
   background-color: var(--secondColor) !important;
+  border-radius: 20px !important;
 }
 
 
@@ -1978,6 +1979,8 @@ tfoot {
 }
 
 @media screen and (max-width: 570px) {
+
+
   .table.table-home tr th {
     font-size: 0.85rem !important;
   }
@@ -2005,3 +2008,10 @@ tfoot {
 
 }
 
+
+@media screen and (max-width: 450px) {
+  .table-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

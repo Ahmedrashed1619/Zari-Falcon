@@ -51,7 +51,7 @@ export default function Home({fetchHome}) {
     useEffect(() => {
         setArr(fetchHome.plans.Plans)
     }, [arr])
-    
+
     
     // const plans = {
     //     items: arr.length,
@@ -299,91 +299,94 @@ export default function Home({fetchHome}) {
                         <Link to='../contact' className="btn black-btn w-75 text-capitalize">{isEng ? 'For yearly Contract Contact Us' : 'لإبرام عقد سنوي تواصل معنـــا'}</Link>
                     </div> */}
 
+                    <div className="table-scroll" data-aos="fade-in" data-aos-duration="1500" data-aos-easing="ease-in">
+                        <table className="table table-home borderless table-striped table-hover table-responsive text-center">
+                            
+                            <thead>
+                                <tr>
+                                    <th scope='col-4' className={isEng ? 'side-en' : 'side-ar'} style={{backgroundColor: 'var(--mainColor)'}}>{isEng ? fetchHome.plans2.Plans[0].TitleEn : fetchHome.plans2.Plans[0].TitleAr}</th>
+                                    {isEng ? 
+                                        fetchHome.plans2.Plans[0].DataEn.map((item , i) => (
+                                            <th key={i} scope='col-2'>{item}</th>
+                                        )) : 
+                                        fetchHome.plans2.Plans[0].DataAr.map((item , i) => (
+                                            <th key={i} scope='col-2'>{item}</th>
+                                        ))
+                                    }
+                                </tr>
+                            </thead>
 
-                    <table className="table table-home borderless table-striped table-hover table-responsive text-center">
-                        
-                        <thead>
-                            <tr>
-                                <th scope='col-4' className={isEng ? 'side-en' : 'side-ar'} style={{backgroundColor: 'var(--mainColor)'}}>{isEng ? fetchHome.plans2.Plans[0].TitleEn : fetchHome.plans2.Plans[0].TitleAr}</th>
-                                {isEng ? 
-                                    fetchHome.plans2.Plans[0].DataEn.map((item , i) => (
-                                        <th key={i} scope='col-2'>{item}</th>
-                                    )) : 
-                                    fetchHome.plans2.Plans[0].DataAr.map((item , i) => (
-                                        <th key={i} scope='col-2'>{item}</th>
-                                    ))
-                                }
-                            </tr>
-                        </thead>
+                            <tbody>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[1].TitleEn : fetchHome.plans2.Plans[1].TitleAr}</td>                                
+                                    {fetchHome.plans2.Plans[1].DataEn.map((item , i) => (
+                                        <td key={i}>{item} {isEng ? 'Admins' : 'أدمـن'}</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[2].TitleEn : fetchHome.plans2.Plans[2].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[2].DataEn.map((item , i) => (
+                                        <td key={i}>{item}</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[3].TitleEn : fetchHome.plans2.Plans[3].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[3].DataEn.map((item , i) => (
+                                        <td key={i}>{item} {isEng ? 'Months' : item > 10 ? 'شهر' : 'شهور'}</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[4].TitleEn : fetchHome.plans2.Plans[4].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[4].DataEn.map((item , i) => (
+                                        <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[5].TitleEn : fetchHome.plans2.Plans[5].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[5].DataEn.map((item , i) => (
+                                        <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[6].TitleEn : fetchHome.plans2.Plans[6].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[6].DataEn.map((item , i) => (
+                                        <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[7].TitleEn : fetchHome.plans2.Plans[7].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[7].DataEn.map((item , i) => (
+                                        <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[8].TitleEn : fetchHome.plans2.Plans[8].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[8].DataEn.map((item , i) => (
+                                        <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[9].TitleEn : fetchHome.plans2.Plans[9].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[9].DataEn.map((item , i) => (
+                                        <td key={i}>{item} $ <span className='text-muted' style={{fontWeight: 600}}>{isEng ? 'per month' : 'في الشهر'}</span></td>
+                                    ))}
+                                </tr>
+                            </tbody>
 
-                        <tbody>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[1].TitleEn : fetchHome.plans2.Plans[1].TitleAr}</td>                                
-                                {fetchHome.plans2.Plans[1].DataEn.map((item , i) => (
-                                    <td key={i}>{item} Admins</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[2].TitleEn : fetchHome.plans2.Plans[2].TitleAr}</td>
-                                {fetchHome.plans2.Plans[2].DataEn.map((item , i) => (
-                                    <td key={i}>{item}</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[3].TitleEn : fetchHome.plans2.Plans[3].TitleAr}</td>
-                                {fetchHome.plans2.Plans[3].DataEn.map((item , i) => (
-                                    <td key={i}>{item} {isEng ? 'Months' : item > 10 ? 'شهر' : 'شهور'}</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[4].TitleEn : fetchHome.plans2.Plans[4].TitleAr}</td>
-                                {fetchHome.plans2.Plans[4].DataEn.map((item , i) => (
-                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[5].TitleEn : fetchHome.plans2.Plans[5].TitleAr}</td>
-                                {fetchHome.plans2.Plans[5].DataEn.map((item , i) => (
-                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[6].TitleEn : fetchHome.plans2.Plans[6].TitleAr}</td>
-                                {fetchHome.plans2.Plans[6].DataEn.map((item , i) => (
-                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[7].TitleEn : fetchHome.plans2.Plans[7].TitleAr}</td>
-                                {fetchHome.plans2.Plans[7].DataEn.map((item , i) => (
-                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[8].TitleEn : fetchHome.plans2.Plans[8].TitleAr}</td>
-                                {fetchHome.plans2.Plans[8].DataEn.map((item , i) => (
-                                    <td key={i}>{item === '1' ? <BsFillCheckCircleFill className='fs-4 main-color'/> : <i className="fa-solid fa-circle-xmark fs-4 main-color"></i> }</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[9].TitleEn : fetchHome.plans2.Plans[9].TitleAr}</td>
-                                {fetchHome.plans2.Plans[9].DataEn.map((item , i) => (
-                                    <td key={i}>{item} $ <span className='text-muted' style={{fontWeight: 600}}>{isEng ? 'per month' : 'في الشهر'}</span></td>
-                                ))}
-                            </tr>
-                        </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td className='last'>{isEng ? fetchHome.plans2.Plans[10].TitleEn : fetchHome.plans2.Plans[10].TitleAr}</td>
+                                    {fetchHome.plans2.Plans[10].DataEn.map((item , i) => (
+                                        item === 1 ? 
+                                        <td key={i} className='last'><Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link></td>
+                                        :
+                                        <td key={i} className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
+                                    ))}
+                                </tr>
+                            </tfoot>
 
-                        <tfoot>
-                            <tr>
-                                <td className='last'></td>
-                                <td className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
-                                <td className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
-                                <td className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
-                                <td className='last'><Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link></td>
-                            </tr>
-                        </tfoot>
-
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </section>
         </>
