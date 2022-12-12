@@ -1,7 +1,7 @@
 {
-  "main.css": "/Zari-Falcon/static/css/main.e2dbb1b1.chunk.css",
-  "main.js": "/Zari-Falcon/static/js/main.4e4d3515.chunk.js",
-  "main.js.map": "/Zari-Falcon/static/js/main.4e4d3515.chunk.js.map",
+  "main.css": "/Zari-Falcon/static/css/main.b37ec87d.chunk.css",
+  "main.js": "/Zari-Falcon/static/js/main.ed4fe7b8.chunk.js",
+  "main.js.map": "/Zari-Falcon/static/js/main.ed4fe7b8.chunk.js.map",
   "static/js/1.a60f3433.chunk.js": "/Zari-Falcon/static/js/1.a60f3433.chunk.js",
   "static/js/1.a60f3433.chunk.js.map": "/Zari-Falcon/static/js/1.a60f3433.chunk.js.map",
   "static/css/2.bedc4568.chunk.css": "/Zari-Falcon/static/css/2.bedc4568.chunk.css",
@@ -16,10 +16,10 @@
   "static/media/404 Error Page not Found.png": "/Zari-Falcon/static/media/404 Error Page not Found.342de700.png",
   "static/media/signin.png": "/Zari-Falcon/static/media/signin.a7766b1c.png",
   "static/media/signup.png": "/Zari-Falcon/static/media/signup.ebc1d025.png",
-  "static/media/all.css": "/Zari-Falcon/static/media/fa-v4compatibility.36818ecc.ttf",
+  "static/media/all.css": "/Zari-Falcon/static/media/fa-v4compatibility.6ddaf31a.woff2",
+  "static/css/main.b37ec87d.chunk.css.map": "/Zari-Falcon/static/css/main.b37ec87d.chunk.css.map",
   "static/css/2.bedc4568.chunk.css.map": "/Zari-Falcon/static/css/2.bedc4568.chunk.css.map",
-  "static/css/main.e2dbb1b1.chunk.css.map": "/Zari-Falcon/static/css/main.e2dbb1b1.chunk.css.map",
   "index.html": "/Zari-Falcon/index.html",
-  "precache-manifest.61c0c488e94c7e553decbe489a0e2ff0.js": "/Zari-Falcon/precache-manifest.61c0c488e94c7e553decbe489a0e2ff0.js",
+  "precache-manifest.755aeca18d195abc55f4369a4f28c2e9.js": "/Zari-Falcon/precache-manifest.755aeca18d195abc55f4369a4f28c2e9.js",
   "service-worker.js": "/Zari-Falcon/service-worker.js"
 }
