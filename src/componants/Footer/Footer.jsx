@@ -1,7 +1,7 @@
 import React, { useContext , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { langContext } from '../context/store';
-import imgFooter from '../images/zari-logo-white.png';
+// import imgFooter from '../images/zari-logo-white.png';
 import logofooter from '../images/logofooter.png';
 import $ from 'jquery';
 import WOW from 'wowjs';

@@ -5,7 +5,7 @@ import { langContext } from '../context/store';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import AOS from 'aos';
-import OwlCarousel from 'react-owl-carousel';
+// import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useState } from 'react';

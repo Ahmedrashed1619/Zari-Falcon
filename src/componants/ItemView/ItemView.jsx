@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ItemView({showUpdate , setItemDetails , getItemDetails , Visits}) {
+export default function ItemView({ setItemDetails , getItemDetails , Visits}) {
     
 
   return (
@@ -19,8 +19,3 @@ export default function ItemView({showUpdate , setItemDetails , getItemDetails ,
     </>
   )
 }
-
-            {/* Button trigger modal */}
-            // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            //     Launch demo modal
-            // </button>

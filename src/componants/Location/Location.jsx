@@ -18,14 +18,14 @@ export default function Location({fetchSales , token , baseURL}) {
   let { isOpen , toggleOpen } = useContext(langContext);
 
 
-  const closeNavLink = () => {
-    if(isOpen === false && $('body').width() < 570) {
-        $('.sidebar').animate({'left' : '-240px'} , 500);
-        setTimeout(() => {
-            toggleOpen();
-        }, 500);
-    }
-  }
+  // const closeNavLink = () => {
+  //   if(isOpen === false && $('body').width() < 570) {
+  //       $('.sidebar').animate({'left' : '-240px'} , 500);
+  //       setTimeout(() => {
+  //           toggleOpen();
+  //       }, 500);
+  //   }
+  // }
   
   
   function widthBody() {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
-import { AiOutlineClose } from 'react-icons/ai';
+// import { AiOutlineClose } from 'react-icons/ai';
 import { HiOutlineDownload } from 'react-icons/hi';
 import userImg2 from '../images/home/Rectangle 143.png';
 import $ from 'jquery';
@@ -20,27 +20,27 @@ export default function View({fetchSales , token , baseURL}) {
     let { isOpen , toggleOpen } = useContext(langContext);
 
 
-    const closeNavLink = () => {
-      if(isOpen === false && $('body').width() < 570) {
-          $('.sidebar').animate({'left' : '-240px'} , 500);
-          setTimeout(() => {
-              toggleOpen();
-          }, 500);
-      }
-    }
+    // const closeNavLink = () => {
+    //   if(isOpen === false && $('body').width() < 570) {
+    //       $('.sidebar').animate({'left' : '-240px'} , 500);
+    //       setTimeout(() => {
+    //           toggleOpen();
+    //       }, 500);
+    //   }
+    // }
 
 
-    const showUpdate = () => {
-        $('.sales-page.position-relative').addClass('vh-105');
-        $('.update-section').removeClass('d-none');
-        $('.update-section').addClass('d-flex');
-    }
+    // const showUpdate = () => {
+    //     $('.sales-page.position-relative').addClass('vh-105');
+    //     $('.update-section').removeClass('d-none');
+    //     $('.update-section').addClass('d-flex');
+    // }
     
-    const hiddenUpdate = () => {
-        $('.sales-page.position-relative').removeClass('vh-105');
-        $('.update-section').addClass('d-none');
-        $('.update-section').removeClass('d-flex');
-    }
+    // const hiddenUpdate = () => {
+    //     $('.sales-page.position-relative').removeClass('vh-105');
+    //     $('.update-section').addClass('d-none');
+    //     $('.update-section').removeClass('d-flex');
+    // }
 
 
     const [invoice, setInvoice] = useState('');
@@ -187,7 +187,7 @@ export default function View({fetchSales , token , baseURL}) {
     
 
 
-    const [search, setSearch] = useState('')
+    // const [search, setSearch] = useState('')
 
     const [idSales, setIdSales] = useState('');
     const [fromDate, setFromDate] = useState('');
@@ -248,7 +248,7 @@ export default function View({fetchSales , token , baseURL}) {
                 }}>
                     <FaBars />
                 </div>
-                <div className="search-topbar">
+                {/* <div className="search-topbar">
                     <div className="group">
                         <input type="text" onChange={(e) => {
                             setSearch(e.target.value)
@@ -256,7 +256,7 @@ export default function View({fetchSales , token , baseURL}) {
                         placeholder='Search by Name..' style={{fontSize: '14px'}}/>
                         <BsSearch />
                     </div>
-                </div>
+                </div> */}
                 <div className="user-img">
                     <img src={userImg2} alt="user" />
                 </div>
@@ -336,7 +336,7 @@ export default function View({fetchSales , token , baseURL}) {
                                     <tbody>
                                             <ItemView
                                                 // key={i}
-                                                showUpdate={showUpdate}
+                                                // showUpdate={showUpdate}
                                                 setItemDetails={setItemDetails}
                                                 getItemDetails={getItemDetails}
                                                 Visits={item.Visits}

@@ -8,15 +8,9 @@ import { FaBars } from 'react-icons/fa';
 import userImg2 from '../images/home/Rectangle 143.png';
 
 
-// import img1 from '../images/dashboard/Group 10 (2).png';
-// import img2 from '../images/dashboard/Group 11 (1).png';
-
-
 
 export default function Statistics({fetchStatistics , objs , objsNot , objs2 , objs2Not , token}) {
 
-
-  // console.log(objs , objsNot);
 
   const [days, setDays] = useState([]);
   const [visits, setVisits] = useState([]);
@@ -47,14 +41,14 @@ export default function Statistics({fetchStatistics , objs , objsNot , objs2 , o
   let { isOpen , toggleOpen } = useContext(langContext);
 
 
-  const closeNavLink = () => {
-    if(isOpen === false && $('body').width() < 570) {
-        $('.sidebar').animate({'left' : '-240px'} , 500);
-        setTimeout(() => {
-            toggleOpen();
-        }, 500);
-    }
-}
+//   const closeNavLink = () => {
+//     if(isOpen === false && $('body').width() < 570) {
+//         $('.sidebar').animate({'left' : '-240px'} , 500);
+//         setTimeout(() => {
+//             toggleOpen();
+//         }, 500);
+//     }
+// }
 
 
 function widthBody() {
@@ -397,8 +391,6 @@ useEffect(() => {
 
   }, [objs2Not])
 
-
-
   const [charts , setCharts] = useState({
 
     series: [{
@@ -449,7 +441,6 @@ useEffect(() => {
       },
     },
   })
-
 
   useEffect(() => {
     setCharts({
