@@ -2,15 +2,13 @@ import React from 'react';
 import { MdOutlineGpsFixed } from 'react-icons/md';
 
 
-export default function ItemClient({ClientName , ClientAddress , ClientMobile , ClientLat , ClientLng , getItemDetails , showUpdate , setItemDetails , ClientInvoice , ClientAmount , ClientNote}) {
+export default function ItemClient({ClientName , ClientAddress , ClientMobile , ClientLat , ClientLng}) {
 
 
     return (
         <>
             <tr>
                 <td onClick={() => {
-                    // showUpdate();
-                    // setItemDetails( ClientInvoice , ClientAmount , ClientNote , getItemDetails);
                 }}>{ClientName}</td>
                 <td>{ClientMobile}</td>
                 {/* <td>Vendor Name</td> */}

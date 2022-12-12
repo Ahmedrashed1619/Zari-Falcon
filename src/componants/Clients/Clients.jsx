@@ -22,9 +22,9 @@ export default function Clients({fetchClients , baseURL}) {
 
 
 
-    const [invoice, setInvoice] = useState('');
-    const [amount, setAmount] = useState('');
-    const [note, setNote] = useState('');
+    // const [invoice, setInvoice] = useState('');
+    // const [amount, setAmount] = useState('');
+    // const [note, setNote] = useState('');
 
 
     // const setItemDetails = (invoice , amount , note , callback ) => {
@@ -41,14 +41,14 @@ export default function Clients({fetchClients , baseURL}) {
     // }
 
 
-    const closeNavLink = () => {
-        if(isOpen === false && $('body').width() < 570) {
-            $('.sidebar').animate({'left' : '-240px'} , 500);
-            setTimeout(() => {
-                toggleOpen();
-            }, 500);
-        }
-    }
+    // const closeNavLink = () => {
+    //     if(isOpen === false && $('body').width() < 570) {
+    //         $('.sidebar').animate({'left' : '-240px'} , 500);
+    //         setTimeout(() => {
+    //             toggleOpen();
+    //         }, 500);
+    //     }
+    // }
 
 
 // const showUpdate = () => {
@@ -288,9 +288,9 @@ const handelPageChange = (data) => {
                                 ClientAddress={item.ClientAddress}
                                 ClientLat={item.ClientLat}
                                 ClientLng={item.ClientLng}
-                                ClientInvoice={invoice}
-                                ClientAmount={amount}
-                                ClientNote={note}
+                                // ClientInvoice={invoice}
+                                // ClientAmount={amount}
+                                // ClientNote={note}
                                 // getItemDetails={getItemDetails}
                                 // setItemDetails={setItemDetails}
                             />

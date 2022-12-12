@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
-import { BsSearch } from 'react-icons/bs';
+// import { BsSearch } from 'react-icons/bs';
 // import { AiOutlineClose } from 'react-icons/ai';
 import { HiOutlineDownload } from 'react-icons/hi';
 import userImg2 from '../images/home/Rectangle 143.png';
