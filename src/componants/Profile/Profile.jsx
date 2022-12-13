@@ -299,14 +299,14 @@ export default function Profile({token , getUpdateData , baseURL , fetchUpdateDa
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6">
+                        {/* <div className="col-md-6">
                             <div className="group-add">
                                 <label className="fs-5 fw-bold" htmlFor="company-name">Company Name</label>
                                 <div className="input-group">
                                     <input type="text" value={companyName} onChange={(e) => {setCompanyName(e.target.value)}} className='bg-transparent mx-auto' name="CompanyName" id="company-name" />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-md-6">
                             <div className="group-add">
                                 <label className="fs-5 fw-bold" htmlFor="UserEmail">Email</label>
@@ -321,6 +321,11 @@ export default function Profile({token , getUpdateData , baseURL , fetchUpdateDa
                                 <div className="input-group">
                                     <input type="tel" value={userPhone} onChange={(e) => {setUserPhone(e.target.value)}} className='bg-transparent mx-auto' name="UserPhone" id="UserPhone" />
                                 </div>
+                            </div>
+                        </div>
+                        <div className="mt-5 mb-4">
+                            <div className="note-page">
+                                <button>Change Password</button>
                             </div>
                         </div>
                         <div className="col-md-6">

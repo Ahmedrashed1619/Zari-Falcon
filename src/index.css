@@ -1800,6 +1800,11 @@ select , select:checked{
 }
 
 
+.apexcharts-toolbar {
+  display: none !important;
+}
+
+
 textarea {
   resize: none;
 }
@@ -1836,7 +1841,7 @@ textarea {
   justify-content: center;
   align-items: center;
   color: var(--mainColor);
-  background-color: rgba(0, 43, 87,0.4);
+  background-color: rgba(0, 43, 87,0.2);
 }
 
 .pagination .page-item:not(:first-child) .page-link {

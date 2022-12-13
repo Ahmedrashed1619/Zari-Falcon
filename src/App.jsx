@@ -267,9 +267,14 @@ function App() {
   // clients list
   const apiClients = `${baseURL}client/list`;
 
+  const [pagesCount, setPagesCount] = useState(0);
+  const [count, setCount] = useState(1);
+
   const [fetchClients, setFetchClients] = useState([])
   async function getClientsList() {
-    await axios.post(apiClients, {}, {
+    await axios.post(apiClients, {
+      IDPage: count,
+    }, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -280,6 +285,7 @@ function App() {
     })
       .then(res => {
         setFetchClients(res.data.Clients);
+        setPagesCount(res.data.Pages)
       })
       .catch((error) => {
         console.log(error)
@@ -289,6 +295,7 @@ function App() {
     if(token) {
       getClientsList();
     }
+  // }, [token , count , pagesCount]);
   }, [token]);
 
 
@@ -446,7 +453,7 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='clients' element={token ? <Clients fetchClients={fetchClients} baseURL={baseURL}/> : <div id="ready">
+          <Route path='clients' element={token ? <Clients fetchClients={fetchClients} baseURL={baseURL} pagesCount={pagesCount} count={count} setCount={setCount} /> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 

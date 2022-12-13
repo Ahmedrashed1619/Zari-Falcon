@@ -560,7 +560,7 @@ useEffect(() => {
 
       <section>
         <div className="row g-4 d-flex justify-content-center align-items-center pb-4">
-          <div className="col-lg-8 col-11">
+          <div className="col-xl-8 col-11">
             <div className="statistic first-statistics p-4 rounded-4 mb-lg-5 mb-3">
               <h5 className='fw-bold'>Daily Visits</h5>
                 <ReactApexChart 
@@ -584,7 +584,7 @@ useEffect(() => {
             </div>
             
           </div>
-          <div className="col-lg-4 col-11">
+          <div className="col-xl-4 col-11">
             <div className="status-visit bg-light p-4 rounded-4">
               <h3 className='fw-bold mb-3'>Today Status</h3>
 

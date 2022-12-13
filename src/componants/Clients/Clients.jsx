@@ -13,12 +13,15 @@ import { useState } from 'react';
 // import { HiOutlineDownload } from 'react-icons/hi';
 import ItemClient from '../ItemClient/ItemClient';
 import ReactPaginate from 'react-paginate';
+import axios from 'axios';
 
 
 
-export default function Clients({fetchClients , baseURL}) {
+export default function Clients({fetchClients , baseURL , pagesCount , count , setCount}) {
 
     let { isOpen , toggleOpen } = useContext(langContext);
+
+    // console.log(pagesCount);
 
 
 
@@ -197,14 +200,34 @@ function sortArrayByName(a , b) {
 
 arr = arr.sort(sortArrayByName);
 
-
-
 const [search, setSearch] = useState('')
 
+// const [count, setCount] = useState(null)
 
-const handelPageChange = (data) => {
-    console.log(data.selected);
-}
+// async function getClientsList() {
+//     await axios.post(apiClients, {
+//         IDPage: count,
+//     }, {
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer ' + token,
+//         }
+//     })
+//         .then(res => {
+//             setFetchClients(res.data.Clients2);
+//         })
+//         .catch((error) => {
+//             console.log(error)
+//         });
+//     }
+
+
+
+// const handelPageChange = (data) => {
+//     setCount(data.selected + 1)
+//     console.log(count);
+// }
 
 
 
@@ -248,16 +271,16 @@ const handelPageChange = (data) => {
                 previousLabel={'<<'}
                 nextLabel={'>>'}
                 breakLabel={'...'}
-                pageCount={15}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={3}
+                pageCount={pagesCount}
+                marginPagesDisplayed={3}
+                pageRangeDisplayed={2}
                 onPageChange={handelPageChange}
-                containerClassName={'pagination justify-content-center mb-3'}
+                containerClassName={'pagination justify-content-center mb-4'}
                 pageClassName={'page-item'}
                 pageLinkClassName={'page-link'}
-                previousClassName={'page-item'}
+                previousClassName={'page-item d-none'}
                 previousLinkClassName={'page-link'}
-                nextClassName={'page-item'}
+                nextClassName={'page-item d-none'}
                 nextLinkClassName={'page-link'}
                 breakClassName={'page-item'}
                 breakLinkClassName={'page-link'}
@@ -300,26 +323,6 @@ const handelPageChange = (data) => {
             </div>
         </section>
 
-
-            {/* <div className="update-section d-none justify-content-center align-items-center" style={{backgroundColor: '#00000099'}}>
-            <div className="row size-row">
-                    <div className="col-12">
-                        <div className="cont-update position-relative bg-white p-4 rounded-4">
-                            <AiOutlineClose onClick={hiddenUpdate} style={{padding: '2px', borderRadius: '50%', border: '1px solid #000', color : '#000', position : 'absolute', top : '3%', right : '5%', fontSize : '24px', cursor : 'pointer'}}/>
-                            <h3 className='mb-3 text-center fw-bold'>Client Details</h3>
-                            <label className='text-muted mb-2' htmlFor="invoice">Invoice</label>
-                            <img src={userImg2} className='mb-4 w-100 rounded-4' style={{height: '250px'}} alt="invoice" />
-                            <a href={invoice} download className='btn black-btn d-flex justify-content-center align-items-center mx-auto py-2'><HiOutlineDownload className='fs-5 me-2'/>Download Invoice</a>
-
-                            <label htmlFor="amount" className='my-2'>Amount</label>
-                            <input type="text" value={amount} name="amount" id="amount" className='mb-3 form-control bg-transparent mx-auto py-2 fs-5' readOnly/>
-
-                            <label htmlFor="note" className='mb-2'>Note</label>
-                            <textarea name="note" id="note" className='form-control bg-transparent mx-auto' value={note} readOnly></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </>
     )
 }

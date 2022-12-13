@@ -358,11 +358,11 @@ export default function View({fetchSales , token , baseURL}) {
 
 
             {/* Modal */}
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content p-4 position-relative">
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content p-4 position-relative">
 
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             <h3 className='mb-3 text-center fw-bold'>Client Details</h3>
                             {invoice ?  <>
                                             <label className='text-muted mb-2' htmlFor="invoice">Invoice</label>
