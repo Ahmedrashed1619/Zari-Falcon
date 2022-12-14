@@ -2020,3 +2020,49 @@ tfoot {
     white-space: nowrap;
   }
 }
+
+
+.ant-pagination-jump-prev-custom-icon ,
+.ant-pagination-jump-next-custom-icon {
+  position: relative;
+  /* content: '...' !important;
+  color: #fff !important; */
+}
+
+.ant-pagination-jump-prev-custom-icon::before ,
+.ant-pagination-jump-next-custom-icon::before {
+  position: absolute;
+  content: '...';
+  width: 100%;
+  height: 100%;
+  background-color: #012c5725;
+  color: var(--mainColor) !important;
+  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  border-radius: 6px !important;
+  transition: all 0.3s;
+}
+
+.ant-pagination-jump-prev-custom-icon:hover::before ,
+.ant-pagination-jump-next-custom-icon:hover::before {
+  background-color: var(--mainColor);
+  color: var(--white) !important;
+}
+
+.ant-pagination-item , .ant-pagination-next , .ant-pagination-prev {
+  background-color: #012c5725 !important;
+  color: var(--mainColor) !important;
+  transition: all 0.3s;
+}
+
+.ant-pagination-item:hover , .ant-pagination-next:hover , .ant-pagination-prev:hover {
+  background-color: var(--mainColor) !important;
+  color: var(--white) !important;
+}
+
+.ant-pagination-item-active {
+  background-color: #012C57 !important;
+  color: var(--white) !important;
+}

@@ -129,7 +129,7 @@ export default function Home({fetchHome}) {
                             </div>
                         </div>
                         <div className="trailer">
-                        <iframe src="https://www.youtube.com/embed/0EMTIXkuMOU" title="Zari Sales" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <iframe src={fetchHome.top.Video} title="تطبيق Zari Falcon هو التطبيق الأهم في عالم المبيعات" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             <i className="fa-solid fa-xmark close" onClick={toggleTrailer}></i>
                         </div>
                     </div>
@@ -326,13 +326,13 @@ export default function Home({fetchHome}) {
                                 <tr>
                                     <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[2].TitleEn : fetchHome.plans2.Plans[2].TitleAr}</td>
                                     {fetchHome.plans2.Plans[2].DataEn.map((item , i) => (
-                                        <td key={i}>{isEng && item === 'Unlimited' ? item : !isEng && item === 'Unlimited' ? 'غير محدود' : item}</td>
+                                        <td key={i}>{isEng && item === 'Unlimited' ? <span className='h2 fw-bold'>∞</span> : !isEng && item === 'Unlimited' ? <span className='h2 fw-bold'>∞</span> : item}</td>
                                     ))}
                                 </tr>
                                 <tr>
                                     <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[3].TitleEn : fetchHome.plans2.Plans[3].TitleAr}</td>
                                     {fetchHome.plans2.Plans[3].DataEn.map((item , i) => (
-                                        <td key={i}>{isEng && item === 'Unlimited' ? item : !isEng && item === 'Unlimited' ? 'غير محدود' : item} {isEng && item <= 12 && item > 1 ? 'Months' : isEng && item === 1 ? 'Month' : isEng && item === 'Unlimited' ? '' :
+                                        <td key={i}>{isEng && item === 'Unlimited' ? <span className='h2 fw-bold'>∞</span> : !isEng && item === 'Unlimited' ? <span className='h2 fw-bold'>∞</span> : item} {isEng && item <= 12 && item > 1 ? 'Months' : isEng && item === 1 ? 'Month' : isEng && item === 'Unlimited' ? '' :
                                             !isEng && item <= 12 && item > 2 ? 'شهــور' : !isEng && item === 1 ? 'شهــر' : !isEng && item === 2 ? 'شهــرين' :  !isEng && item === 'Unlimited' ? '' : ''}</td>
                                     ))}
                                 </tr>
@@ -369,7 +369,7 @@ export default function Home({fetchHome}) {
                                 <tr>
                                     <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[9].TitleEn : fetchHome.plans2.Plans[9].TitleAr}</td>
                                     {fetchHome.plans2.Plans[9].DataEn.map((item , i) => (
-                                        <td key={i}>{item != '' ? item : <Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link>} {item != '' ? <span className='text-muted' style={{fontWeight: 600}}>{isEng ? '$ per month' : '$ في الشهر'}</span> : ''}</td>
+                                        <td key={i}>{item !== '' ? item : <Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link>} {item !== '' ? <span className='text-muted' style={{fontWeight: 600}}>{isEng ? '$ per month' : '$ في الشهر'}</span> : ''}</td>
                                     ))}
                                 </tr>
                             </tbody>

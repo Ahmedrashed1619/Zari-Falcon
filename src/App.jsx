@@ -209,9 +209,17 @@ function App() {
 
   const api = `${baseURL}sales/list`;
 
+  const [pagesCountSales, setPagesCountSales] = useState(0);
+  const [countSales, setCountSales] = useState(1);
+  const [searchKeySales, setSearchKeySales] = useState(null);
+  const [loadingSales, setLoadingSales] = useState(false)
   const [fetchSales, setFetchSales] = useState([])
   async function getToken() {
-    await axios.post(api, {}, {
+    setLoadingSales(true);
+    await axios.post(api, {
+      IDPage: countSales,
+      SearchKey: searchKeySales
+    }, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -221,7 +229,9 @@ function App() {
       }
     })
       .then(res => {
-        setFetchSales(res.data.Sales);
+        setFetchSales(res.data.Sales2);
+        setPagesCountSales(res.data.Pages);
+        setLoadingSales(false);
       })
       .catch((error) => {
         console.log(error)
@@ -231,7 +241,8 @@ function App() {
     if(token) {
       getToken();
     }
-  }, [token]);
+  }, [token , countSales , pagesCountSales , searchKeySales]);
+  // }, [token]);
 
 
 
@@ -269,11 +280,14 @@ function App() {
 
   const [pagesCount, setPagesCount] = useState(0);
   const [count, setCount] = useState(1);
-
-  const [fetchClients, setFetchClients] = useState([])
+  const [searchKey, setSearchKey] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [fetchClients, setFetchClients] = useState([]);
   async function getClientsList() {
+    setLoading(true);
     await axios.post(apiClients, {
       IDPage: count,
+      SearchKey: searchKey
     }, {
       headers: {
         'Accept': 'application/json',
@@ -284,8 +298,9 @@ function App() {
       }
     })
       .then(res => {
-        setFetchClients(res.data.Clients);
-        setPagesCount(res.data.Pages)
+        setFetchClients(res.data.Clients2);
+        setPagesCount(res.data.Pages);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error)
@@ -295,8 +310,8 @@ function App() {
     if(token) {
       getClientsList();
     }
-  // }, [token , count , pagesCount]);
-  }, [token]);
+  }, [token , count , pagesCount , searchKey]);
+  // }, [token]);
 
 
 
@@ -435,7 +450,7 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='sales' element={token && Object.keys(fetchCountries).length > 0 && Object.keys(fetchavatars).length > 0 ? <Sales fetchSales={fetchSales} getToken={getToken} baseURL={baseURL} fetchCountries={fetchCountries} fetchavatars={fetchavatars} /> : <div id="ready">
+          <Route path='sales' element={token && Object.keys(fetchCountries).length > 0 && Object.keys(fetchavatars).length > 0 ? <Sales fetchSales={fetchSales} getToken={getToken} baseURL={baseURL} fetchCountries={fetchCountries} fetchavatars={fetchavatars} pagesCountSales={pagesCountSales} countSales={countSales} setCountSales={setCountSales} setSearchKeySales={setSearchKeySales} loadingSales={loadingSales} /> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
@@ -453,7 +468,7 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='clients' element={token ? <Clients fetchClients={fetchClients} baseURL={baseURL} pagesCount={pagesCount} count={count} setCount={setCount} /> : <div id="ready">
+          <Route path='clients' element={token ? <Clients fetchClients={fetchClients} baseURL={baseURL} pagesCount={pagesCount} count={count} setCount={setCount} setSearchKey={setSearchKey} loading={loading}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 

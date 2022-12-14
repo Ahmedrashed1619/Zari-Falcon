@@ -232,7 +232,8 @@ function Create({token , baseURL , fetchSales}) {
               <Link to='../addCreate'><FiPlusSquare /> Add</Link>
             </div>
             <div className="show-entires">
-              <p>Show ___ entires</p>
+              {/* <p>Show ___ entires</p> */}
+              <p></p>
             </div>
           </div>
 

@@ -12,16 +12,15 @@ import { useState } from 'react';
 // import { AiOutlineClose } from 'react-icons/ai';
 // import { HiOutlineDownload } from 'react-icons/hi';
 import ItemClient from '../ItemClient/ItemClient';
-import ReactPaginate from 'react-paginate';
-import axios from 'axios';
+import { Pagination } from 'antd';
+// import ReactPaginate from 'react-paginate';
+// import axios from 'axios';
 
 
 
-export default function Clients({fetchClients , baseURL , pagesCount , count , setCount}) {
+export default function Clients({fetchClients , baseURL , pagesCount , count , setCount , setSearchKey , loading}) {
 
     let { isOpen , toggleOpen } = useContext(langContext);
-
-    // console.log(pagesCount);
 
 
 
@@ -186,50 +185,27 @@ useEffect(() => {
 }, [isOpen])
 
 
-let arr = [...fetchClients];
+// let arr = [...fetchClients];
 
-function sortArrayByName(a , b) {
-  if(a.ClientName < b.ClientName) {
-    return -1;
-  }
-  if(a.ClientName > b.ClientName) {
-    return 1;
-  }
-  return 0;
-}
-
-arr = arr.sort(sortArrayByName);
-
-const [search, setSearch] = useState('')
-
-// const [count, setCount] = useState(null)
-
-// async function getClientsList() {
-//     await axios.post(apiClients, {
-//         IDPage: count,
-//     }, {
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Bearer ' + token,
-//         }
-//     })
-//         .then(res => {
-//             setFetchClients(res.data.Clients2);
-//         })
-//         .catch((error) => {
-//             console.log(error)
-//         });
-//     }
-
-
-
-// const handelPageChange = (data) => {
-//     setCount(data.selected + 1)
-//     console.log(count);
+// function sortArrayByName(a , b) {
+//   if(a.ClientName < b.ClientName) {
+//     return -1;
+//   }
+//   if(a.ClientName > b.ClientName) {
+//     return 1;
+//   }
+//   return 0;
 // }
 
+// arr = arr.sort(sortArrayByName);
 
+// const [search, setSearch] = useState('')
+
+const [valueSearch, setValueSearch] = useState('')
+
+const handelSearch = () => {
+    setSearchKey(valueSearch);
+}
 
 
     return (
@@ -244,10 +220,13 @@ const [search, setSearch] = useState('')
             </div>
             <div className="search-topbar">
                 <div className="group">
-                    <input type="text" onChange={(e) => {
-                            setSearch(e.target.value)
-                        }} placeholder='Search by Name..' style={{fontSize: '14px'}}/>
-                    <BsSearch />
+                    <input type="text" 
+                        onChange={(e) => {
+                            setValueSearch(e.target.value);
+                        }}
+                        placeholder='Search by Name / Number..' style={{fontSize: '14px'}}
+                    />
+                    <BsSearch onClick={handelSearch} style={{cursor: 'pointer'}}/>
                 </div>
             </div>
             <div className="user-img">
@@ -263,7 +242,8 @@ const [search, setSearch] = useState('')
                 <Link to='../addClients'><FiPlusSquare /> Add</Link>
                 </div>
                 <div className="show-entires">
-                <p>Show ___ entires</p>
+                {/* <p>Show ___ entires</p> */}
+                <p></p>
                 </div>
             </div>
 
@@ -286,41 +266,77 @@ const [search, setSearch] = useState('')
                 breakLinkClassName={'page-link'}
                 activeClassName={'active'}
             /> */}
-
-            <div className="total-table-clients">
-                <table className="table text-center table-hover">
-                    <thead className="bg-input">
-                        <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Mobile</th>
-                        {/* <th scope="col">Vendor Name</th> */}
-                        <th scope="col">Address</th>
-                        <th scope="col">Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {arr.filter((item) => {
-                        return search.toLocaleLowerCase() === '' ? 
-                        item : item.ClientName.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-                        }).map((item , i) => (
-                            <ItemClient 
-                                key={i} 
-                                // showUpdate={showUpdate} 
-                                ClientName={item.ClientName} 
-                                ClientMobile={item.ClientMobile}
-                                ClientAddress={item.ClientAddress}
-                                ClientLat={item.ClientLat}
-                                ClientLng={item.ClientLng}
-                                // ClientInvoice={invoice}
-                                // ClientAmount={amount}
-                                // ClientNote={note}
-                                // getItemDetails={getItemDetails}
-                                // setItemDetails={setItemDetails}
-                            />
-                        ))}
-                    </tbody>
-                </table>
+            <div className="pagi text-center mb-4">
+                <Pagination 
+                    total={pagesCount}
+                    pageSize={1}
+                    // showQuickJumper={true}
+                    // hideOnSinglePage={true}
+                    // defaultCurrent={10}
+                    // showSizeChanger
+                    showLessItems={true}
+                    itemRender={(page , type) => {
+                        if(type === 'next') {
+                            return <span>{'>>'}</span>
+                        }
+                        else if(type === 'prev') {
+                            return <span>{'<<'}</span>
+                        }
+                        else if(type === 'page') {
+                            return <span>{page}</span>
+                        }
+                    }}
+                    current={count}
+                    onChange={(page) => {
+                        setCount(page);
+                        
+                    }}
+                    
+                />
             </div>
+
+            {loading ? <div id="ready">
+                            <i className="fa fa-spinner fa-5x fa-spin"></i>
+                        </div> 
+                    : 
+                <div className="total-table-clients">
+                    <table className="table text-center table-hover">
+                        <thead className="bg-input">
+                            <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Mobile</th>
+                            {/* <th scope="col">Vendor Name</th> */}
+                            <th scope="col">Address</th>
+                            <th scope="col">Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {fetchClients
+                            // .filter((item) => {
+                            // return search.toLocaleLowerCase() === '' ? 
+                            // item : item.ClientName.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+                            // })
+                            .map((item , i) => (
+                                <ItemClient 
+                                    key={i} 
+                                    // showUpdate={showUpdate} 
+                                    ClientName={item.ClientName} 
+                                    ClientMobile={item.ClientMobile}
+                                    ClientAddress={item.ClientAddress}
+                                    ClientLat={item.ClientLat}
+                                    ClientLng={item.ClientLng}
+                                    // ClientInvoice={invoice}
+                                    // ClientAmount={amount}
+                                    // ClientNote={note}
+                                    // getItemDetails={getItemDetails}
+                                    // setItemDetails={setItemDetails}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            }
+
         </section>
 
         </>
