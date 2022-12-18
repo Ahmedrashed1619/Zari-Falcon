@@ -1,7 +1,6 @@
 import React, { useContext , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { langContext } from '../context/store';
-// import imgFooter from '../images/zari-logo-white.png';
 import logofooter from '../images/logofooter.png';
 import $ from 'jquery';
 import WOW from 'wowjs';
@@ -52,7 +51,7 @@ export default function Footer({activeLink, userData}) {
 
     return (
         <>
-            {userData ? '' : <footer id="footer" className="footer py-5 main-bg position-relative" dir={isEng ? 'ltr' : 'rtl'}>
+            <footer id="footer" className="footer py-5 main-bg position-relative" dir={isEng ? 'ltr' : 'rtl'}>
                 <span id="btnTopFooter" className={`position-absolute top-0 end-0 translate-middle main-color`}><i
                         className="fa-solid fa-chevron-up fs-3 p-3 bg-span rounded-circle"></i></span>
                 <div className="container">
@@ -152,7 +151,7 @@ export default function Footer({activeLink, userData}) {
 
                     </div>
                 </div>
-            </footer>}
+            </footer>
         </>
     )
 }

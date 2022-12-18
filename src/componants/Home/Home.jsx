@@ -103,6 +103,27 @@ export default function Home({fetchHome}) {
     }
 
     
+    function changeDir() {
+
+        if (isEng === false) {
+            $('form label').css({'paddingRight' : '5px' , 'paddingLeft' : '0'});
+            $('.input-group.pass-sign i').css({'left' : '15px' , 'right' : 'auto'});
+        }
+        else {
+            $('form label').css({'paddingRight' : '0' , 'paddingLeft' : '5px'});
+            $('.input-group.pass-sign i').css({'left' : 'auto' , 'right' : '15px'});
+        }
+    }
+
+    useEffect(() => {
+        changeDir();
+        return () => {
+            changeDir();
+        }
+    }, [isEng])
+    
+
+
 
     
     return (
@@ -227,74 +248,6 @@ export default function Home({fetchHome}) {
                         ))}
                     </OwlCarousel> */}
 
-
-                    {/* <table class="table table-borderless table-striped table-hover text-center table-responsive">
-                        <thead>
-                            <tr>
-                                <th scope="col-4" class="head-th">Features</th>
-                                <th scope="col-2" class="head-th">Starter</th>
-                                <th scope="col-4" class="most-pop-th-td head-th">Growth</th>
-                                <th scope="col-2" class="head-th">Ultimate</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="color: grey">Branch</td>
-                                <td>1</td>
-                                <td class="most-pop-th-td">2</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td style="color: grey">Card Design</td>
-                                <td>1</td>
-                                <td class="most-pop-th-td">3</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td style="color: grey">Location</td>
-                                <td>3</td>
-                                <td class="most-pop-th-td">5</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td style="color: grey">Individual Messages</td>
-                                <td><i class="fa-solid fs-4 fa-check"></i></td>
-                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-check"></i></td>
-                                <td><i class="fa-solid fs-4 fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td style="color: grey">Group Messages</td>
-                                <td><i class="fa-solid fs-4 fa-xmark"></i></td>
-                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-check"></i></td>
-                                <td><i class="fa-solid fs-4 fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td style="color: grey">User</td>
-                                <td>2</td>
-                                <td class="most-pop-th-td">5</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td style="color: grey">Import&Export Data</td>
-                                <td><i class="fa-solid fs-4 fa-xmark"></i></td>
-                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-check"></i></td>
-                                <td><i class="fa-solid fs-4 fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td style="color: grey">Design Edit</td>
-                                <td><i class="fa-solid fs-4 fa-xmark"></i></td>
-                                <td class="most-pop-th-td"><i class="fa-solid fs-4 fa-xmark"></i></td>
-                                <td><i class="fa-solid fs-4 fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><a href="./check.html" class="btn main-btn w-75 fw-bold">Order</a></td>
-                                <td class="most-pop-th-td"><a href="./check.html" class="btn main-btn w-100 fw-bold">Order</a></td>
-                                <td><a href="./check.html" class="btn main-btn w-75 fw-bold">Order</a></td>
-                            </tr>
-                        </tbody>
-                    </table> */}
-
                     {/* <div className="buttons text-center mx-auto pt-3 mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out">
                         <Link to='../contact' className="btn black-btn w-75 text-capitalize">{isEng ? 'For yearly Contract Contact Us' : 'لإبرام عقد سنوي تواصل معنـــا'}</Link>
                     </div> */}
@@ -369,25 +322,27 @@ export default function Home({fetchHome}) {
                                 <tr>
                                     <td className='most-pop-th-td'>{isEng ? fetchHome.plans2.Plans[9].TitleEn : fetchHome.plans2.Plans[9].TitleAr}</td>
                                     {fetchHome.plans2.Plans[9].DataEn.map((item , i) => (
-                                        <td key={i}>{item !== '' ? item : <Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link>} {item !== '' ? <span className='text-muted' style={{fontWeight: 600}}>{isEng ? '$ per month' : '$ في الشهر'}</span> : ''}</td>
+                                        <td key={i}>{item !== '' ? item : '-'} {item !== '' ? <span className='text-muted' style={{fontWeight: 600}}>{isEng ? '$ per month' : '$ في الشهر'}</span> : ''}</td>
+                                        // <Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link>
                                     ))}
                                 </tr>
                             </tbody>
 
-                            {/* <tfoot>
+                            <tfoot>
                                 <tr>
                                     <td className='last'>{isEng ? fetchHome.plans2.Plans[10].TitleEn : fetchHome.plans2.Plans[10].TitleAr}</td>
                                     {fetchHome.plans2.Plans[10].DataEn.map((item , i) => (
                                         item === 1 ? 
                                         <td key={i} className='last'><Link to='../contact' className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Contact us' : 'تواصل معنــا'}</Link></td>
                                         :
-                                        <td key={i} className='last'><button className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</button></td>
+                                        <td key={i} className='last'><Link to={`../Checkout/${i+1}`} className='btn black-btn w-75' style={{paddingTop: '0.7rem' , paddingBottom: '0.7rem' , fontWeight: '600'}}>{isEng ? 'Order' : 'اطلــب'}</Link></td>
                                     ))}
                                 </tr>
-                            </tfoot> */}
+                            </tfoot>
 
                         </table>
                     </div>
+
                 </div>
             </section>
         </>

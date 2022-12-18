@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 
 
 
-function Create({token , baseURL , fetchSales}) {
+function Create({token , baseURL , fetchSalesAll}) {
 
 
   let { isOpen , toggleOpen } = useContext(langContext);
@@ -250,7 +250,7 @@ function Create({token , baseURL , fetchSales}) {
                       <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
                       <select onChange={(e) => {getIDSales(e.target.value)}}  name="salesLocation" required className='bg-input py-2 form-select' id="sales-name">
                         <option>Choose Name..</option>
-                        {fetchSales.map((item , i) => (
+                        {fetchSalesAll.map((item , i) => (
                           <option key={i} value={item.IDSales}>{item.Name}</option>
                         ))}
                       </select>

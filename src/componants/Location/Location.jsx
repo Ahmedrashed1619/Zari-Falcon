@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 
 
 
-export default function Location({fetchSales , token , baseURL}) {
+export default function Location({fetchSalesAll , token , baseURL}) {
 
 
   let { isOpen , toggleOpen } = useContext(langContext);
@@ -241,9 +241,9 @@ export default function Location({fetchSales , token , baseURL}) {
           <div className="link-entries d-flex justify-content-between align-items-center mb-5">
             
               <div className="w-lg-75 w-50">
-                <select value={fetchSales.IDSales} onChange={() => {getIDSales($('select').val())}} name="salesLocation" required className='bg-input py-2 form-select' id="">
+                <select value={fetchSalesAll.IDSales} onChange={() => {getIDSales($('select').val())}} name="salesLocation" required className='bg-input py-2 form-select' id="">
                   <option>Choose Name..</option>
-                  {fetchSales.map((item , i) => (
+                  {fetchSalesAll.map((item , i) => (
                     <option key={i} value={item.IDSales}>{item.Name}</option>
                   ))}
                 </select>

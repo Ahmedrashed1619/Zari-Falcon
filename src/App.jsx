@@ -230,6 +230,7 @@ function App() {
     })
       .then(res => {
         setFetchSales(res.data.Sales2);
+        // setFetchSalesAll(res.data.Sales);
         setPagesCountSales(res.data.Pages);
         setLoadingSales(false);
       })
@@ -244,6 +245,36 @@ function App() {
   }, [token , countSales , pagesCountSales , searchKeySales]);
   // }, [token]);
 
+  const [fetchSalesAll, setFetchSalesAll] = useState([])
+  async function getTokenSalesAll() {
+    await axios.post(api, {}, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        // 'Access-Control-Allow-Origin': '*',
+        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+      }
+    })
+      .then(res => {
+        setFetchSalesAll(res.data.Sales);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+  useEffect(() => {
+    if(token) {
+      getToken();
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if(token) {
+      getTokenSalesAll()
+    }
+    }, [token])
+  
 
 
    // settings list
@@ -430,7 +461,7 @@ function App() {
       <Navbar activeLink={activeLink} userData={userData} />
 
       <Routes>
-        <Route path='/' element={userData ? <Navigate to='dashboard' /> : Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
+        <Route path='/' element={Object.keys(fetchHome).length > 0 ? <Home fetchHome={fetchHome} /> : <div id="ready">
           <i className="fa fa-spinner fa-5x fa-spin"></i>
         </div>} />
 
@@ -439,7 +470,7 @@ function App() {
           </div>} />
         <Route path='signup' element={<Signup baseURL={baseURL} saveUserData={saveUserData} />} />
         <Route path='signin' element={<Signin baseURL={baseURL} saveUserData={saveUserData} />} />
-        <Route path='checkout' element={<Checkout />} />
+        <Route path='checkout/:id' element={ <Checkout userData={userData} saveUserData={saveUserData} baseURL={baseURL} /> } />
         <Route path='contact' element={<Contact baseURL={baseURL} />} />
         <Route path='dashboard' element={<ProtectedRoute> <Dashboard logOut={logOut} /> </ProtectedRoute>}>
 
@@ -458,11 +489,11 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='view' element={<View fetchSales={fetchSales} baseURL={baseURL} token={token} />} />
+          <Route path='view' element={<View fetchSalesAll={fetchSalesAll} baseURL={baseURL} token={token} />} />
 
           <Route path='settings' element={<Settings fetchsettings={fetchsettings} baseURL={baseURL} token={token} getSettings={getSettings}/>} />
 
-          <Route path='location' element={<Location fetchSales={fetchSales} token={token} baseURL={baseURL}/>} />
+          <Route path='location' element={<Location fetchSalesAll={fetchSalesAll} token={token} baseURL={baseURL}/>} />
 
           <Route path='profile' element={token ? <Profile token={token} getUpdateData={getUpdateData} baseURL={baseURL} fetchUpdateData={fetchUpdateData}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
@@ -476,19 +507,19 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='map' element={token && Object.keys(fetchSales).length > 0 ? <Map baseURL={baseURL} token={token} fetchSales={fetchSales}/> : <div id="ready">
+          <Route path='map' element={token && Object.keys(fetchSalesAll).length > 0 ? <Map baseURL={baseURL} token={token} fetchSalesAll={fetchSalesAll}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='report' element={token ? <Report fetchSales={fetchSales} baseURL={baseURL} token={token}/> : <div id="ready">
+          <Route path='report' element={token ? <Report fetchSalesAll={fetchSalesAll} baseURL={baseURL} token={token}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='create' element={token ? <Create token={token} baseURL={baseURL} fetchSales={fetchSales}/> : <div id="ready">
+          <Route path='create' element={token ? <Create token={token} baseURL={baseURL} fetchSalesAll={fetchSalesAll}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='addCreate' element={token ? <AddCreate token={token} baseURL={baseURL} fetchClients={fetchClients} fetchSales={fetchSales}/> : <div id="ready">
+          <Route path='addCreate' element={token ? <AddCreate token={token} baseURL={baseURL} fetchClients={fetchClients} fetchSalesAll={fetchSalesAll}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 

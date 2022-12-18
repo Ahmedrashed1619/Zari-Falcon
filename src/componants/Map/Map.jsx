@@ -11,7 +11,7 @@ import { langContext } from '../context/store';
 import { useEffect } from 'react';
 
 
-export default function Map({token , baseURL , fetchSales}) {
+export default function Map({token , baseURL , fetchSalesAll}) {
 
 
   let { isOpen , toggleOpen } = useContext(langContext);
@@ -178,7 +178,7 @@ export default function Map({token , baseURL , fetchSales}) {
                   <div className="col-sm-6 col-11">
                     <select  name="salesLocation" required className='bg-input py-2 form-select' id="sales-name">
                       <option>Choose Name..</option>
-                      {fetchSales.map((item , i) => (
+                      {fetchSalesAll.map((item , i) => (
                         <option key={i} value={item.IDSales}>{item.Name}</option>
                       ))}
                     </select>

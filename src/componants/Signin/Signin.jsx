@@ -119,9 +119,9 @@ export default function Signin({baseURL, saveUserData}) {
             $('.input-group input').css({'paddingRight' : '10px' , 'paddingLeft' : '20px'});
             }
             else {
-                $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '40px'});
+                $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '30px'});
             }
-            $('.input-group i').css({'left' : '15px' , 'right' : 'auto'});
+            $('.input-group.pass-sign i').css({'left' : '15px' , 'right' : 'auto'});
         }
 
         else {
@@ -131,22 +131,22 @@ export default function Signin({baseURL, saveUserData}) {
             $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '10px'});
             }
             else {
-                $('.input-group input').css({'paddingRight' : '40px' , 'paddingLeft' : '20px'});
+                $('.input-group input').css({'paddingRight' : '30px' , 'paddingLeft' : '20px'});
             }
-            $('.input-group i').css({'left' : 'auto' , 'right' : '15px'});
+            $('.input-group.pass-sign i').css({'left' : 'auto' , 'right' : '15px'});
         }
     }
 
     function widthBody() {
         let width = $('body').width();
         if (width > 768 && isEng === true) {
-            $('.input-group input').css({'paddingRight' : '40px' , 'paddingLeft' : '20px'});
+            $('.input-group input').css({'paddingRight' : '30px' , 'paddingLeft' : '20px'});
         }
         else if (width < 768 && isEng === true) {
             $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '10px'});
         }
         else if (width > 768 && isEng === false) {
-            $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '40px'});
+            $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '30px'});
         }
         else if (width < 768 && isEng === false) {
             $('.input-group input').css({'paddingRight' : '10px' , 'paddingLeft' : '20px'});
@@ -166,6 +166,8 @@ export default function Signin({baseURL, saveUserData}) {
     }, [isEng]);
 
 
+
+    
     return (
         <>
             <section className="sign py-5" dir={isEng ? 'ltr' : 'rtl'}>
@@ -189,7 +191,7 @@ export default function Signin({baseURL, saveUserData}) {
                                     </div>
                                     <div className="password wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.5s">
                                         <label htmlFor="UserPassword" className="fs-4 fw-bold mt-3 mb-1">{isEng ? 'Password' : 'كلمــة الســـر'}</label>
-                                        <div className="input-group">
+                                        <div className="input-group pass-sign">
                                             <input id="UserPassword" onChange={getUserData} type="password" name="UserPassword" required className="bg-transparent mx-auto" placeholder={isEng ? 'Enter your password..' : 'ادخـــل كلمــة الســر..'} />
                                             <i className="fa-regular fa-eye" onClick={showHidePass}></i>
                                         </div>

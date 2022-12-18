@@ -14,7 +14,7 @@ import imgreport from '../images/dashboard/report.png';
 
 
 
-export default function View({fetchSales , token , baseURL}) {
+export default function View({fetchSalesAll , token , baseURL}) {
 
 
     let { isOpen , toggleOpen } = useContext(langContext);
@@ -275,7 +275,7 @@ export default function View({fetchSales , token , baseURL}) {
                                         <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
                                         <select  name="salesLocation" onChange={(e) => {getIDSales(e.target.value)}} required className='bg-input py-2 form-select' id="sales-name">
                                             <option>Choose Name..</option>
-                                            {fetchSales.map((item , i) => (
+                                            {fetchSalesAll.map((item , i) => (
                                                 <option key={i} value={item.IDSales}>{item.Name}</option>
                                             ))}
                                         </select>
@@ -358,7 +358,7 @@ export default function View({fetchSales , token , baseURL}) {
 
 
             {/* Modal */}
-            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content p-4 position-relative">
 

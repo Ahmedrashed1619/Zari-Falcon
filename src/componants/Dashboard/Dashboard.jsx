@@ -218,6 +218,18 @@ export default function Dashboard({logOut}) {
     useEffect(() => {
         widthBody();
     }, [isOpen])
+
+
+    useEffect(() => {
+        $('#navbar').addClass('d-none');
+        $('#footer').addClass('d-none')
+    
+        return () => {
+            $('#navbar').removeClass('d-none');
+            $('#footer').removeClass('d-none')
+        }
+    }, [])
+    
     
 
     // $(window).on('scroll' , () => {

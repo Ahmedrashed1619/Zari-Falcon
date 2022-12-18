@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useState , useEffect , useContext } from 'react';
 import imgLogo from '../images/ZARI LOGO-02.png';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { langContext } from '../context/store';
-import { useEffect } from 'react';
 import $ from 'jquery';
 import WOW from 'wowjs';
 
@@ -62,7 +60,7 @@ export default function Navbar({activeLink, userData}) {
 
     return (
         <>
-        {userData ? '' : <nav className="navbar navbar-expand-lg fixed-top bg-white py-2 nav-total" dir={isEng ? 'ltr' : 'rtl'}>
+            <nav id='navbar' className="navbar navbar-expand-lg fixed-top bg-white py-2 nav-total" dir={isEng ? 'ltr' : 'rtl'}>
                 <div className="container-fluid container-xl special-w">
                     <Link to='home' className="navbar-brand"><img src={imgLogo} alt="zari logo" /></Link>
                     <button className={`navbar-toggler wow fadeIn ${isActive ? 'convert' : ''}`} data-wow-duration="0.75s" onClick={handelClick} type="button" data-bs-toggle="collapse"
@@ -113,8 +111,7 @@ export default function Navbar({activeLink, userData}) {
                         </div>
                     </div>
                 </div>
-            </nav>}
-            
+            </nav>
         </>
     )
 }

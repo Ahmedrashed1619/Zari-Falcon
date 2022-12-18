@@ -713,7 +713,7 @@ video {
 .cont-price .salary{
   color: #00000080;
   text-align: center;
-  width: 40%;
+  /* width: 40%; */
   margin: auto;
   font-weight: 600;
   margin-bottom: 1.75rem;
@@ -1036,7 +1036,7 @@ form label{
   display: block;
   border-radius: 0.75rem;
   border: none;
-  padding: 15px 40px 15px 20px; 
+  padding: 15px 30px 15px 20px; 
 }
 
 .input-group input:focus{
@@ -1047,7 +1047,7 @@ form label{
   position: absolute;
   top: 5px;
   right: 10px;  
-  left: auto;   
+  left: auto;  
   width: 60px;
   height: 35px;
   /* background-color: var(); */
@@ -1056,11 +1056,21 @@ form label{
   border: none;
 }
 
+.left-auto {
+  right: 10px !important;  
+  left: auto !important;   
+}
+
+.right-auto {
+  right: auto !important;  
+  left: 10px !important; 
+}
+
 .input-group i{
   position: absolute;
   top: 50%;
   right: 15px;  
-  left: auto;   
+  left: auto; 
   transform: translateY(-50%);
   font-size: 18px;
   padding: 5px;
@@ -1069,6 +1079,16 @@ form label{
   background-color: var(--transparent) !important;
   border: none;
   cursor: pointer;
+}
+
+.left-i-auto {
+  right: 15px !important;  
+  left: auto !important;   
+}
+
+.right-i-auto {
+  right: auto !important;  
+  left: 15px !important;   
 }
 
 

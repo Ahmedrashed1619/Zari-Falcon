@@ -150,9 +150,9 @@ export default function Signup({baseURL, saveUserData}) {
                 $('.input-group input').css({'paddingRight' : '10px' , 'paddingLeft' : '20px'});
             }
             else {
-                $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '40px'});
+                $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '30px'});
             }
-            $('.input-group i').css({'left' : '15px' , 'right' : 'auto'});
+            $('.input-group.pass-sign i').css({'left' : '15px' , 'right' : 'auto'});
         }
 
         else {
@@ -162,22 +162,22 @@ export default function Signup({baseURL, saveUserData}) {
                 $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '10px'});
             }
             else {
-                $('.input-group input').css({'paddingRight' : '40px' , 'paddingLeft' : '20px'});
+                $('.input-group input').css({'paddingRight' : '30px' , 'paddingLeft' : '20px'});
             }
-            $('.input-group i').css({'left' : 'auto' , 'right' : '15px'});
+            $('.input-group.pass-sign i').css({'left' : 'auto' , 'right' : '15px'});
         }
     }
 
     function widthBody() {
         let width = $('body').width();
         if (width > 768 && isEng === true) {
-            $('.input-group input').css({'paddingRight' : '40px' , 'paddingLeft' : '20px'});
+            $('.input-group input').css({'paddingRight' : '30px' , 'paddingLeft' : '20px'});
         }
         else if (width < 768 && isEng === true) {
             $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '10px'});
         }
         else if (width > 768 && isEng === false) {
-            $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '40px'});
+            $('.input-group input').css({'paddingRight' : '20px' , 'paddingLeft' : '30px'});
         }
         else if (width < 768 && isEng === false) {
             $('.input-group input').css({'paddingRight' : '10px' , 'paddingLeft' : '20px'});
@@ -195,6 +195,8 @@ export default function Signup({baseURL, saveUserData}) {
             changeDir();
         }
     }, [isEng]);
+
+    
     
     
     return (
@@ -246,7 +248,7 @@ export default function Signup({baseURL, saveUserData}) {
 
                                     <div className="password wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s">
                                         <label htmlFor="UserPassword" className="fs-4 fw-bold mt-3 mb-1">{isEng ? 'Password' : 'كلمــة الســـر'}</label>
-                                        <div className="input-group">
+                                        <div className="input-group pass-sign">
                                             <input id="UserPassword" onChange={getUserData} type="password" name="UserPassword" required className="bg-transparent mx-auto" placeholder={isEng ? 'Enter your strong password..' : 'ادخـــل كلمــة ســر قويــة..'} />
                                             <i className="fa-regular fa-eye" onClick={showHidePass}></i>
                                         </div>
@@ -255,7 +257,7 @@ export default function Signup({baseURL, saveUserData}) {
 
                                     <div className="repassword wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.5s">
                                         <label htmlFor="confirmPassword" className="fs-4 fw-bold mt-3 mb-1">{isEng ? 'Confirm Password' : 'تأكيـــد كلمــة الســـر'}</label>
-                                        <div className="input-group">
+                                        <div className="input-group pass-sign">
                                             <input id="confirmPassword" onChange={getConfirm} type="password" name="confirmPassword" required className="bg-transparent mx-auto" placeholder={isEng ? 'Enter your strong password..' : 'ادخـــل كلمــة ســر قويــة..'} />
                                             <i className="fa-regular fa-eye" onClick={showHideRePass}></i>
                                         </div>

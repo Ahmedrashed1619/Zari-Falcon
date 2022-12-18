@@ -14,7 +14,7 @@ import { langContext } from '../context/store';
 import { useEffect } from 'react';
 
 
-export default function Report({ fetchSales , baseURL , token}) {
+export default function Report({ fetchSalesAll , baseURL , token}) {
 
 
   let { isOpen , toggleOpen } = useContext(langContext);
@@ -235,7 +235,7 @@ export default function Report({ fetchSales , baseURL , token}) {
                     <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
                     <select onChange={(e) => {getIDSales(e.target.value)}}  name="salesLocation" required className='bg-input py-2 form-select' id="sales-name">
                       <option>Choose Name..</option>
-                      {fetchSales.map((item , i) => (
+                      {fetchSalesAll.map((item , i) => (
                         <option key={i} value={item.IDSales}>{item.Name}</option>
                       ))}
                     </select>
