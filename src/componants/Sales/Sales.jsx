@@ -217,10 +217,10 @@ export default function Sales({fetchSales , getToken , baseURL , fetchCountries 
     const [Email, setEmailupdate] = useState('');
     const [Phone, setPhoneupdate] = useState('');
     const [IDCountry, setCountryupdate] = useState('');
+    const [IDSales, setIdupdate] = useState(null);
     // const [avatarupdate, setAvatarupdate] = useState('');
     // const [imageupdate, setImageupdate] = useState('');
     // const [passwordupdate, setPasswordupdate] = useState('');
-    const [IDSales, setIdupdate] = useState(null);
 
 
     const setItemId = (id , name , email , phone , country , callback ) => {
@@ -281,7 +281,7 @@ export default function Sales({fetchSales , getToken , baseURL , fetchCountries 
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + token, 
                         // 'Access-Control-Allow-Origin': '*',
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
                 },
             });
                 
@@ -452,6 +452,7 @@ export default function Sales({fetchSales , getToken , baseURL , fetchCountries 
                                     phone={item.Mobile}
                                     status={item.Status}
                                     country={item.IDCountry}
+
                                     // avatar={item.IDAvatar}
                                     // password={item.Password}
                                     item={item}
@@ -570,7 +571,8 @@ export default function Sales({fetchSales , getToken , baseURL , fetchCountries 
 
                             <div className="submitAdd-buttons mt-4 d-flex justify-content-center align-items-center">
                                 <button type='submit' className="btn black-btn py-2 px-4 me-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
-                                <button onClick={resetForm} className="btn second-btn text-white py-2 px-3">Cancel</button>
+                                {/* <button onClick={resetForm} className="btn second-btn text-white py-2 px-3">Reset</button> */}
+                                <Link to='../Sales' className="btn black-btn py-2 px-4">Cancel</Link>
                             </div>
 
                         </form>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 // import {v4 as uuid} from 'uuid';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FaBars } from 'react-icons/fa';
 // import { BsSearch } from 'react-icons/bs';
@@ -173,7 +173,8 @@ export default function AddCreate({fetchSalesAll , fetchClients , baseURL , toke
         // id : '',
         IDSales : '',
         IDClient : '',
-        RouteStartTime : ''
+        RouteStartTime : '',
+        RouteTime : '',
     });
 
 
@@ -273,7 +274,7 @@ export default function AddCreate({fetchSalesAll , fetchClients , baseURL , toke
                         </div>
                         <div className="col-12">
                             <div className="group-add">
-                                <label className="fs-5 fw-bold mb-1" htmlFor="IDSales">Vendor Name</label>
+                                <label className="fs-5 fw-bold mb-1" htmlFor="IDSales">Saller Name</label>
                                 <div className="input-group">
                                     <select onChange={getUserData} className='bg-transparent py-2 form-select' required name="IDSales" id="IDSales">
                                         <option>Choose Name..</option>
@@ -292,13 +293,21 @@ export default function AddCreate({fetchSalesAll , fetchClients , baseURL , toke
                                 </div>
                             </div>
                         </div>
+                        <div className="col-12">
+                            <div className="group-add">
+                                <label className="fs-5 fw-bold mb-1" htmlFor="RouteTime">Time</label>
+                                <div className="input-group">
+                                    <input onChange={getUserData} type='time' className='bg-transparent mx-auto' name="RouteTime" id="RouteTime" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {message.length > 0 ? <p id="alertSave" className={`alert ${apiCode === true ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{message}</p> : ''}
 
                     <div className="submitAdd-buttons mt-4 d-flex justify-content-center align-items-center">
-                        <button type='submit' className="btn black-btn py-2 px-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
-                        {/* <button onClick={resetForm} className="btn second-btn py-2 px-3">Cancel</button> */}
+                        <button type='submit' className="btn black-btn py-2 px-0 me-3">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
+                        <Link to='../Create' className="btn second-btn py-2 px-4">Cancel</Link>
                     </div>
 
                 </form>

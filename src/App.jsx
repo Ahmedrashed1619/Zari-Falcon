@@ -499,7 +499,7 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='clients' element={token ? <Clients fetchClients={fetchClients} baseURL={baseURL} pagesCount={pagesCount} count={count} setCount={setCount} setSearchKey={setSearchKey} loading={loading}/> : <div id="ready">
+          <Route path='clients' element={token ? <Clients getClientsList={getClientsList} token={token} baseURL={baseURL} fetchClients={fetchClients} pagesCount={pagesCount} count={count} setCount={setCount} setSearchKey={setSearchKey} loading={loading}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 

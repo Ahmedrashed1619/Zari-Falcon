@@ -155,8 +155,8 @@ export default function Location({fetchSalesAll , token , baseURL}) {
 
   const [idSales, setIdSales] = useState('');
 
-  const [lng, setLng] = useState(31.3427151);
-  const [lat, setLat] = useState(30.0363365);
+  const [lng, setLng] = useState(1);
+  const [lat, setLat] = useState(1);
   const [date, setDate] = useState(null);
   const [loadind, setLoadind] = useState(false);
 
@@ -259,12 +259,12 @@ export default function Location({fetchSalesAll , token , baseURL}) {
 
           <div className='d-flex justify-content-center align-items-center flex-column'>
             {lng === 0 || lat === 0 ? 
-              <h2 className='fw-bold mb-0'>User Not Active..</h2> :
+              <h4 className='fw-bold mb-0 mb-4'>User doesn't have Location..</h4> :
               <>
                 {date ? <h4 className='fw-bold mb-4'>Last Seen: {date}</h4> : ''}
-                <iframe title='google-map' src={`https://www.google.com/maps?q=${lat},${lng}&hl=es;&output=embed`} frameBorder="0" width="100%" height="500px"></iframe>
               </>
             }
+            <iframe title='google-map' src={`https://www.google.com/maps?q=${lat},${lng}&hl=es;&output=embed`} frameBorder="0" width="100%" height="500px"></iframe>
           </div>
 
       </section>

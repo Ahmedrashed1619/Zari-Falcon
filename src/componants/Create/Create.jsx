@@ -7,6 +7,7 @@ import imgreport from '../images/dashboard/report.png';
 import $ from 'jquery';
 import { FaBars } from 'react-icons/fa';
 // import { BsSearch } from 'react-icons/bs';
+import { MdOutlineGpsFixed } from 'react-icons/md';
 import userImg2 from '../images/home/Rectangle 143.png';
 import { useContext } from 'react';
 import { langContext } from '../context/store';
@@ -247,7 +248,7 @@ function Create({token , baseURL , fetchSalesAll}) {
                           <input type="text" className='bg-input form-control py-2 mx-auto' placeholder='Search by client or sale' required name="search-user" id="search-user" />
                           <BsSearch />
                       </div> */}
-                      <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
+                      <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Saller Name</label>
                       <select onChange={(e) => {getIDSales(e.target.value)}}  name="salesLocation" required className='bg-input py-2 form-select' id="sales-name">
                         <option>Choose Name..</option>
                         {fetchSalesAll.map((item , i) => (
@@ -286,8 +287,11 @@ function Create({token , baseURL , fetchSalesAll}) {
                   <thead className="bg-input">
                       <tr>
                         <th scope="col">Client Name</th>
-                        <th scope="col">Vendor Name</th>
+                        <th scope="col">Saller Name</th>
+                        <th scope="col">Address</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Location</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -295,7 +299,10 @@ function Create({token , baseURL , fetchSalesAll}) {
                         <tr key={i}>
                           <td>{item.ClientName}</td>
                           <td>{item.SalesName}</td>
+                          <td>{item.Address}</td>
                           <td>{item.Date}</td>
+                          <td>{item.Time}</td>
+                          <td><a className='main-color' href={`http://maps.google.com/?q=${item.Lat},${item.Lng}`} target="_blank" rel="noopener noreferrer"><MdOutlineGpsFixed /></a></td>
                       </tr>
                       ))}
                   </tbody>
@@ -304,7 +311,7 @@ function Create({token , baseURL , fetchSalesAll}) {
             success === true && routes.length < 1 ? 
             <h2 className='fw-bold mb-0 text-center'>NOT DATA....</h2> :
 
-            <h2 className='fw-bold mb-0 text-center'>Vendor Not Found..</h2>}
+            <h2 className='fw-bold mb-0 text-center'>Saller Not Found..</h2>}
           
       </section>
     </>

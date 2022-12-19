@@ -232,7 +232,7 @@ export default function Report({ fetchSalesAll , baseURL , token}) {
               <div className="col-11 col-md-8 col-lg-9">
                 <div className="row d-flex justify-content-center align-items-center gy-4">
                   <div className="col-sm-6 col-11">
-                    <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
+                    <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Saller Name</label>
                     <select onChange={(e) => {getIDSales(e.target.value)}}  name="salesLocation" required className='bg-input py-2 form-select' id="sales-name">
                       <option>Choose Name..</option>
                       {fetchSalesAll.map((item , i) => (
@@ -304,7 +304,7 @@ export default function Report({ fetchSalesAll , baseURL , token}) {
             </table>
           </div> : Object.keys(fetchData).length < 1 ? 
           <h2 className='fw-bold mb-0 text-center'>Not have Data..</h2> :
-          <h2 className='fw-bold mb-0 text-center'>Vendor Not Found..</h2>}
+          <h2 className='fw-bold mb-0 text-center'>Saller Not Found..</h2>}
           
       </section>
     </>

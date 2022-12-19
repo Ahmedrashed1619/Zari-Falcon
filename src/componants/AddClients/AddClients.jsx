@@ -305,7 +305,7 @@ export default function AddClients({baseURL , token , getClientsList}) {
 
                     <div className="submitAdd-buttons mt-4 d-flex justify-content-center align-items-center">
                         <button type='submit' className="btn black-btn py-2 px-4 me-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
-                        <button onClick={resetForm} className="btn second-btn py-2 px-3">Cancel</button>
+                        <button onClick={resetForm} className="btn second-btn py-2 px-3">Reset</button>
                     </div>
 
                 </form>

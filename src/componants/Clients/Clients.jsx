@@ -9,16 +9,16 @@ import { BsSearch } from 'react-icons/bs';
 import userImg2 from '../images/home/Rectangle 143.png';
 import $ from 'jquery';
 import { useState } from 'react';
-// import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 // import { HiOutlineDownload } from 'react-icons/hi';
 import ItemClient from '../ItemClient/ItemClient';
 import { Pagination } from 'antd';
 // import ReactPaginate from 'react-paginate';
-// import axios from 'axios';
+import axios from 'axios';
 
 
 
-export default function Clients({fetchClients , baseURL , pagesCount , count , setCount , setSearchKey , loading}) {
+export default function Clients({ getClientsList , token , fetchClients , baseURL , pagesCount , count , setCount , setSearchKey , loading}) {
 
     let { isOpen , toggleOpen } = useContext(langContext);
 
@@ -208,6 +208,122 @@ const handelSearch = () => {
 }
 
 
+const resetForm = () => {
+    let inputs = Array.from(document.querySelectorAll('.update-section input'));
+    let selects = Array.from(document.querySelectorAll('.update-section select'));
+    inputs.forEach((input) => {
+        input.value = '';
+    })
+    selects.forEach((select) => {
+        select.value = '';
+    })
+}
+
+
+const showUpdate = () => {
+    $('.sales-page.position-relative').addClass('vh-105');
+    $('.update-section').removeClass('d-none');
+    $('.update-section').addClass('d-flex');
+}
+
+const hiddenUpdate = () => {
+    $('.sales-page.position-relative').removeClass('vh-105');
+    $('.update-section').addClass('d-none');
+    $('.update-section').removeClass('d-flex');
+}
+
+
+const [IdClient, setIdClientupdate] = useState('');
+const [NameClient, setNameClientupdate] = useState('');
+const [PhoneClient, setPhoneClientupdate] = useState('');
+const [AddressClient, setAddressClientupdate] = useState('');
+const [LatClient, setLatClient] = useState('');
+const [LongClient, setLongClient] = useState('');
+
+
+const [message, setMessage] = useState('');
+
+const [loadind, setLoadind] = useState(false);
+
+const [apiCode , setApiCode] = useState(null);
+
+
+const setItemId = ( id , name , phone , address , lat , long , callback ) => {
+    localStorage.setItem('ClientId' , (id));
+    localStorage.setItem('ClientName' , (name));
+    localStorage.setItem('ClientPhone' , (phone));
+    localStorage.setItem('ClientAddress' , (address));
+    localStorage.setItem('ClientLat' , (lat));
+    localStorage.setItem('ClientLong' , (long));
+    callback();
+}
+
+const getItemId = () => {
+    setIdClientupdate(localStorage.getItem('ClientId'));
+    setNameClientupdate(localStorage.getItem('ClientName'));
+    setPhoneClientupdate(localStorage.getItem('ClientPhone'));
+    setAddressClientupdate(localStorage.getItem('ClientAddress'));
+    setLatClient(localStorage.getItem('ClientLat'));
+    setLongClient(localStorage.getItem('ClientLong'));
+}
+
+
+
+async function registerUpdateForm(e) {
+
+    e.preventDefault();
+    setLoadind(true);
+    const obj = {
+        IDClient: IdClient,
+        ClientName: NameClient,
+        ClientPhone: PhoneClient,
+        ClientAddress: AddressClient,
+        ClientLatitude: LatClient,
+        ClientLongitude: LongClient
+    }
+
+    // if(confirm === user.UserPassword) {
+        let {data} = await axios({
+            method: 'post',
+            url: `${baseURL}client/edit`,
+            data: obj,
+            headers: { 
+                    // 'Content-Type': 'multipart/form-data',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token, 
+                    // 'Access-Control-Allow-Origin': '*',
+                    // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+            },
+        });
+            
+        setMessage(data.ApiMsgEn);
+        setLoadind(false);
+
+        if(data.Success === true) {
+            setApiCode(data.Success);
+            getClientsList();
+            setTimeout(() => {
+                hiddenUpdate();
+            }, 3000);
+        }
+
+    // }
+    // else if (confirm !== user.UserPassword) {
+    //     setMessage('password does not match..');
+    //     setLoadind(false);
+
+    // }
+
+}
+
+
+
+
+
+
+
+
     return (
         <>
 
@@ -308,6 +424,7 @@ const handelSearch = () => {
                             {/* <th scope="col">Vendor Name</th> */}
                             <th scope="col">Address</th>
                             <th scope="col">Location</th>
+                            <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -325,6 +442,10 @@ const handelSearch = () => {
                                     ClientAddress={item.ClientAddress}
                                     ClientLat={item.ClientLat}
                                     ClientLng={item.ClientLng}
+                                    ClientId={item.IDClient}
+                                    showUpdate={showUpdate}
+                                    setItemId={setItemId}
+                                    getItemId={getItemId}
                                     // ClientInvoice={invoice}
                                     // ClientAmount={amount}
                                     // ClientNote={note}
@@ -338,6 +459,72 @@ const handelSearch = () => {
             }
 
         </section>
+
+        <div className="update-section d-none justify-content-center align-items-center">
+                <div className="cont-update position-relative ">
+                    <AiOutlineClose onClick={() => hiddenUpdate()} style={{color : '#fff', position : 'absolute', top : '10%', right : '10%', fontSize : '26px', cursor : 'pointer'}}/>
+                    <div className="row d-flex justify-content-center align-items-center py-5">
+                    <div className="col-lg-8 col-10 py-sm-5 py-0">
+                        <form onSubmit={registerUpdateForm} className='py-5'>
+                            <div className="row d-flex justify-content-center align-items-center gx-5 gy-3">
+
+                                <div className="col-sm-6 col-11">
+                                    <div className="group-add">
+                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserName">Name</label>
+                                        <div className="input-group">
+                                            <input type="text" className='bg-transparent mx-auto' value={NameClient} onChange={(e) => {setNameClientupdate(e.target.value)}} required name="UserName" id="UserName" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-sm-6 col-11">
+                                    <div className="group-add">
+                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserPhone">Mobile</label>
+                                        <div className="input-group">
+                                            <input type="tel" className='bg-transparent mx-auto' value={PhoneClient} onChange={(e) => {setPhoneClientupdate(e.target.value)}} required name="UserPhone" id="UserPhone" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-sm-6 col-11">
+                                    <div className="group-add">
+                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserAddress">Address</label>
+                                        <div className="input-group">
+                                            <input type="text" className='bg-transparent mx-auto' value={AddressClient} onChange={(e) => {setAddressClientupdate(e.target.value)}} required name="UserAddress" id="UserAddress" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-sm-6 col-11">
+                                    <div className="group-add">
+                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserLat">Client Lat</label>
+                                        <div className="input-group">
+                                            <input type="tel" className='bg-transparent mx-auto' value={LatClient} onChange={(e) => {setLatClient(e.target.value)}} required name="UserPhone" id="UserPhone" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-sm-6 col-11">
+                                    <div className="group-add">
+                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserLong">Client Long</label>
+                                        <div className="input-group">
+                                            <input type="tel" className='bg-transparent mx-auto' value={LongClient} onChange={(e) => {setLongClient(e.target.value)}} required name="UserLong" id="UserLong" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {message.length > 0 ? <p id="alertSave" className={`alert ${apiCode === true ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{message}</p> : ''}
+
+                            <div className="submitAdd-buttons mt-4 d-flex justify-content-center align-items-center">
+                                <button type='submit' className="btn black-btn py-2 px-4 me-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
+                                {/* <button onClick={resetForm} className="btn second-btn text-white py-2 px-3">Reset</button> */}
+                                <Link to='../Clients' className="btn black-btn py-2 px-4">Cancel</Link>
+                            </div>
+
+                        </form>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
 
         </>
     )

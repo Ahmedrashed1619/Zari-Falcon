@@ -272,7 +272,7 @@ export default function View({fetchSalesAll , token , baseURL}) {
                             <div className="col-12">
                                 <div className="row d-flex justify-content-center align-items-center gy-4">
                                     <div className="col-md-4 col-11">
-                                        <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Vendor Name</label>
+                                        <label htmlFor="sales-name" className='mb-2 h6 fw-bold'>Saller Name</label>
                                         <select  name="salesLocation" onChange={(e) => {getIDSales(e.target.value)}} required className='bg-input py-2 form-select' id="sales-name">
                                             <option>Choose Name..</option>
                                             {fetchSalesAll.map((item , i) => (
@@ -350,7 +350,7 @@ export default function View({fetchSalesAll , token , baseURL}) {
                 
                 status === true && fetchData.length < 1 ? 
                 <h2 className='fw-bold mb-0 text-center'>NOT DATA....</h2> : 
-                <h2 className='fw-bold mb-0 text-center'>Vendor Not Found..</h2>
+                <h2 className='fw-bold mb-0 text-center'>Saller Not Found..</h2>
                 }
 
             </section>

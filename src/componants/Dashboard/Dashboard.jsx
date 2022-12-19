@@ -48,12 +48,6 @@ export default function Dashboard({logOut}) {
             icon : <BiBarChartSquare />
         },
         {
-            path : '/settings',
-            name : 'Settings',
-            class: 'settings',
-            icon : <FiSettings />
-        },
-        {
             path : '/location',
             name : 'Location',
             class: 'location',
@@ -88,6 +82,12 @@ export default function Dashboard({logOut}) {
             name : 'Profile',
             class: 'profile',
             icon : <AiOutlineUser />
+        },
+        {
+            path : '/settings',
+            name : 'Settings',
+            class: 'settings',
+            icon : <FiSettings />
         },
     ];
 
@@ -253,7 +253,7 @@ export default function Dashboard({logOut}) {
                         <ul className='list-unstyled'>
                             <div>
                                 <span className='cont-imgFooter'>
-                                    <img src={imgFooter} className="w-75" alt="zari falcon logo"/>
+                                    <img src={imgFooter} className="w-100" alt="zari falcon logo"/>
                                 </span>
                                 <span className='closeSidebar' onClick={closeActive}>
                                     <i className="fa-solid fa-xmark"></i>
