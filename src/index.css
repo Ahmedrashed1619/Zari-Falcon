@@ -1604,8 +1604,8 @@ table {
 
 /* addsales page */
 
-.addsales-page .submitAdd-buttons button {
-  width: 15%;
+.addsales-page .submitAdd-buttons button , .addsales-page .submitAdd-buttons a {
+  width: 13%;
   font-weight: 600;
 }
 
@@ -1618,14 +1618,14 @@ table {
       margin-right: auto;
     }  
 
-    .addsales-page .submitAdd-buttons button{
+    .addsales-page .submitAdd-buttons button , .addsales-page .submitAdd-buttons a{
       width: 25%;
     }
 }
 
 @media screen and (max-width: 500px) {
 
-  .addsales-page .submitAdd-buttons button{
+  .addsales-page .submitAdd-buttons button , .addsales-page .submitAdd-buttons a{
     width: 30%;
   }
 }

@@ -427,7 +427,7 @@ export default function Sales({fetchSales , getToken , baseURL , fetchCountries 
                     </div> 
                     : 
                     <div className="total-table">
-                        {token && Object.keys(fetchSales).length > 0 ? <table className="table text-center table-hover">
+                        {token && Object.keys(fetchSales).length > 0 ? <table className="table text-center table-hover table-striped">
                             <thead className="bg-input">
                             <tr>
                                 <th scope="col">Name</th>

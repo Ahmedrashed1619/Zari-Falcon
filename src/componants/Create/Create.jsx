@@ -283,7 +283,7 @@ function Create({token , baseURL , fetchSalesAll}) {
             </div> : 
             success === true && routes.length > 0 ?
             <div className="total-table">
-              <table className="table text-center table-hover">
+              <table className="table text-center table-hover table-striped">
                   <thead className="bg-input">
                       <tr>
                         <th scope="col">Client Name</th>

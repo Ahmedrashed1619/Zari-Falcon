@@ -241,7 +241,8 @@ export default function Location({fetchSalesAll , token , baseURL}) {
           <div className="link-entries d-flex justify-content-between align-items-center mb-5">
             
               <div className="w-lg-75 w-50">
-                <select value={fetchSalesAll.IDSales} onChange={() => {getIDSales($('select').val())}} name="salesLocation" required className='bg-input py-2 form-select' id="">
+                <label htmlFor="salesLocation" className='mb-2 h6 fw-bold'>Saller Name</label>
+                <select value={fetchSalesAll.IDSales} onChange={() => {getIDSales($('select').val())}} name="salesLocation" required className='bg-input py-2 form-select' id="salesLocation">
                   <option>Choose Name..</option>
                   {fetchSalesAll.map((item , i) => (
                     <option key={i} value={item.IDSales}>{item.Name}</option>

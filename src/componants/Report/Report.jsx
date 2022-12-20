@@ -272,7 +272,7 @@ export default function Report({ fetchSalesAll , baseURL , token}) {
           </div> :
           status === true && Object.keys(fetchData).length > 0 ? 
           <div className="total-table">
-            <table className="table text-center table-hover">
+            <table className="table text-center table-hover table-striped">
                 <thead className="bg-input">
                     <tr>
                       <th scope="col">Client Name</th>
@@ -293,9 +293,10 @@ export default function Report({ fetchSalesAll , baseURL , token}) {
                         </td>
                         <td>{item.VisitAmmount === null ? '-' : item.VisitAmmount}</td>
                         <td>{item.VisitNote === null ? '-' : item.VisitNote}</td>
-                        <td><a className='main-color' href={`http://maps.google.com/?q=${item.VisitStartLatitude},${item.VisitStartLongitude},15z`} target="_blank" rel="noopener noreferrer"><MdOutlineGpsFixed /></a></td>
-                        <td><a className='main-color' href={`http://maps.google.com/?q=${item.ClientLatitude},${item.ClientLongitude},15z`} target="_blank" rel="noopener noreferrer"><MdOutlineGpsFixed /></a></td>
+                        <td><a className='main-color' href={`http://maps.google.com/?q=${item.VisitStartLatitude},${item.VisitStartLongitude}`} target="_blank" rel="noopener noreferrer"><MdOutlineGpsFixed /></a></td>
+                        <td><a className='main-color' href={`http://maps.google.com/?q=${item.ClientLatitude},${item.ClientLongitude}`} target="_blank" rel="noopener noreferrer"><MdOutlineGpsFixed /></a></td>
                         {/* <td>http://maps.google.com/?q=${item.CheckoutLat},${item.CheckoutLong}
+                        http://maps.google.com/?q=${ClientLat},${ClientLng}
                           <a href={item.VisitEndImage} download className='btn black-btn d-flex justify-content-center align-items-center mx-auto py-2'><HiOutlineDownload /></a>
                         </td> */}
                     </tr>

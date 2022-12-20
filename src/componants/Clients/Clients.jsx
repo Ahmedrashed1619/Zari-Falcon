@@ -416,7 +416,7 @@ async function registerUpdateForm(e) {
                         </div> 
                     : 
                 <div className="total-table-clients">
-                    <table className="table text-center table-hover">
+                    <table className="table text-center table-hover table-striped">
                         <thead className="bg-input">
                             <tr>
                             <th scope="col">Name</th>
@@ -494,7 +494,7 @@ async function registerUpdateForm(e) {
                                 </div>
                                 <div className="col-sm-6 col-11">
                                     <div className="group-add">
-                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserLat">Client Lat</label>
+                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserLat">Client Latitude</label>
                                         <div className="input-group">
                                             <input type="tel" className='bg-transparent mx-auto' value={LatClient} onChange={(e) => {setLatClient(e.target.value)}} required name="UserPhone" id="UserPhone" />
                                         </div>
@@ -502,7 +502,7 @@ async function registerUpdateForm(e) {
                                 </div>
                                 <div className="col-sm-6 col-11">
                                     <div className="group-add">
-                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserLong">Client Long</label>
+                                        <label className="fs-5 fw-bold text-white mb-1" htmlFor="UserLong">Client Longitude</label>
                                         <div className="input-group">
                                             <input type="tel" className='bg-transparent mx-auto' value={LongClient} onChange={(e) => {setLongClient(e.target.value)}} required name="UserLong" id="UserLong" />
                                         </div>
@@ -514,9 +514,9 @@ async function registerUpdateForm(e) {
                             {message.length > 0 ? <p id="alertSave" className={`alert ${apiCode === true ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{message}</p> : ''}
 
                             <div className="submitAdd-buttons mt-4 d-flex justify-content-center align-items-center">
-                                <button type='submit' className="btn black-btn py-2 px-4 me-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
+                                <button type='submit' className="btn black-btn py-2 me-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
                                 {/* <button onClick={resetForm} className="btn second-btn text-white py-2 px-3">Reset</button> */}
-                                <Link to='../Clients' className="btn black-btn py-2 px-4">Cancel</Link>
+                                <Link to='../Clients' className="btn black-btn py-2">Cancel</Link>
                             </div>
 
                         </form>

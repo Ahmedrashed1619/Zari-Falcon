@@ -324,7 +324,7 @@ export default function View({fetchSalesAll , token , baseURL}) {
                                 <h6 className='mb-0 text-muted fw-bold'>End Date: <a className='main-color' href={`http://maps.google.com/?q=${item.UserShiftEndLatitude},${item.UserShiftEndLongitude}`} target="_blank" rel="noopener noreferrer">{item.EndDate}</a></h6>
                             </div>            
                             <div className="total-table mb-5">
-                                <table className="table text-center table-hover">
+                                <table className="table text-center table-hover table-striped">
                                     <thead className="bg-input">
                                         <tr>
                                         <th scope="col">Client Name</th>
