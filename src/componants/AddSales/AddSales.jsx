@@ -266,18 +266,16 @@ export default function AddSales({getToken , baseURL , fetchCountries , fetchava
 
 
 
-    const resetForm = () => {
-        let inputs = Array.from(document.querySelectorAll('.addsales-page input'));
-        let selects = Array.from(document.querySelectorAll('.addsales-page select'));
-        inputs.forEach((input) => {
-            input.value = '';
-        })
-        selects.forEach((select) => {
-            select.value = '';
-        })
-
-        
-    }
+    // const resetForm = () => {
+    //     let inputs = Array.from(document.querySelectorAll('.addsales-page input'));
+    //     let selects = Array.from(document.querySelectorAll('.addsales-page select'));
+    //     inputs.forEach((input) => {
+    //         input.value = '';
+    //     })
+    //     selects.forEach((select) => {
+    //         select.value = '';
+    //     })
+    // }
 
 
     let avatarImg = $('.avatar select').val();

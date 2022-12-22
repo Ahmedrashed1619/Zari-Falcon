@@ -9,8 +9,7 @@ export default function ItemClient({ ClientId , ClientName , ClientAddress , Cli
     return (
         <>
             <tr>
-                <td onClick={() => {
-                }}>{ClientName}</td>
+                <td>{ClientName}</td>
                 <td>{ClientMobile}</td>
                 {/* <td>Vendor Name</td> */}
                 <td>{ClientAddress}</td>

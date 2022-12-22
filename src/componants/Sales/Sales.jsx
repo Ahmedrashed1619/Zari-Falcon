@@ -4,6 +4,7 @@ import { FiPlusSquare } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
 import $ from 'jquery';
 import ItemSales from '../ItemSales/ItemSales';
+import ItemAllSales from '../ItemAllSales/ItemAllSales';
 import axios from 'axios';
 import { useContext } from 'react';
 import { useEffect } from 'react';
@@ -12,13 +13,15 @@ import { FaBars } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
 import userImg2 from '../images/home/Rectangle 143.png';
 import { Pagination } from 'antd';
+import ReactHtmlTableToExcel from 'react-html-table-to-excel';
 
 // import ReactPaginate from 'react-paginate';
 
 
 
-export default function Sales({fetchSales , getToken , baseURL , fetchCountries , fetchavatars , pagesCountSales , countSales , setCountSales , setSearchKeySales , loadingSales}) {
+export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL , fetchCountries , fetchavatars , pagesCountSales , countSales , setCountSales , setSearchKeySales , loadingSales}) {
 
+    
     const token = localStorage.getItem('userToken');
     
     const [message, setMessage] = useState('');
@@ -54,16 +57,16 @@ export default function Sales({fetchSales , getToken , baseURL , fetchCountries 
     // }
 
 
-    const resetForm = () => {
-        let inputs = Array.from(document.querySelectorAll('.update-section input'));
-        let selects = Array.from(document.querySelectorAll('.update-section select'));
-        inputs.forEach((input) => {
-            input.value = '';
-        })
-        selects.forEach((select) => {
-            select.value = '';
-        })
-    }
+    // const resetForm = () => {
+    //     let inputs = Array.from(document.querySelectorAll('.update-section input'));
+    //     let selects = Array.from(document.querySelectorAll('.update-section select'));
+    //     inputs.forEach((input) => {
+    //         input.value = '';
+    //     })
+    //     selects.forEach((select) => {
+    //         select.value = '';
+    //     })
+    // }
 
 
     const showUpdate = () => {
@@ -427,6 +430,43 @@ export default function Sales({fetchSales , getToken , baseURL , fetchCountries 
                     </div> 
                     : 
                     <div className="total-table">
+
+
+                        {Object.keys(fetchSalesAll).length > 0 ? 
+                        <>
+                            <ReactHtmlTableToExcel
+                                id="test-table-xls-button"
+                                className="download-table-xls-button btn black-btn mb-4"
+                                table="table-to-xls"
+                                filename={`Sales`}
+                                sheet="tablexls"
+                                buttonText="Download as Excel Sheet"
+                            />
+                            <table id='table-to-xls' className="table text-center table-hover table-striped d-none">
+                                <thead className="bg-input">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Mobile</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {fetchSalesAll
+                                .map((item, i) => (
+                                    <ItemAllSales 
+                                        key={i}
+                                        name={item.Name}
+                                        email={item.Email}
+                                        phone={item.Mobile}
+                                        status={item.Status}
+                                    />
+                                    ))
+                                }
+                                </tbody>
+                            </table>
+                        </>  : '' }
+
                         {token && Object.keys(fetchSales).length > 0 ? <table className="table text-center table-hover table-striped">
                             <thead className="bg-input">
                             <tr>

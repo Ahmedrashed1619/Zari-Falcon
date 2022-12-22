@@ -215,12 +215,12 @@ export default function AddClients({baseURL , token , getClientsList}) {
     }
 
 
-    const resetForm = () => {
-        let inputs = Array.from(document.querySelectorAll('.addsales-page input'));
-        inputs.forEach((input) => {
-            input.value = '';
-        })
-    }
+    // const resetForm = () => {
+    //     let inputs = Array.from(document.querySelectorAll('.addsales-page input'));
+    //     inputs.forEach((input) => {
+    //         input.value = '';
+    //     })
+    // }
 
 
 

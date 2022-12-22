@@ -11,7 +11,7 @@ import { langContext } from '../context/store';
 
 
 
-export default function AddCreate({fetchSalesAll , fetchClients , baseURL , token}) {
+export default function AddCreate({fetchSalesAll , fetchAllClients , baseURL , token}) {
 
 
     let { isOpen , toggleOpen } = useContext(langContext);
@@ -265,7 +265,7 @@ export default function AddCreate({fetchSalesAll , fetchClients , baseURL , toke
                                 <div className="input-group">
                                     <select onChange={getUserData} className='bg-transparent py-2 form-select' required name="IDClient" id="IDClient">
                                         <option>Choose Name..</option>
-                                        {fetchClients.map((item , i) => (
+                                        {fetchAllClients.map((item , i) => (
                                             <option key={i} value={item.IDClient}>{item.ClientName}</option>
                                         ))}
                                     </select>

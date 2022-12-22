@@ -337,6 +337,25 @@ function App() {
         console.log(error)
       });
   }
+
+  const [fetchAllClients, setFetchAllClients] = useState([]);
+  async function getTokenClientsAll() {
+    await axios.post(apiClients, {}, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        // 'Access-Control-Allow-Origin': '*',
+        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+      }
+    })
+      .then(res => {
+        setFetchAllClients(res.data.Clients);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
   useEffect(() => {
     if(token) {
       getClientsList();
@@ -344,6 +363,40 @@ function App() {
   }, [token , count , pagesCount , searchKey]);
   // }, [token]);
 
+  useEffect(() => {
+    if(token) {
+      getTokenClientsAll()
+    }
+    }, [token])
+
+
+    // get file
+    // const apiFile = `${baseURL}client/export`;
+    // const [fetchFile, setFetchFile] = useState('');
+    // async function getFile() {
+    //   await axios.post(apiFile, {
+    //     responseType: 'arraybuffer',
+    //   }, {
+    //     headers: {
+    //       'Accept': 'Content-Type": "blob',
+    //       'Content-Type': 'Content-Type": "blob',
+    //       'Authorization': 'Bearer ' + token,
+    //       // 'Access-Control-Allow-Origin': '*',
+    //       // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+    //     }
+    //   })
+    //     .then(res => {
+    //       setFetchFile(res.data);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error)
+    //     });
+    // }
+    // useEffect(() => {
+    //   if(token) {
+    //     getFile();
+    //   }
+    // }, [token]);
 
 
   // get countries
@@ -481,7 +534,7 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='sales' element={token && Object.keys(fetchCountries).length > 0 && Object.keys(fetchavatars).length > 0 ? <Sales fetchSales={fetchSales} getToken={getToken} baseURL={baseURL} fetchCountries={fetchCountries} fetchavatars={fetchavatars} pagesCountSales={pagesCountSales} countSales={countSales} setCountSales={setCountSales} setSearchKeySales={setSearchKeySales} loadingSales={loadingSales} /> : <div id="ready">
+          <Route path='sales' element={token && Object.keys(fetchCountries).length > 0 && Object.keys(fetchavatars).length > 0 ? <Sales fetchSales={fetchSales} fetchSalesAll={fetchSalesAll} getToken={getToken} baseURL={baseURL} fetchCountries={fetchCountries} fetchavatars={fetchavatars} pagesCountSales={pagesCountSales} countSales={countSales} setCountSales={setCountSales} setSearchKeySales={setSearchKeySales} loadingSales={loadingSales} /> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
@@ -499,7 +552,7 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='clients' element={token ? <Clients getClientsList={getClientsList} token={token} baseURL={baseURL} fetchClients={fetchClients} pagesCount={pagesCount} count={count} setCount={setCount} setSearchKey={setSearchKey} loading={loading}/> : <div id="ready">
+          <Route path='clients' element={token ? <Clients getClientsList={getClientsList} fetchAllClients={fetchAllClients} token={token} baseURL={baseURL} fetchClients={fetchClients} pagesCount={pagesCount} count={count} setCount={setCount} setSearchKey={setSearchKey} loading={loading}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
@@ -519,7 +572,7 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
-          <Route path='addCreate' element={token ? <AddCreate token={token} baseURL={baseURL} fetchClients={fetchClients} fetchSalesAll={fetchSalesAll}/> : <div id="ready">
+          <Route path='addCreate' element={token ? <AddCreate token={token} baseURL={baseURL} fetchAllClients={fetchAllClients} fetchSalesAll={fetchSalesAll}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 

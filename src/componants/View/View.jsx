@@ -11,6 +11,7 @@ import { langContext } from '../context/store';
 import ItemView from '../ItemView/ItemView';
 import axios from 'axios';
 import imgreport from '../images/dashboard/report.png';
+import ReactHtmlTableToExcel from 'react-html-table-to-excel';
 
 
 
@@ -324,6 +325,15 @@ export default function View({fetchSalesAll , token , baseURL}) {
                                 <h6 className='mb-0 text-muted fw-bold'>End Date: <a className='main-color' href={`http://maps.google.com/?q=${item.UserShiftEndLatitude},${item.UserShiftEndLongitude}`} target="_blank" rel="noopener noreferrer">{item.EndDate}</a></h6>
                             </div>            
                             <div className="total-table mb-5">
+                                <ReactHtmlTableToExcel
+                                    id="test-table-xls-button"
+                                    className="download-table-xls-button btn black-btn mb-4"
+                                    table="table-to-xls"
+                                    filename={`Route ${i}`}
+                                    sheet="tablexls"
+                                    buttonText="Download as Excel Sheet"
+                                />
+
                                 <table className="table text-center table-hover table-striped">
                                     <thead className="bg-input">
                                         <tr>

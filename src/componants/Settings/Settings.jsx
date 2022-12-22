@@ -151,6 +151,7 @@ export default function Settings({fetchsettings , baseURL , token , getSettings}
   let apiInvoice = `${baseURL}setting/invoice`;
   let apiAmmont = `${baseURL}setting/ammount`;
   let apiNote = `${baseURL}setting/note`;
+  let apiNoteRequired = `${baseURL}setting/note/required`;
   let apiRadius = `${baseURL}setting/radius`;
 
    const [changeRadiusSettings, setchangeRadiusSettings] = useState('');
@@ -215,6 +216,22 @@ export default function Settings({fetchsettings , baseURL , token , getSettings}
 
   async function NoteSettings() {
     await axios.post(apiNote, {}, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      }
+    })
+    .then(res => {
+      getSettings();
+     })
+     .catch((error) => {
+       console.log(error)
+     });
+  }
+
+  async function NoterequiredSettings() {
+    await axios.post(apiNoteRequired, {}, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -318,6 +335,12 @@ export default function Settings({fetchsettings , baseURL , token , getSettings}
                             <td>Note</td>
                             <td>ــ</td>
                             <td><Switch defaultChecked={fetchsettings.Note} onClick={NoteSettings} /></td>
+                          </tr>
+
+                          <tr>
+                            <td>Note Required</td>
+                            <td>ــ</td>
+                            <td><Switch defaultChecked={fetchsettings.NoteRequired} onClick={NoterequiredSettings} /></td>
                           </tr>
 
                           <tr>

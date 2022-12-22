@@ -1534,12 +1534,18 @@ form label{
 }
 
 .sales-page .linkTo a,
+.sales-page .linkTo button,
 .addsales-page .note-page button {
     font-size: 18px;
     color: var(--white);
     display: flex;
     line-height: 26px;
     transition: all 0.5s;
+  }
+
+  .sales-page .linkTo button {
+    border: none;
+    background-color: transparent;
   }
 
   .addsales-page .note-page button {
@@ -1562,6 +1568,8 @@ form label{
 }
 
 .sales-page .linkTo:hover a,
+.sales-page .linkTo:hover button,
+
 .addsales-page .note-page:hover button {
   color: var(--mainColor);
 }

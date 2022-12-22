@@ -12,13 +12,15 @@ import { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 // import { HiOutlineDownload } from 'react-icons/hi';
 import ItemClient from '../ItemClient/ItemClient';
+import ItemAllClients from '../ItemAllClients/ItemAllClients';
 import { Pagination } from 'antd';
 // import ReactPaginate from 'react-paginate';
 import axios from 'axios';
+import ReactHtmlTableToExcel from 'react-html-table-to-excel';
 
 
 
-export default function Clients({ getClientsList , token , fetchClients , baseURL , pagesCount , count , setCount , setSearchKey , loading}) {
+export default function Clients({ getClientsList , token , fetchClients , fetchAllClients , baseURL , pagesCount , count , setCount , setSearchKey , loading}) {
 
     let { isOpen , toggleOpen } = useContext(langContext);
 
@@ -208,16 +210,16 @@ const handelSearch = () => {
 }
 
 
-const resetForm = () => {
-    let inputs = Array.from(document.querySelectorAll('.update-section input'));
-    let selects = Array.from(document.querySelectorAll('.update-section select'));
-    inputs.forEach((input) => {
-        input.value = '';
-    })
-    selects.forEach((select) => {
-        select.value = '';
-    })
-}
+// const resetForm = () => {
+//     let inputs = Array.from(document.querySelectorAll('.update-section input'));
+//     let selects = Array.from(document.querySelectorAll('.update-section select'));
+//     inputs.forEach((input) => {
+//         input.value = '';
+//     })
+//     selects.forEach((select) => {
+//         select.value = '';
+//     })
+// }
 
 
 const showUpdate = () => {
@@ -355,33 +357,17 @@ async function registerUpdateForm(e) {
 
             <div className="link-entries d-flex justify-content-between align-items-center mb-5">
                 <div className="linkTo">
-                <Link to='../addClients'><FiPlusSquare /> Add</Link>
+                    <Link to='../addClients'><FiPlusSquare /> Add</Link>
                 </div>
-                <div className="show-entires">
-                {/* <p>Show ___ entires</p> */}
-                <p></p>
-                </div>
+                {/* <div className="linkTo">
+                    <a target={'_blank'} download href={fetchFile ? fetchFile : ''}>Export</a>
+                </div> */}
+                {/* <div className="show-entires">
+                    <p></p>
+                </div> */}
+
             </div>
 
-            {/* <ReactPaginate 
-                previousLabel={'<<'}
-                nextLabel={'>>'}
-                breakLabel={'...'}
-                pageCount={pagesCount}
-                marginPagesDisplayed={3}
-                pageRangeDisplayed={2}
-                onPageChange={handelPageChange}
-                containerClassName={'pagination justify-content-center mb-4'}
-                pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
-                previousClassName={'page-item d-none'}
-                previousLinkClassName={'page-link'}
-                nextClassName={'page-item d-none'}
-                nextLinkClassName={'page-link'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
-                activeClassName={'active'}
-            /> */}
             <div className="pagi text-center mb-4">
                 <Pagination 
                     total={pagesCount}
@@ -416,6 +402,36 @@ async function registerUpdateForm(e) {
                         </div> 
                     : 
                 <div className="total-table-clients">
+                    <ReactHtmlTableToExcel
+                        id="test-table-xls-button"
+                        className="download-table-xls-button btn black-btn mb-4"
+                        table="table-to-xls"
+                        filename={`Clients`}
+                        sheet="tablexls"
+                        buttonText="Download as Excel Sheet"
+                    />
+
+                    <table id='table-to-xls' className="table text-center table-hover table-striped d-none">
+                        <thead className="bg-input">
+                            <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {fetchAllClients
+                            .map((item , i) => (
+                                <ItemAllClients 
+                                    key={i} 
+                                    AllClientName={item.ClientName} 
+                                    AllClientMobile={item.ClientMobile}
+                                    AllClientAddress={item.ClientAddress}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+
                     <table className="table text-center table-hover table-striped">
                         <thead className="bg-input">
                             <tr>
