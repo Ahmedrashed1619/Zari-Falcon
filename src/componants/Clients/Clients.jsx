@@ -207,6 +207,7 @@ const [valueSearch, setValueSearch] = useState('')
 
 const handelSearch = () => {
     setSearchKey(valueSearch);
+    setCount(1)
 }
 
 
@@ -359,9 +360,6 @@ async function registerUpdateForm(e) {
                 <div className="linkTo">
                     <Link to='../addClients'><FiPlusSquare /> Add</Link>
                 </div>
-                {/* <div className="linkTo">
-                    <a target={'_blank'} download href={fetchFile ? fetchFile : ''}>Export</a>
-                </div> */}
                 {/* <div className="show-entires">
                     <p></p>
                 </div> */}

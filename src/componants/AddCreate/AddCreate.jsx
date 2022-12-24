@@ -8,6 +8,7 @@ import { FaBars } from 'react-icons/fa';
 import userImg2 from '../images/home/Rectangle 143.png';
 import { useContext } from 'react';
 import { langContext } from '../context/store';
+// import { AutoComplete, Select } from 'antd';
 
 
 
@@ -227,7 +228,6 @@ export default function AddCreate({fetchSalesAll , fetchAllClients , baseURL , t
 
 
 
-
     return (
         <>
 
@@ -263,12 +263,33 @@ export default function AddCreate({fetchSalesAll , fetchAllClients , baseURL , t
                             <div className="group-add">
                                 <label className="fs-5 fw-bold mb-1" htmlFor="IDClient">Client Name</label>
                                 <div className="input-group">
+                                    {/* <input type='text' list='ClientList' id='IDClient' name='IDClient' onChange={getUserData} className='bg-transparent mx-auto' placeholder='Choose Name..' required/>
+                                    <datalist id='ClientList'>
+                                        {fetchAllClients.map((item , i) => (
+                                            <option key={i}>{item.ClientName}</option>
+                                            
+                                        ))}
+                                    </datalist> */}
                                     <select onChange={getUserData} className='bg-transparent py-2 form-select' required name="IDClient" id="IDClient">
                                         <option>Choose Name..</option>
                                         {fetchAllClients.map((item , i) => (
                                             <option key={i} value={item.IDClient}>{item.ClientName}</option>
                                         ))}
                                     </select>
+
+                                    {/* <Select
+                                        placeholder='Choose Name..'
+                                        allowClear
+                                        showSearch
+                                        optionFilterProp="children"
+                                        filterOption
+                                        required
+                                        onChange={getIDClient}
+                                    >
+                                        {fetchAllClients.map((item , i) => {
+                                            return <Select.Option key={i} value={item.IDClient}>{item.ClientName}</Select.Option>
+                                        })}
+                                    </Select> */}
                                 </div>
                             </div>
                         </div>

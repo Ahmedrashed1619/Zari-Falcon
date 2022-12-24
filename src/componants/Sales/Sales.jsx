@@ -332,6 +332,7 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
 
     const handelSearch = () => {
         setSearchKeySales(valueSearch);
+        setCountSales(1);
     }
 
 
