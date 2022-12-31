@@ -131,7 +131,7 @@ export default function Home({fetchHome}) {
             {/* header section */}
             <header id="home" className="position-relative" dir={isEng ? 'ltr' : 'rtl'}>
                 <div className="total-header min-vh-70 d-flex justify-content-center align-items-end pb-5">
-                    <div className="container">
+                    <div className="container special-w">
                         <div className="caption text-center">
                             <h1 className="text-capitalize fw-bold mb-4 mx-auto" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-in">{isEng ? fetchHome.top.Title : fetchHome.top.TitleAr}</h1>
                             <p className="mb-4 py-1 mx-auto text-muted" data-aos="fade-down" data-aos-duration="1500" data-aos-easing="ease-out">{isEng ? fetchHome.top.Text : fetchHome.top.TextAr}
@@ -159,7 +159,7 @@ export default function Home({fetchHome}) {
 
             {/* features section */}
             <section id='features' className='py-5' dir={isEng ? 'ltr' : 'rtl'}>
-                <div className="container">
+                <div className="container special-w">
                     <div className="row pt-5 g-5 d-flex justify-content-center align-items-center">
                         <div className="col-lg-4">
                             <div className="img-features mx-auto py-4 text-center" data-aos="flip-left" data-aos-duration="2000" data-aos-easing="ease-out-cubic">
@@ -188,7 +188,7 @@ export default function Home({fetchHome}) {
 
             {/* our app section */}
             <section id='app' className='py-5' dir={isEng ? 'ltr' : 'rtl'}>
-                <div className="container">
+                <div className="container special-w">
                     <div className="row d-flex justify-content-center align-items-center gy-5">
                         <div className="col-lg-6">
                             <div className="caption-app" data-aos="flip-left" data-aos-duration="1500" data-aos-easing="ease-in-sine">
@@ -222,7 +222,7 @@ export default function Home({fetchHome}) {
 
             {/* plans section */}
             <section id='plans' className='py-5' dir={isEng ? 'ltr' : 'rtl'}>
-                <div className="container">
+                <div className="container special-w">
                     <h2 className="fw-bold fs-1 mb-5 mt-4 w-75 mx-auto text-center" data-aos="fade-down" data-aos-duration="1500" data-aos-easing="ease-in">{isEng ? fetchHome.plans.Title : fetchHome.plans.TitleAr}</h2>
 
                     {/* <OwlCarousel className="slider-items owl-carousel wow fadeInRight" data-wow-duration="1.5s" {...plans}>

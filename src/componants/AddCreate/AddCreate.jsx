@@ -266,7 +266,7 @@ export default function AddCreate({fetchSalesAll , fetchAllClients , baseURL , t
                                     {/* <input type='text' list='ClientList' id='IDClient' name='IDClient' onChange={getUserData} className='bg-transparent mx-auto' placeholder='Choose Name..' required/>
                                     <datalist id='ClientList'>
                                         {fetchAllClients.map((item , i) => (
-                                            <option key={i}>{item.ClientName}</option>
+                                            <option key={i} value={item.IDClient}>{item.ClientName}</option>
                                             
                                         ))}
                                     </datalist> */}

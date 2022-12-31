@@ -11,7 +11,7 @@ import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 
 
-export default function Checkout({userData , saveUserData , baseURL}) {
+export default function Checkout({userData , saveUserData , baseURL , token}) {
 
 
 
@@ -193,6 +193,8 @@ export default function Checkout({userData , saveUserData , baseURL}) {
 
     // sign in post data
 
+    const [isPayClick, setIsPayClick] = useState(false);
+
     const [user, setUser] = useState({
         UserEmail:'',
         UserPassword:'',
@@ -234,6 +236,10 @@ export default function Checkout({userData , saveUserData , baseURL}) {
             localStorage.setItem('userToken', data.AccessToken);
             saveUserData();
             setApiCode(data.Success);
+            setTimeout(() => {
+                setIsPayClick(!isPayClick);
+                // payForPlan();
+            }, 1500);
         }
         
 
@@ -295,6 +301,10 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                 localStorage.setItem('userToken' , data.AccessToken);
                 saveUserData();
                 setApiCode(data.Success);
+                setTimeout(() => {
+                    setIsPayClick(!isPayClick);
+                    // payForPlan();
+                }, 1500);
             }
 
         }
@@ -325,6 +335,48 @@ export default function Checkout({userData , saveUserData , baseURL}) {
     }
 
 
+        // pay for plan
+
+        const apiPay = `${baseURL}payment/initiate`;
+        const [messagePlanEn, setMessagePlanEn] = useState();
+        const [messagePlanAr, setMessagePlanAr] = useState();
+        const [statusPlan, setStatusPlan] = useState();
+    
+        async function payForPlan() {
+
+            if(!userData) {
+                $('html , body').animate({ scrollTop: 0 }, 200);
+                setTimeout(() => {
+                    setIsPayClick(!isPayClick);                    
+                }, 1000);
+            }
+            else if(userData) {
+                await axios.post(apiPay, {
+                    IDPackage: id
+                }, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token,
+                    }
+                })
+                .then(res => {
+                    setMessagePlanAr(res.data.ApiMsgAr);
+                    setMessagePlanEn(res.data.ApiMsgEn);
+                    setStatusPlan(res.data.Status);
+                    // if(res.data.Status === true) {
+                    //     setTimeout(() => {
+                    //         window.open(res.data.PaymentURL, '_blank', 'noreferrer');
+                    //         window.location.href = res.data.PaymentURL;
+                    //     }, 2000);
+                    // }
+                })
+                .catch((error) => {
+                    console.log(error)
+                });
+            }
+        }
+
 
 
     return (
@@ -332,12 +384,12 @@ export default function Checkout({userData , saveUserData , baseURL}) {
             <section className="check-out py-5" dir={isEng ? 'ltr' : 'rtl'}>
                 <div className="container pt-5 pb-4">
 
-                    {userData ? 
-                        <div className="row g-5">
-                            <div className="col-lg-8">
+                    {/* {!isPayClick ?  */}
+                        <div className="row d-flex justify-content-center align-items-center g-5">
+                            {/* <div className="col-lg-8">
                                 <div className="caption-check">
-                                    <h2 className="main-color fw-bold mb-4 wow fadeInDown" data-wow-duration="1s"><i className={`fa-solid ${isEng ? 'fa-angle-right' : 'fa-angle-left'}`}></i> Checkout</h2>
-                                    <p className="fw-bold fs-4 wow fadeInDown" data-wow-duration="1s">Payment Method</p>
+                                    <h2 className="main-color fw-bold mb-4 wow fadeInDown" data-wow-duration="1s"><i className={`fa-solid ${isEng ? 'fa-angle-right' : 'fa-angle-left'}`}></i> {isEng ? 'Checkout' : 'الدفــع'}</h2>
+                                    <p className="fw-bold fs-4 wow fadeInDown" data-wow-duration="1s">{isEng ? 'Payment Method' : 'طريقة الدفع'}</p>
                                     <form>
                                         <div className="inputs-radio my-2 d-flex align-items-center row">
                                             <div className="col-6 col-md-4">
@@ -359,27 +411,27 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                         </div>
                                         <div className="inputs-info">
                                             <div className="name-card wow fadeInLeft" data-wow-duration="1.5s">
-                                                <label htmlFor="nameCard" className="fs-5 fw-bold mt-3">Name on card</label>
+                                                <label htmlFor="nameCard" className="fs-5 fw-bold mt-3">{isEng ? 'Name on card' : 'الإسم في البطاقة'}</label>
                                                 <div className="input-group">
                                                     <input id="nameCard" type="text" name="name" required className="bg-transparent mx-auto" />
                                                 </div>
                                             </div>
                                             <div className="number-card position-relative wow fadeInRight" data-wow-duration="1.5s">
-                                                <label htmlFor="number" className="fs-5 fw-bold mt-3">Card number</label>
+                                                <label htmlFor="number" className="fs-5 fw-bold mt-3">{isEng ? 'Card number' : 'رقم البطاقة'}</label>
                                                 <div className='input-group'>
-                                                    <input id="number" type="text" name="number" required className="bg-transparent mx-auto" />
+                                                    <input id="text" type="text" name="number" required className="bg-transparent mx-auto" />
                                                     <img id="img-input" className={isEng ? 'left-auto' : 'right-auto'} src={masterCard} alt="img-input" />
                                                 </div>
                                             </div>
                                             <div className="cv-exp row">
                                                 <div className="col-md-6 date wow fadeInLeft" data-wow-duration="1.5s">
-                                                    <label htmlFor="date" className="fs-5 fw-bold mt-3">Expiration date</label>
+                                                    <label htmlFor="date" className="fs-5 fw-bold mt-3">{isEng ? 'Expiration date' : 'تاريخ إنتهاء الصلاحية'}</label>
                                                     <div className="input-group">
                                                         <input id="date" type="text" name="date" required className="bg-transparent mx-auto" placeholder="MM/YY" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 cvv wow fadeInRight" data-wow-duration="1.5s">
-                                                    <label htmlFor="passwordCvv" className="fs-5 fw-bold mt-3">CVV</label>
+                                                    <label htmlFor="passwordCvv" className="fs-5 fw-bold mt-3">{isEng ? 'CVV' : 'رمز الأمان'}</label>
                                                     <div className="input-group">
                                                         <input id="passwordCvv" type="password" name="password" required className="bg-transparent mx-auto" placeholder="123" />
                                                         <i className={`fa-regular fa-eye ${isEng ? 'left-i-auto' : 'right-i-auto'}`} onClick={showHidePass}></i>
@@ -388,13 +440,13 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                             </div>
                                         </div>
                                         <div className="buttons text-center mx-auto mt-5 wow fadeInUp" data-wow-duration="1s">
-                                            <button type='submit' className="btn second-btn text-capitalize">Confirm Payment</button>
+                                            <button type='submit' className="btn second-btn text-capitalize">{isEng ? 'Confirm Payment' : 'تأكيد الدفع'}</button>
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> */}
                             {fetchDataPlan ? 
-                                <div className="col-lg-4">
+                                <div className="col-xl-5 col-lg-6 col-md-8 col-10">
                                     <div className="offer" data-aos="flip-right" data-aos-duration="1500" data-aos-easing="ease-out-cubic">
                                         <h3 className="name">{isEng ? fetchDataPlan.PackageNameEn : fetchDataPlan.PackageNameAr}</h3>
                                         <div className={`cont-price ${isEng ? 'text-start' : 'text-end'}`}>
@@ -408,8 +460,12 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                             <h4><span className="main-color">{fetchDataPlan.Route > 0 ? <BsFillCheckCircleFill className='main-color'/> : <i className="fa-solid fa-circle-xmark main-color"></i>}</span> {isEng ? 'Route' : 'تحديد مسار للمستخدمين'}</h4>
                                             <h4><span className="main-color">{fetchDataPlan.RouteCheckReport > 0 ? <BsFillCheckCircleFill className='main-color'/> : <i className="fa-solid fa-circle-xmark main-color"></i>}</span> {isEng ? 'Route Check Report' : 'تقرير المسار'}</h4>
                                             <h4><span className="main-color">{fetchDataPlan.RouteMapReport > 0 ? <BsFillCheckCircleFill className='main-color'/> : <i className="fa-solid fa-circle-xmark main-color"></i>}</span> {isEng ? 'Route Map Report' : 'تقرير المسار على الخريطة'}</h4>
-                                            <div className="buttons text-center my-3 mx-auto">
-                                                <Link to='../home' onClick={goToPlansSection} className="btn black-btn text-capitalize">{isEng ? 'Change my Plan' : 'تغيير الخطة'}</Link>
+                                            
+                                            {/* {messagePlanEn || messagePlanAr ? <p id="alertPlan" className={`alert ${statusPlan === true ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{isEng ? messagePlanEn : messagePlanAr}</p> : ''} */}
+
+                                            <div className="buttons d-flex text-center my-3 mx-auto">
+                                                <Link to='../home' onClick={goToPlansSection} className="btn black-btn mx-auto text-capitalize">{isEng ? 'Change my Plan' : 'تغيير الخطة'}</Link>
+                                                {/* <button onClick={payForPlan} className="btn second-btn mx-auto text-capitalize">{isEng ? 'Confirm Payment' : 'تأكيد الدفع'}</button> */}
                                             </div>
                                         </div>
                                     </div>
@@ -418,7 +474,7 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                 ''
                             }
                         </div> 
-                        
+{/*                         
                         :
 
                         <div className="row justify-content-center align-items-center">
@@ -436,7 +492,7 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                             <label htmlFor="UserPassword" className="fs-4 fw-bold mt-3 mb-1">{isEng ? 'Password' : 'كلمــة الســـر'}</label>
                                             <div className="input-group pass-sign">
                                                 <input id="UserPasswordSignin" onChange={getUserData} type="password" name="UserPassword" required className="bg-transparent mx-auto" placeholder={isEng ? 'Enter your password..' : 'ادخـــل كلمــة الســر..'} />
-                                                <i className="fa-regular fa-eye" onClick={showHidePassSign}></i>
+                                                <i className={`fa-regular fa-eye ${isEng ? 'left-i-auto' : 'right-i-auto'}`} onClick={showHidePassSign}></i>
                                             </div>
                                         </div>
     
@@ -491,7 +547,8 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                             <label htmlFor="UserPassword" className="fs-4 fw-bold mt-3 mb-1">{isEng ? 'Password' : 'كلمــة الســـر'}</label>
                                             <div className="input-group pass-sign">
                                                 <input id="UserPassword" onChange={getUserDataSignup} type="password" name="UserPassword" required className="bg-transparent mx-auto" placeholder={isEng ? 'Enter your strong password..' : 'ادخـــل كلمــة ســر قويــة..'} />
-                                                <i className="fa-regular fa-eye" onClick={showHidePassSign}></i>
+                                                <i className={`fa-regular fa-eye ${isEng ? 'left-i-auto' : 'right-i-auto'}`} onClick={showHidePassSign}></i>
+
                                             </div>
                                         </div>
 
@@ -499,7 +556,7 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                             <label htmlFor="confirmPassword" className="fs-4 fw-bold mt-3 mb-1">{isEng ? 'Confirm Password' : 'تأكيـــد كلمــة الســـر'}</label>
                                             <div className="input-group pass-sign">
                                                 <input id="confirmPassword" onChange={getConfirm} type="password" name="confirmPassword" required className="bg-transparent mx-auto" placeholder={isEng ? 'Enter your strong password..' : 'ادخـــل كلمــة ســر قويــة..'} />
-                                                <i className="fa-regular fa-eye" onClick={showHideRePass}></i>
+                                                <i className={`fa-regular fa-eye ${isEng ? 'left-i-auto' : 'right-i-auto'}`} onClick={showHideRePass}></i>
                                             </div>
                                         </div>
 
@@ -518,7 +575,8 @@ export default function Checkout({userData , saveUserData , baseURL}) {
                                     </form>
                                 </div>
                             </div>
-                        </div>}
+                        </div>
+                    } */}
 
                 </div>
             </section>

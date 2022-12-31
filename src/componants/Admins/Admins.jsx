@@ -3,23 +3,21 @@ import { Link } from 'react-router-dom';
 import { FiPlusSquare } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
 import $ from 'jquery';
-import ItemSales from '../ItemSales/ItemSales';
-import ItemAllSales from '../ItemAllSales/ItemAllSales';
 import axios from 'axios';
+import ItemAdmin from '../ItemAdmin/ItemAdmin';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import { langContext } from '../context/store';
 import { FaBars } from 'react-icons/fa';
-import { BsSearch } from 'react-icons/bs';
+// import { BsSearch } from 'react-icons/bs';
 import userImg2 from '../images/home/Rectangle 143.png';
-import { Pagination } from 'antd';
+// import { Pagination } from 'antd';
 import ReactHtmlTableToExcel from 'react-html-table-to-excel';
-
 // import ReactPaginate from 'react-paginate';
 
 
 
-export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL , fetchCountries , fetchavatars , pagesCountSales , countSales , setCountSales , setSearchKeySales , loadingSales}) {
+export default function Admins({fetchAdmins , getTokenAdmins , baseURL , fetchCountries , fetchavatars , loadingAdmins}) {
 
     
     const token = localStorage.getItem('userToken');
@@ -84,16 +82,6 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
 
 
     let { isOpen , toggleOpen } = useContext(langContext);
-
-
-    //   const closeNavLink = () => {
-    //     if(isOpen === false && $('body').width() < 570) {
-    //         $('.sidebar').animate({'left' : '-240px'} , 500);
-    //         setTimeout(() => {
-    //             toggleOpen();
-    //         }, 500);
-    //     }
-    // }
 
 
     function widthBody() {
@@ -221,36 +209,24 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
     const [Phone, setPhoneupdate] = useState('');
     const [IDCountry, setCountryupdate] = useState('');
     const [IDSales, setIdupdate] = useState(null);
-    // const [avatarupdate, setAvatarupdate] = useState('');
-    // const [imageupdate, setImageupdate] = useState('');
-    // const [passwordupdate, setPasswordupdate] = useState('');
 
 
     const setItemId = (id , name , email , phone , country , callback ) => {
-        localStorage.setItem('ItemId' , (id));
-        localStorage.setItem('ItemName' , (name));
-        localStorage.setItem('ItemEmail' , (email));
-        localStorage.setItem('ItemPhone' , (phone));
-        localStorage.setItem('ItemCountry' , (country));
-        // localStorage.setItem('ItemAvatar' , (avatar));
-        // localStorage.setItem('ItemImg' , (img));
-        // localStorage.setItem('ItemPassword' , (password));
+        localStorage.setItem('AdminId' , (id));
+        localStorage.setItem('AdminName' , (name));
+        localStorage.setItem('AdminEmail' , (email));
+        localStorage.setItem('AdminPhone' , (phone));
+        localStorage.setItem('AdminCountry' , (country));
         callback();
     }
 
     const getItemId = () => {
-        setIdupdate(localStorage.getItem('ItemId'));
-        setNameupdate(localStorage.getItem('ItemName'));
-        setEmailupdate(localStorage.getItem('ItemEmail'));
-        setPhoneupdate(localStorage.getItem('ItemPhone'));
-        setCountryupdate(localStorage.getItem('ItemCountry'));
-        // setAvatarupdate(localStorage.getItem('ItemAvatar'));
-        // setImageupdate(localStorage.getItem('ItemImg'));
-        // setPasswordupdate(localStorage.getItem('ItemPassword'));
+        setIdupdate(localStorage.getItem('AdminId'));
+        setNameupdate(localStorage.getItem('AdminName'));
+        setEmailupdate(localStorage.getItem('AdminEmail'));
+        setPhoneupdate(localStorage.getItem('AdminPhone'));
+        setCountryupdate(localStorage.getItem('AdminCountry'));
     }
-
-
-    // let avatarImg = $('.avatar select').val();
 
 
     // const [confirm, setConfirm] = useState('');
@@ -276,7 +252,7 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
         // if(confirm === user.UserPassword) {
             let {data} = await axios({
                 method: 'post',
-                url: `${baseURL}sales/edit`,
+                url: `${baseURL}admins/edit`,
                 data: obj,
                 headers: { 
                         // 'Content-Type': 'multipart/form-data',
@@ -293,7 +269,7 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
 
             if(data.Success === true) {
                 setApiCode(data.Success);
-                getToken();
+                getTokenAdmins();
                 setTimeout(() => {
                     hiddenUpdate();
                 }, 3000);
@@ -311,7 +287,7 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
 
     // sort by name
 
-    // let arr = [...fetchSales];
+    // let arr = [...fetchAdmins];
 
     // function sortArrayByName(a , b) {
     //     if(a.Name < b.Name) {
@@ -328,12 +304,12 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
 
     // const [search, setSearch] = useState('');
 
-    const [valueSearch, setValueSearch] = useState('')
+    // const [valueSearch, setValueSearch] = useState('')
 
-    const handelSearch = () => {
-        setSearchKeySales(valueSearch);
-        setCountSales(1);
-    }
+    // const handelSearch = () => {
+    //     setSearchKeySales(valueSearch);
+    //     setCountSales(1);
+    // }
 
 
 
@@ -347,7 +323,7 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
                 }}>
                     <FaBars />
                 </div>
-                <div className="search-topbar">
+                {/* <div className="search-topbar">
                     <div className="group">
                         <input type="text"
                             onChange={(e) => {
@@ -357,7 +333,7 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
                         />
                         <BsSearch onClick={handelSearch} style={{cursor: 'pointer'}}/>
                     </div>
-                </div>
+                </div> */}
                 <div className="user-img">
                     <img src={userImg2} alt="user" />
                 </div>
@@ -366,145 +342,72 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
             <section className='dashpage sales-page py-5 position-relative'>
 
                 <div className="link-entries d-flex justify-content-between align-items-center mb-5">
-                <div className="linkTo">
-                    <Link to='../addSales'><FiPlusSquare /> Add</Link>
-                </div>
-                <div className="show-entires">
-                    {/* <p>Show ___ entires</p> */}
-                    <p></p>
-                </div>
-                </div>
-
-                {/* <ReactPaginate 
-                    previousLabel={'<<'}
-                    nextLabel={'>>'}
-                    breakLabel={'...'}
-                    pageCount={15}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={3}
-                    onPageChange={handelPageChangeSales}
-                    containerClassName={'pagination justify-content-center mb-3'}
-                    pageClassName={'page-item'}
-                    pageLinkClassName={'page-link'}
-                    previousClassName={'page-item'}
-                    previousLinkClassName={'page-link'}
-                    nextClassName={'page-item'}
-                    nextLinkClassName={'page-link'}
-                    breakClassName={'page-item'}
-                    breakLinkClassName={'page-link'}
-                    activeClassName={'active'}
-                /> */}
-
-                <div className="pagi text-center mb-4">
-                    <Pagination 
-                        total={pagesCountSales}
-                        pageSize={1}
-                        // showQuickJumper={true}
-                        // hideOnSinglePage={true}
-                        // defaultCurrent={10}
-                        // showSizeChanger
-                        showLessItems={true}
-                        itemRender={(page , type) => {
-                            if(type === 'next') {
-                                return <span>{'>>'}</span>
-                            }
-                            else if(type === 'prev') {
-                                return <span>{'<<'}</span>
-                            }
-                            else if(type === 'page') {
-                                return <span>{page}</span>
-                            }
-                        }}
-                        current={countSales}
-                        onChange={(page) => {
-                            setCountSales(page);
-                            
-                        }}
-                        
-                    />
+                    <div className="linkTo">
+                        <Link to='../addAdmin'><FiPlusSquare /> Add</Link>
+                    </div>
+                    <div className="show-entires">
+                        {/* <p>Show ___ entires</p> */}
+                        <p></p>
+                    </div>
                 </div>
 
 
-                {loadingSales ? 
+                {loadingAdmins ? 
                     <div id="ready">
                         <i className="fa fa-spinner fa-5x fa-spin"></i>
                     </div> 
                     : 
                     <div className="total-table">
 
-
-                        {Object.keys(fetchSalesAll).length > 0 ? 
-                        <>
-                            <ReactHtmlTableToExcel
-                                id="test-table-xls-button"
-                                className="download-table-xls-button btn black-btn mb-4"
-                                table="table-to-xls"
-                                filename={`Sales`}
-                                sheet="tablexls"
-                                buttonText="Download as Excel Sheet"
-                            />
-                            <table id='table-to-xls' className="table text-center table-hover table-striped d-none">
-                                <thead className="bg-input">
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Mobile</th>
-                                    <th scope="col">Status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {fetchSalesAll
-                                .map((item, i) => (
-                                    <ItemAllSales 
-                                        key={i}
-                                        name={item.Name}
-                                        email={item.Email}
-                                        phone={item.Mobile}
-                                        status={item.Status}
-                                    />
-                                    ))
-                                }
-                                </tbody>
-                            </table>
-                        </>  : '' }
-
-                        {token && Object.keys(fetchSales).length > 0 ? <table className="table text-center table-hover table-striped">
-                            <thead className="bg-input">
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Mobile</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {fetchSales
-                            //   .filter((item) => {
-                            //     return search.toLocaleLowerCase() === '' ? 
-                            //     item : item.Name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-                            //   })
-                            .map((item, i) => (
-                                <ItemSales 
-                                    key={i}
-                                    id={item.IDSales}
-                                    name={item.Name}
-                                    email={item.Email}
-                                    phone={item.Mobile}
-                                    status={item.Status}
-                                    country={item.IDCountry}
-
-                                    // avatar={item.IDAvatar}
-                                    // password={item.Password}
-                                    item={item}
-                                    showUpdate={showUpdate}
-                                    getItemId={getItemId}
-                                    setItemId={setItemId}
+                        {token && Object.keys(fetchAdmins).length > 0 ?
+                            <>
+                                <ReactHtmlTableToExcel
+                                    id="test-table-xls-button"
+                                    className="download-table-xls-button btn black-btn mb-4"
+                                    table="table-to-xls"
+                                    filename={`Admins`}
+                                    sheet="tablexls"
+                                    buttonText="Download as Excel Sheet"
                                 />
-                                ))
-                            }
-                            </tbody>
-                        </table> : <h2 className='text-center mt-fixed py-4'>Your Table is Empty..</h2>}
+
+                                <table id='table-to-xls' className="table text-center table-hover table-striped">
+                                    <thead className="bg-input">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Mobile</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {fetchAdmins
+                                    //   .filter((item) => {
+                                    //     return search.toLocaleLowerCase() === '' ? 
+                                    //     item : item.Name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+                                    //   })
+                                    .map((item, i) => (
+                                        <ItemAdmin 
+                                            key={i}
+                                            id={item.IDSales}
+                                            name={item.Name}
+                                            email={item.Email}
+                                            phone={item.Mobile}
+                                            status={item.Status}
+                                            country={item.IDCountry}
+                                            // avatar={item.IDAvatar}
+                                            // password={item.Password}
+                                            item={item}
+                                            showUpdate={showUpdate}
+                                            getItemId={getItemId}
+                                            setItemId={setItemId}
+                                        />
+                                        ))
+                                    }
+                                    </tbody>
+                                </table>
+                            </> : <h2 className='text-center mt-fixed py-4'>Your Table is Empty..</h2>
+                        }
                     </div>
                 }
 
@@ -613,7 +516,7 @@ export default function Sales({fetchSales , fetchSalesAll , getToken , baseURL ,
                             <div className="submitAdd-buttons mt-4 d-flex justify-content-center align-items-center">
                                 <button type='submit' className="btn black-btn py-2 px-4 me-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
                                 {/* <button onClick={resetForm} className="btn second-btn text-white py-2 px-3">Reset</button> */}
-                                <Link to='../Sales' className="btn black-btn py-2 px-4">Cancel</Link>
+                                <Link to='../Admins' className="btn black-btn py-2 px-4">Cancel</Link>
                             </div>
 
                         </form>

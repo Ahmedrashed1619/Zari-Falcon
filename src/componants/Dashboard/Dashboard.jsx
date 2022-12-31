@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 // import { FaBars } from 'react-icons/fa';
 // import { BsSearch } from 'react-icons/bs';
-import { FaChartPie, FaUsers, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaChartPie, FaUsers, FaUser, FaMapMarkerAlt } from 'react-icons/fa';
 import { FiUsers, FiSettings } from 'react-icons/fi';
 import { BiBarChartSquare } from 'react-icons/bi';
 import { TbRoute, TbLogout } from 'react-icons/tb';
@@ -34,6 +34,12 @@ export default function Dashboard({logOut}) {
             name : 'Statistics',
             class: 'statistics',
             icon : <FaChartPie />
+        },
+        {
+            path : '/admins',
+            name : 'Admins',
+            class: 'admins',
+            icon : <FaUser />
         },
         {
             path : '/sales',

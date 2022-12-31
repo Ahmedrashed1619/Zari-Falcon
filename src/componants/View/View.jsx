@@ -329,12 +329,12 @@ export default function View({fetchSalesAll , token , baseURL}) {
                                     id="test-table-xls-button"
                                     className="download-table-xls-button btn black-btn mb-4"
                                     table="table-to-xls"
-                                    filename={`Route ${i}`}
+                                    filename={`Route ${i+1}`}
                                     sheet="tablexls"
                                     buttonText="Download as Excel Sheet"
                                 />
 
-                                <table className="table text-center table-hover table-striped">
+                                <table id='table-to-xls' className="table text-center table-hover table-striped">
                                     <thead className="bg-input">
                                         <tr>
                                         <th scope="col">Client Name</th>

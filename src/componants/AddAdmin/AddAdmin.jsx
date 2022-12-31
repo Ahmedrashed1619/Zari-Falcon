@@ -10,12 +10,12 @@ import { langContext } from '../context/store';
 
 
 
-export default function AddSales({getToken , baseURL , fetchCountries , fetchavatars , token}) {
+export default function AddAdmin({getTokenAdmins , baseURL , fetchCountries , fetchavatars , token}) {
 
 
     useEffect(() => {
         $('.sidebar .menu-links a').removeClass('active');
-        $('.sidebar .menu-links a.sales').addClass('active');
+        $('.sidebar .menu-links a.admins').addClass('active');
     }, [])
 
 
@@ -23,16 +23,6 @@ export default function AddSales({getToken , baseURL , fetchCountries , fetchava
 
     let { isOpen , toggleOpen } = useContext(langContext);
 
-
-    // const closeNavLink = () => {
-    //   if(isOpen === false && $('body').width() < 570) {
-    //       $('.sidebar').animate({'left' : '-240px'} , 500);
-    //       setTimeout(() => {
-    //           toggleOpen();
-    //       }, 500);
-    //   }
-    // }
-    
     
     function widthBody() {
         let width = $('body').width();
@@ -231,15 +221,13 @@ export default function AddSales({getToken , baseURL , fetchCountries , fetchava
         if(confirm === user.UserPassword) {
             let {data} = await axios({
                 method: 'post',
-                url: `${baseURL}sales/add`,
+                url: `${baseURL}admins/add`,
                 data: user,
                 headers: { 
                         // 'Content-Type': 'multipart/form-data',
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + token, 
-                        // 'Access-Control-Allow-Origin': '*',
-                        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
                 },
             });
                 
@@ -249,9 +237,9 @@ export default function AddSales({getToken , baseURL , fetchCountries , fetchava
             if(data.Success === true) {
 
                 setApiCode(data.Success);
-                getToken();
+                getTokenAdmins();
                 setTimeout(() => {
-                    navigate('../sales');
+                    navigate('../admins');
                 }, 2000);
             }
 
@@ -411,7 +399,7 @@ export default function AddSales({getToken , baseURL , fetchCountries , fetchava
                     <div className="submitAdd-buttons mt-4 d-flex justify-content-center align-items-center">
                         <button type='submit' className="btn black-btn py-2 me-4">{loadind ? <i className="fa fa-spinner fa-spin main-color fs-4"></i> : 'Save'}</button>
                         {/* <button onClick={resetForm} className="btn second-btn py-2 px-3">Reset</button> */}
-                        <Link to='../sales' className="btn black-btn py-2">Cancel</Link>
+                        <Link to='../admins' className="btn black-btn py-2">Cancel</Link>
                     </div>
 
                 </form>

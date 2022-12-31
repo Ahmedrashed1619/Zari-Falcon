@@ -25,6 +25,8 @@ import AddClients from './componants/AddClients/AddClients';
 import AddCreate from './componants/AddCreate/AddCreate';
 import View from './componants/View/View';
 import Profile from './componants/Profile/Profile';
+import Admins from './componants/Admins/Admins';
+import AddAdmin from './componants/AddAdmin/AddAdmin';
 
 
 
@@ -145,9 +147,6 @@ function App() {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        // 'Authorization': 'Bearer ' + token,
-        // 'Access-Control-Allow-Origin': '*',
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       }
     })
       .then(res => {
@@ -180,8 +179,6 @@ function App() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
-        // 'Access-Control-Allow-Origin': '*',
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       }
     })
       .then(res => {
@@ -205,7 +202,70 @@ function App() {
 
 
 
-  // sales list
+  // Admins list
+
+  const apiAdmins = `${baseURL}admins/list`;
+
+  // const [pagesCountSales, setPagesCountSales] = useState(0);
+  // const [countSales, setCountSales] = useState(1);
+  // const [searchKeySales, setSearchKeySales] = useState(null);
+  const [loadingAdmins, setLoadingAdmins] = useState(false)
+  const [fetchAdmins, setFetchAdmins] = useState([])
+  async function getTokenAdmins() {
+    setLoadingAdmins(true);
+    await axios.post(apiAdmins, {
+      // IDPage: countSales,
+      // SearchKey: searchKeySales
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      }
+    })
+      .then(res => {
+        setFetchAdmins(res.data.Admins);
+        // setPagesCountSales(res.data.Pages);
+        setLoadingAdmins(false);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+
+  // const [fetchAdminsAll, setFetchAdminsAll] = useState([])
+  // async function getTokenAdminsAll() {
+  //   await axios.post(apiAdmins, {}, {
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'Bearer ' + token,
+  //     }
+  //   })
+  //     .then(res => {
+  //       setFetchAdminsAll(res.data.Admins);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     });
+  // }
+
+  useEffect(() => {
+    if(token) {
+      getTokenAdmins();
+    }
+  // }, [token , countSales , pagesCountSales , searchKeySales]);
+  }, [token]);
+
+  // useEffect(() => {
+  //   if(token) {
+  //     getTokenAdminsAll()
+  //   }
+  //   }, [token])
+
+
+
+      // sales list
 
   const api = `${baseURL}sales/list`;
 
@@ -224,8 +284,6 @@ function App() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
-        // 'Access-Control-Allow-Origin': '*',
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       }
     })
       .then(res => {
@@ -238,12 +296,6 @@ function App() {
         console.log(error)
       });
   }
-  useEffect(() => {
-    if(token) {
-      getToken();
-    }
-  }, [token , countSales , pagesCountSales , searchKeySales]);
-  // }, [token]);
 
   const [fetchSalesAll, setFetchSalesAll] = useState([])
   async function getTokenSalesAll() {
@@ -252,8 +304,6 @@ function App() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
-        // 'Access-Control-Allow-Origin': '*',
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       }
     })
       .then(res => {
@@ -263,11 +313,13 @@ function App() {
         console.log(error)
       });
   }
+
   useEffect(() => {
     if(token) {
       getToken();
     }
-  }, [token]);
+  }, [token , countSales , pagesCountSales , searchKeySales]);
+  // }, [token]);
 
   useEffect(() => {
     if(token) {
@@ -287,8 +339,6 @@ function App() {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token,
-          // 'Access-Control-Allow-Origin': '*',
-          // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
         }
       })
         .then(res => {
@@ -324,8 +374,6 @@ function App() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
-        // 'Access-Control-Allow-Origin': '*',
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       }
     })
       .then(res => {
@@ -345,8 +393,6 @@ function App() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
-        // 'Access-Control-Allow-Origin': '*',
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       }
     })
       .then(res => {
@@ -368,35 +414,6 @@ function App() {
       getTokenClientsAll()
     }
     }, [token])
-
-
-    // get file
-    // const apiFile = `${baseURL}client/export`;
-    // const [fetchFile, setFetchFile] = useState('');
-    // async function getFile() {
-    //   await axios.post(apiFile, {
-    //     responseType: 'arraybuffer',
-    //   }, {
-    //     headers: {
-    //       'Accept': 'Content-Type": "blob',
-    //       'Content-Type': 'Content-Type": "blob',
-    //       'Authorization': 'Bearer ' + token,
-    //       // 'Access-Control-Allow-Origin': '*',
-    //       // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-    //     }
-    //   })
-    //     .then(res => {
-    //       setFetchFile(res.data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error)
-    //     });
-    // }
-    // useEffect(() => {
-    //   if(token) {
-    //     getFile();
-    //   }
-    // }, [token]);
 
 
   // get countries
@@ -523,7 +540,7 @@ function App() {
           </div>} />
         <Route path='signup' element={<Signup baseURL={baseURL} saveUserData={saveUserData} />} />
         <Route path='signin' element={<Signin baseURL={baseURL} saveUserData={saveUserData} />} />
-        <Route path='checkout/:id' element={ <Checkout userData={userData} saveUserData={saveUserData} baseURL={baseURL} /> } />
+        <Route path='checkout/:id' element={ <Checkout userData={userData} saveUserData={saveUserData} baseURL={baseURL} token={token} /> } />
         <Route path='contact' element={<Contact baseURL={baseURL} />} />
         <Route path='dashboard' element={<ProtectedRoute> <Dashboard logOut={logOut} /> </ProtectedRoute>}>
 
@@ -531,6 +548,14 @@ function App() {
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
           <Route path='statistics' element={token && Object.keys(fetchStatistics).length > 0 ? <Statistics fetchStatistics={fetchStatistics} objs={objs} objsNot={objsNot} objs2={objs2} objs2Not={objs2Not} token={token} /> : <div id="ready">
+              <i className="fa fa-spinner fa-5x fa-spin"></i>
+            </div>} />
+
+          <Route path='admins' element={token && Object.keys(fetchCountries).length > 0 && Object.keys(fetchavatars).length > 0 ? <Admins fetchAdmins={fetchAdmins} getTokenAdmins={getTokenAdmins} baseURL={baseURL} fetchCountries={fetchCountries} fetchavatars={fetchavatars} loadingAdmins={loadingAdmins} /> : <div id="ready">
+              <i className="fa fa-spinner fa-5x fa-spin"></i>
+            </div>} />
+
+          <Route path='addAdmin' element={token && Object.keys(fetchCountries).length > 0 && Object.keys(fetchavatars).length > 0 ? <AddAdmin getTokenAdmins={getTokenAdmins} baseURL={baseURL} fetchCountries={fetchCountries} fetchavatars={fetchavatars} token={token}/> : <div id="ready">
               <i className="fa fa-spinner fa-5x fa-spin"></i>
             </div>} />
 
