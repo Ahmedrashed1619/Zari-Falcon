@@ -61,16 +61,14 @@ export default function BankReview({baseURL , setUserData}) {
 
 
     useEffect(() => {
-        setTimeout(() => {
-            if(fetchData === true) {
+
+        if(fetchData === true) {
+            setTimeout(() => {
                 navigate('../home');
                 setUserData(null);
                 localStorage.removeItem('userToken');
-            }
-            // else {
-            //     navigate('../checkout');
-            // }
-        }, 7000);
+            }, 7000);
+        }
     }, [fetchData])
 
 
