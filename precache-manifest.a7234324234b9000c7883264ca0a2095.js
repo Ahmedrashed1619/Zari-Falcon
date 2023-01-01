@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "7ade6b89f3cabea73a98",
+    "revision": "22d2151ace8a4ff09a44",
     "url": "/Zari-Falcon/static/css/main.9bf89f16.chunk.css"
   },
   {
-    "revision": "7ade6b89f3cabea73a98",
-    "url": "/Zari-Falcon/static/js/main.7ade6b89.chunk.js"
+    "revision": "22d2151ace8a4ff09a44",
+    "url": "/Zari-Falcon/static/js/main.22d2151a.chunk.js"
   },
   {
     "revision": "91403c72ce38ec937f2c",
@@ -60,6 +60,14 @@ self.__precacheManifest = [
     "url": "/Zari-Falcon/static/media/reject.cac937de.png"
   },
   {
+    "revision": "40e6df55734232692408d76ad5f9c34a",
+    "url": "/Zari-Falcon/static/media/fa-regular-400.40e6df55.ttf"
+  },
+  {
+    "revision": "0ef11ce096706bcafc520aee12162ae4",
+    "url": "/Zari-Falcon/static/media/fa-brands-400.0ef11ce0.ttf"
+  },
+  {
     "revision": "4b162098158528431aeb5636116777f0",
     "url": "/Zari-Falcon/static/media/fa-regular-400.4b162098.woff2"
   },
@@ -68,31 +76,23 @@ self.__precacheManifest = [
     "url": "/Zari-Falcon/static/media/fa-brands-400.e2f5b365.woff2"
   },
   {
-    "revision": "0ef11ce096706bcafc520aee12162ae4",
-    "url": "/Zari-Falcon/static/media/fa-brands-400.0ef11ce0.ttf"
-  },
-  {
     "revision": "328a9d0f59f0ebb55cddac6f39995bea",
     "url": "/Zari-Falcon/static/media/fa-solid-900.328a9d0f.woff2"
-  },
-  {
-    "revision": "40e6df55734232692408d76ad5f9c34a",
-    "url": "/Zari-Falcon/static/media/fa-regular-400.40e6df55.ttf"
-  },
-  {
-    "revision": "c0bf087a238488d351270a35c8f0cca0",
-    "url": "/Zari-Falcon/static/media/fa-solid-900.c0bf087a.ttf"
   },
   {
     "revision": "6ddaf31a1e0e05490f6919cbb3347e9d",
     "url": "/Zari-Falcon/static/media/fa-v4compatibility.6ddaf31a.woff2"
   },
   {
+    "revision": "c0bf087a238488d351270a35c8f0cca0",
+    "url": "/Zari-Falcon/static/media/fa-solid-900.c0bf087a.ttf"
+  },
+  {
     "revision": "36818ecc50af8ea6c4cbef88d0b2baad",
     "url": "/Zari-Falcon/static/media/fa-v4compatibility.36818ecc.ttf"
   },
   {
-    "revision": "307aeb5b61464eb94e58498d802a64b6",
+    "revision": "bd302c259f132ce4ef179b70a6e4b146",
     "url": "/Zari-Falcon/index.html"
   }
 ];

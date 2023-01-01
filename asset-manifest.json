@@ -1,7 +1,7 @@
 {
   "main.css": "/Zari-Falcon/static/css/main.9bf89f16.chunk.css",
-  "main.js": "/Zari-Falcon/static/js/main.7ade6b89.chunk.js",
-  "main.js.map": "/Zari-Falcon/static/js/main.7ade6b89.chunk.js.map",
+  "main.js": "/Zari-Falcon/static/js/main.22d2151a.chunk.js",
+  "main.js.map": "/Zari-Falcon/static/js/main.22d2151a.chunk.js.map",
   "static/js/1.91403c72.chunk.js": "/Zari-Falcon/static/js/1.91403c72.chunk.js",
   "static/js/1.91403c72.chunk.js.map": "/Zari-Falcon/static/js/1.91403c72.chunk.js.map",
   "static/css/2.19495f5d.chunk.css": "/Zari-Falcon/static/css/2.19495f5d.chunk.css",
@@ -19,9 +19,9 @@
   "static/media/success.png": "/Zari-Falcon/static/media/success.08e6de23.png",
   "static/media/reject.png": "/Zari-Falcon/static/media/reject.cac937de.png",
   "static/media/all.css": "/Zari-Falcon/static/media/fa-v4compatibility.36818ecc.ttf",
-  "static/css/main.9bf89f16.chunk.css.map": "/Zari-Falcon/static/css/main.9bf89f16.chunk.css.map",
   "static/css/2.19495f5d.chunk.css.map": "/Zari-Falcon/static/css/2.19495f5d.chunk.css.map",
+  "static/css/main.9bf89f16.chunk.css.map": "/Zari-Falcon/static/css/main.9bf89f16.chunk.css.map",
   "index.html": "/Zari-Falcon/index.html",
-  "precache-manifest.45e2f62a1953e3facc89ab6be59e8f6d.js": "/Zari-Falcon/precache-manifest.45e2f62a1953e3facc89ab6be59e8f6d.js",
+  "precache-manifest.a7234324234b9000c7883264ca0a2095.js": "/Zari-Falcon/precache-manifest.a7234324234b9000c7883264ca0a2095.js",
   "service-worker.js": "/Zari-Falcon/service-worker.js"
 }
