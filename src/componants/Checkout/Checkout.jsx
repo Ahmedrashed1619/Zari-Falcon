@@ -238,7 +238,7 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
             setApiCode(data.Success);
             setTimeout(() => {
                 setIsPayClick(!isPayClick);
-                // payForPlan();
+                payForPlan();
             }, 1500);
         }
         
@@ -303,7 +303,7 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
                 setApiCode(data.Success);
                 setTimeout(() => {
                     setIsPayClick(!isPayClick);
-                    // payForPlan();
+                    payForPlan();
                 }, 1500);
             }
 
@@ -364,12 +364,12 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
                     setMessagePlanAr(res.data.ApiMsgAr);
                     setMessagePlanEn(res.data.ApiMsgEn);
                     setStatusPlan(res.data.Status);
-                    // if(res.data.Status === true) {
-                    //     setTimeout(() => {
-                    //         window.open(res.data.PaymentURL, '_blank', 'noreferrer');
-                    //         window.location.href = res.data.PaymentURL;
-                    //     }, 2000);
-                    // }
+                    if(res.data.Status === true) {
+                        setTimeout(() => {
+                            // window.open(res.data.PaymentURL, '_blank', 'noreferrer');
+                            window.location.href = res.data.PaymentURL;
+                        }, 1000);
+                    }
                 })
                 .catch((error) => {
                     console.log(error)
@@ -384,7 +384,7 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
             <section className="check-out py-5" dir={isEng ? 'ltr' : 'rtl'}>
                 <div className="container pt-5 pb-4">
 
-                    {/* {!isPayClick ?  */}
+                    {!isPayClick ? 
                         <div className="row d-flex justify-content-center align-items-center g-5">
                             {/* <div className="col-lg-8">
                                 <div className="caption-check">
@@ -464,17 +464,19 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
                                             {/* {messagePlanEn || messagePlanAr ? <p id="alertPlan" className={`alert ${statusPlan === true ? 'alert-success' : 'alert-danger'} fs-6 py-2 mb-0 mt-3 w-50 text-center mx-auto`}>{isEng ? messagePlanEn : messagePlanAr}</p> : ''} */}
 
                                             <div className="buttons d-flex text-center my-3 mx-auto">
-                                                <Link to='../home' onClick={goToPlansSection} className="btn black-btn mx-auto text-capitalize">{isEng ? 'Change my Plan' : 'تغيير الخطة'}</Link>
-                                                {/* <button onClick={payForPlan} className="btn second-btn mx-auto text-capitalize">{isEng ? 'Confirm Payment' : 'تأكيد الدفع'}</button> */}
+                                                {/* <Link to='../home' onClick={goToPlansSection} className="btn black-btn mx-auto text-capitalize">{isEng ? 'Change my Plan' : 'تغيير الخطة'}</Link> */}
+                                                <button onClick={payForPlan} className="btn second-btn mx-auto text-capitalize">{isEng ? 'Confirm Payment' : 'تأكيد الدفع'}</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 : 
-                                ''
+                                <div id="ready">
+                                    <i className="fa fa-spinner fa-5x fa-spin"></i>
+                                </div>
                             }
                         </div> 
-{/*                         
+                        
                         :
 
                         <div className="row justify-content-center align-items-center">
@@ -576,7 +578,7 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
                                 </div>
                             </div>
                         </div>
-                    } */}
+                    }
 
                 </div>
             </section>

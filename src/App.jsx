@@ -27,6 +27,7 @@ import View from './componants/View/View';
 import Profile from './componants/Profile/Profile';
 import Admins from './componants/Admins/Admins';
 import AddAdmin from './componants/AddAdmin/AddAdmin';
+import BankReview from './componants/BankReview/BankReview';
 
 
 
@@ -36,7 +37,6 @@ function App() {
   // let baseURL = 'https://zarimain.online/falcon/public/api/dashboard/';
 
   let baseURL = 'https://backend.zarifalcon.com/api/dashboard/';
-
 
   let token = localStorage.getItem('userToken') ;
 
@@ -542,6 +542,7 @@ function App() {
         <Route path='signin' element={<Signin baseURL={baseURL} saveUserData={saveUserData} />} />
         <Route path='checkout/:id' element={ <Checkout userData={userData} saveUserData={saveUserData} baseURL={baseURL} token={token} /> } />
         <Route path='contact' element={<Contact baseURL={baseURL} />} />
+        <Route path='bankreview' element={<ProtectedRoute> <BankReview baseURL={baseURL} setUserData={setUserData} /> </ProtectedRoute>} />
         <Route path='dashboard' element={<ProtectedRoute> <Dashboard logOut={logOut} /> </ProtectedRoute>}>
 
           <Route path='' element={token && Object.keys(fetchStatistics).length > 0 ? <Statistics fetchStatistics={fetchStatistics} objs={objs} objsNot={objsNot} objs2={objs2} objs2Not={objs2Not} token={token} /> : <div id="ready">
