@@ -8,6 +8,12 @@ export default function Notfound() {
 
 
     useEffect(() => {
+        $('nav .signin-btn').removeClass('d-none');
+        $('nav .signup-btn').addClass('d-none');
+    }, [])
+
+
+    useEffect(() => {
         $('html , body').animate({ scrollTop: 0 }, 200);
         $('.navbar .collapse .home').removeClass('active');
         $('.navbar .collapse .features').removeClass('active');

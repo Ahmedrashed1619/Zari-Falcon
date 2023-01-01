@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { langContext } from '../context/store';
-import visa from '../images/checkout/visa 1.png';
-import masterCard from '../images/checkout/Master card Icon.png';
+// import visa from '../images/checkout/visa 1.png';
+// import masterCard from '../images/checkout/Master card Icon.png';
 import $ from 'jquery';
 import WOW from 'wowjs';
 import AOS from 'aos';
@@ -51,18 +51,18 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
     }
 
 
-    const showHidePass = () => {
-        if($('.cvv .input-group i').hasClass('fa-eye-slash')) {
-            $('.cvv .input-group i').removeClass('fa-eye-slash');
-            $('.cvv .input-group i').addClass('fa-eye');
-            $('.cvv .input-group input').attr('type', 'password');
-        }
-        else {
-            $('.cvv .input-group i').removeClass('fa-eye');
-            $('.cvv .input-group i').addClass('fa-eye-slash');
-            $('.cvv .input-group input').attr('type', 'text');
-        }
-    }
+    // const showHidePass = () => {
+    //     if($('.cvv .input-group i').hasClass('fa-eye-slash')) {
+    //         $('.cvv .input-group i').removeClass('fa-eye-slash');
+    //         $('.cvv .input-group i').addClass('fa-eye');
+    //         $('.cvv .input-group input').attr('type', 'password');
+    //     }
+    //     else {
+    //         $('.cvv .input-group i').removeClass('fa-eye');
+    //         $('.cvv .input-group i').addClass('fa-eye-slash');
+    //         $('.cvv .input-group input').attr('type', 'text');
+    //     }
+    // }
 
 
     const showHideRePass = () => {
@@ -79,25 +79,25 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
     }
 
 
-    const changeImg = (e) => {
-        if(e.target.value === 'Master Card') {
-            $('.number-card .input-group img').attr('src' , masterCard);
-        }
-        else if(e.target.value === 'Visa') {
-            $('.number-card .input-group img').attr('src' , visa);
-        }
-    }
+    // const changeImg = (e) => {
+    //     if(e.target.value === 'Master Card') {
+    //         $('.number-card .input-group img').attr('src' , masterCard);
+    //     }
+    //     else if(e.target.value === 'Visa') {
+    //         $('.number-card .input-group img').attr('src' , visa);
+    //     }
+    // }
 
 
-    const goToPlansSection = () => {
-        $('.navbar .collapse .plans').addClass('active');
-        $('.navbar .collapse .features').removeClass('active');
-        $('.navbar .collapse .home').removeClass('active');
-        $('.navbar .collapse .app').removeClass('active');
-        setTimeout(() => {
-            $('html , body').animate({ scrollTop: $('#plans').offset().top - 40 }, 300);
-        }, 200);
-    }
+    // const goToPlansSection = () => {
+    //     $('.navbar .collapse .plans').addClass('active');
+    //     $('.navbar .collapse .features').removeClass('active');
+    //     $('.navbar .collapse .home').removeClass('active');
+    //     $('.navbar .collapse .app').removeClass('active');
+    //     setTimeout(() => {
+    //         $('html , body').animate({ scrollTop: $('#plans').offset().top - 40 }, 300);
+    //     }, 200);
+    // }
 
 
     let { isEng } = useContext(langContext);
