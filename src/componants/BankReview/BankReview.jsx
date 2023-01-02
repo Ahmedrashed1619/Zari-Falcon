@@ -13,7 +13,7 @@ export default function BankReview({baseURL , setUserData}) {
 
     const navigate = useNavigate();
 
-    let { isEng } = useContext(langContext);
+    let { isEng , invoiceId } = useContext(langContext);
 
 
     useEffect(() => {
@@ -36,9 +36,10 @@ export default function BankReview({baseURL , setUserData}) {
     let [fetchData, setFetchData] = useState();
     let [fetchMSGAr, setFetchMSGAr] = useState();
     let [fetchMSGEn, setFetchMSGEn] = useState();
+    let [fetchBankMSG, setFetchBankMSG] = useState();
 
     const getData = async () => {
-        await axios.get(`${baseURL}payment/callback`, {
+        await axios.get(`${baseURL}payment/callback?InvoiceId=${invoiceId}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -49,6 +50,7 @@ export default function BankReview({baseURL , setUserData}) {
                 setFetchData(res.data.Success);
                 setFetchMSGAr(res.data.ApiMsgAr);
                 setFetchMSGEn(res.data.ApiMsgEn);
+                setFetchBankMSG(res.data.BankMessage);
             }
         })
         .catch(err => {
@@ -93,7 +95,7 @@ export default function BankReview({baseURL , setUserData}) {
                             :
                             <div className="min-vh-70 row d-flex justify-content-center align-items-center g-0">
                                 <div className="col-md-3">
-                                    <h1 className='mb-0 text-center text-danger fw-bold'>{isEng ? fetchMSGEn : fetchMSGAr}</h1>
+                                    <h1 className='mb-0 text-center text-danger fw-bold'>{fetchBankMSG}</h1>
                                 </div>
                                 <div className="col-md-9">
                                     <div className="img-notfound d-flex align-items-center">

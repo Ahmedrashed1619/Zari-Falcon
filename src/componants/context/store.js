@@ -13,9 +13,10 @@ export default function LangContextProvider(props) {
     const changeLang = () => {
         setIsEng(!isEng);
     }
-    
 
-    return <langContext.Provider value={{isEng, changeLang, isOpen, toggleOpen}}>
+    const [invoiceId, setInvoiceId] = useState();
+
+    return <langContext.Provider value={{isEng, changeLang, isOpen, toggleOpen, setInvoiceId}}>
         {props.children}
     </langContext.Provider>
 }

@@ -100,7 +100,7 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
     // }
 
 
-    let { isEng } = useContext(langContext);
+    let { isEng , setInvoiceId } = useContext(langContext);
 
 
     function changeDir() {
@@ -364,6 +364,7 @@ export default function Checkout({userData , saveUserData , baseURL , token}) {
                     setMessagePlanAr(res.data.ApiMsgAr);
                     setMessagePlanEn(res.data.ApiMsgEn);
                     setStatusPlan(res.data.Status);
+                    setInvoiceId(res.data.InvoiceId);
                     if(res.data.Status === true) {
                         setTimeout(() => {
                             // window.open(res.data.PaymentURL, '_blank', 'noreferrer');
