@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "22d2151ace8a4ff09a44",
+    "revision": "ca0bc02f8eaa2dd6082c",
     "url": "/Zari-Falcon/static/css/main.9bf89f16.chunk.css"
   },
   {
-    "revision": "22d2151ace8a4ff09a44",
-    "url": "/Zari-Falcon/static/js/main.22d2151a.chunk.js"
+    "revision": "ca0bc02f8eaa2dd6082c",
+    "url": "/Zari-Falcon/static/js/main.ca0bc02f.chunk.js"
   },
   {
     "revision": "91403c72ce38ec937f2c",
@@ -68,6 +68,10 @@ self.__precacheManifest = [
     "url": "/Zari-Falcon/static/media/fa-brands-400.0ef11ce0.ttf"
   },
   {
+    "revision": "6ddaf31a1e0e05490f6919cbb3347e9d",
+    "url": "/Zari-Falcon/static/media/fa-v4compatibility.6ddaf31a.woff2"
+  },
+  {
     "revision": "4b162098158528431aeb5636116777f0",
     "url": "/Zari-Falcon/static/media/fa-regular-400.4b162098.woff2"
   },
@@ -80,19 +84,15 @@ self.__precacheManifest = [
     "url": "/Zari-Falcon/static/media/fa-solid-900.328a9d0f.woff2"
   },
   {
-    "revision": "6ddaf31a1e0e05490f6919cbb3347e9d",
-    "url": "/Zari-Falcon/static/media/fa-v4compatibility.6ddaf31a.woff2"
+    "revision": "36818ecc50af8ea6c4cbef88d0b2baad",
+    "url": "/Zari-Falcon/static/media/fa-v4compatibility.36818ecc.ttf"
   },
   {
     "revision": "c0bf087a238488d351270a35c8f0cca0",
     "url": "/Zari-Falcon/static/media/fa-solid-900.c0bf087a.ttf"
   },
   {
-    "revision": "36818ecc50af8ea6c4cbef88d0b2baad",
-    "url": "/Zari-Falcon/static/media/fa-v4compatibility.36818ecc.ttf"
-  },
-  {
-    "revision": "bd302c259f132ce4ef179b70a6e4b146",
+    "revision": "7f08bd40439e4a8ba401e7330a91660e",
     "url": "/Zari-Falcon/index.html"
   }
 ];
